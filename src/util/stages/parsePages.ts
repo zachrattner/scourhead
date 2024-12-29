@@ -107,11 +107,12 @@ export async function parsePages(outputFile: string) {
         const pageText = await extractPlainText(searchResult.url);
         if (!pageText) {
             logger.warn(`Failed to load page: ${searchResult.url}`);
+            writeScourFile(outputFile, scourFile);
             continue;
         }
 
         logger.info(`Building prompt to determine if data is relevant...`);
-        const validatorPrompt = 
+        const validatorPrompt =
             `Is the provided text relevant to the objective stated? The text came from a web search while researching the objective.
              
             Objective:
@@ -127,6 +128,7 @@ export async function parsePages(outputFile: string) {
         const parsedValidatorResponse = JSON.parse(validatorResponse);
         if (!parsedValidatorResponse.relevant) {
             logger.info(`Skipping page because it is not relevant: ${searchResult.url}`);
+            writeScourFile(outputFile, scourFile);
             continue;
         }
 
@@ -139,22 +141,29 @@ export async function parsePages(outputFile: string) {
 
         if (!response) {
             logger.warn(`Failed to parse page: ${searchResult.url}`);
+            writeScourFile(outputFile, scourFile);
             continue;
         }
 
         const parsedResponse = cleanOllamaJsonObject(response);
         if (!parsedResponse) {
             logger.warn(`Failed to parse page: ${searchResult.url}`);
+            writeScourFile(outputFile, scourFile);
             continue;
         }
 
         logger.info(`Building result object...`);
 
         if (scourFile.columns
-                .filter(column => column.isRequired)
-                .some(column => parsedResponse[column.key] === null)) {
-            logger.warn("Skipping page because all required values are null.");
-        } else {
+            .filter(column => column.isRequired)
+            .some(column => {
+                const value = parsedResponse[column.key];
+                return ((value === null) || (value.trim() === ''));
+            })) {
+            logger.warn("Skipping page because all required values are null or empty.");
+            writeScourFile(outputFile, scourFile);
+        }
+        else {
             parsedResponse.url = searchResult.url;
             logger.info(`Result: ${JSON.stringify(parsedResponse)}`);
 

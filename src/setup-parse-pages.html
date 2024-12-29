@@ -132,6 +132,7 @@
     <script>
         let scourFile = null;
         let isParsing = false;
+        let rowStartIndex = 0;
 
         const loadingAnimation = document.getElementById('loading-animation');
 
@@ -185,8 +186,10 @@
             th.textContent = 'Link';
             headerRow.appendChild(th);
 
-            results.innerHTML = '';            
-            scourFile.rows.forEach((row, index) => {
+            for (let i = rowStartIndex; i < scourFile.rows.length; i++) {         
+                const row = scourFile.rows[i];
+                const index = document.querySelectorAll('.cell.number').length + 1;
+
                 const resultDiv = document.createElement('div');
                 resultDiv.className = 'result';
 
@@ -196,7 +199,7 @@
 
                 const numberCell = document.createElement('span');
                 numberCell.className = 'cell number';
-                numberCell.textContent = `${index + 1}.`;
+                numberCell.textContent = `${index}.`;
                 headingRowDiv.appendChild(numberCell);
 
                 const faviconCell = document.createElement('span');
@@ -251,7 +254,9 @@
                 results.appendChild(resultDiv);
                 results.style.display = 'block';
                 loadingAnimation.style.width = '100px';
-            });
+            }
+
+            rowStartIndex = scourFile.rows.length;
 
             if (isParsing) {
                 setTimeout(() => {
@@ -310,6 +315,7 @@
             await window.electronAPI.setScourFile(scourFile);
 
             loadingAnimation.style.width = '200px';
+            rowStartIndex = 0;
             await startParse();
         });
 
