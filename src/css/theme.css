@@ -29,6 +29,10 @@ a {
     transition: all 0.3s ease;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 button {
     border: none;
     border-radius: 5px;

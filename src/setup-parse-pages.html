@@ -8,44 +8,106 @@
     <link rel="stylesheet" href="./css/theme.css" />
     <link rel="stylesheet" href="./css/theme-light.css" />
     <style>
-        table#results {
-            width: 600px; 
-            border-collapse: collapse;
+        body {
+            justify-content: start;
         }
 
-        table#results thead {
-            display: none;
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
         }
 
-        table#results tbody {
-            display: block;
-            max-height: 300px;
+        #results {
+            flex: 1; 
             overflow-y: auto;
-            width: 100%;
-        }
-
-        table#results thead {
-            display: table-header-group;
-            width: 100%;
-        }
-
-        table#results tr {
-            display: table;
-            width: 100%;
-            table-layout: fixed;
-        }
-
-        table#results tbody td {
-            word-wrap: break-word;
         }
 
         #button-container {
-            position: absolute;
-            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #button-container button {
+            margin: 0 2px;
+        }
+
+        div#results {
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
 
         #export {
             display: none;
+        }
+
+        .result {
+            background-color: #fafafa;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            width: 600px;
+            gap: 10px;
+        }
+
+        .heading-row {
+            text-align: left;
+        }
+
+        .detail-row {
+            background-color: #f0f0f0;
+            border-radius: 6px;
+            padding: 4px;
+        }
+
+        .cell {
+            margin-right: 5px;
+        }
+
+        .cell.number {
+            font-weight: bold;
+        }
+
+        .cell.favicon img {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            top: 6px;
+        }
+
+        .cell.summary a {
+            display: inline-block;
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: relative;
+            top: 6px;
+        }
+
+        .detail-row table {
+            font-size: 80%;
+        }
+
+        .detail-row table tr td {
+            padding: 4px;
+        }
+
+        .detail-row table tr td.heading {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        #loading-animation {
+            display: none;
+        }
+
+        #loading-animation img {
+            width: 200px;
         }
     </style>
 </head>
@@ -53,14 +115,13 @@
     <h1>Scour pages</h1>
     <p id="subtitle">Reading each page and filling in your spreadsheet...</p>
 
-    <table id="results">
-        <thead id="results-head">
+    <div id="loading-animation">
+        <img src="img/loading.svg" alt="Loading" />
+    </div>
 
-        </thead>
-        <tbody id="results-body">
-
-        </tbody>
-    </table>
+    <div id="results">
+        
+    </div>
 
     <div id="button-container">
         <button id="back">Back</button>
@@ -72,11 +133,12 @@
         let scourFile = null;
         let isParsing = false;
 
+        const loadingAnimation = document.getElementById('loading-animation');
+
         const subtitle = document.getElementById('subtitle');
+        const results = document.getElementById('results');
 
-        const resultsHead = document.getElementById('results-head');
-        const resultsBody = document.getElementById('results-body');
-
+        const buttonContainer = document.getElementById('button-container');
         const scourButton  = document.getElementById('scour');
         const exportButton = document.getElementById('export');
         const backButton   = document.getElementById('back');
@@ -88,9 +150,11 @@
 
         async function startParse() {
             subtitle.innerText = 'Reading each page and filling in your spreadsheet...';
-            resultsHead.style.display = 'none';
-            resultsBody.innerHTML = '';
 
+            buttonContainer.style.display = 'none';
+            loadingAnimation.style.display = 'block';
+            results.style.display = 'none';
+            
             scourButton.style.display = 'none';
             backButton.disabled = true;
             exportButton.disabled = true;
@@ -108,7 +172,6 @@
 
         async function renderRows() {
             scourFile = await window.electronAPI.getScourFile();
-
             subtitle.innerText = `Researching page ${scourFile.currentSearchResultIndex + 1} of ${scourFile.searchResults.length}...`;
 
             const headerRow = document.createElement('tr');
@@ -122,32 +185,72 @@
             th.textContent = 'Link';
             headerRow.appendChild(th);
 
-            resultsHead.innerHTML = '';
-            resultsHead.appendChild(headerRow);
+            results.innerHTML = '';            
+            scourFile.rows.forEach((row, index) => {
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'result';
 
-            resultsBody.innerHTML = '';
-            if (scourFile.rows.length) {
-                resultsHead.style.display = 'table-header-group';
-            }
-            else {
-                resultsHead.style.display = 'none';
-            }
-            
-            scourFile.rows.forEach(row => {
-                const tr = document.createElement('tr');
+                // Create the heading row
+                const headingRowDiv = document.createElement('div');
+                headingRowDiv.className = 'heading-row';
 
-                scourFile.columns.forEach(column => {
-                    const td = document.createElement('td');
-                    td.textContent = row[column.key] || '';
-                    tr.appendChild(td);
+                const numberCell = document.createElement('span');
+                numberCell.className = 'cell number';
+                numberCell.textContent = `${index + 1}.`;
+                headingRowDiv.appendChild(numberCell);
+
+                const faviconCell = document.createElement('span');
+                faviconCell.className = 'cell favicon';
+                const faviconImg = document.createElement('img');
+                faviconImg.src = new URL('/favicon.ico', row.url).href;
+                faviconImg.alt = 'Favicon';
+
+                faviconImg.onerror = () => {
+                    faviconImg.src = 'img/scourhead.png';
+                };
+
+                faviconCell.appendChild(faviconImg);
+                headingRowDiv.appendChild(faviconCell);
+
+                const summaryCell = document.createElement('span');
+                summaryCell.className = 'cell summary';
+
+                const link = document.createElement('a');
+                link.href = row.url || '#';
+                link.target = '_blank';
+                link.textContent = row.url || '--';
+                summaryCell.appendChild(link);
+                headingRowDiv.appendChild(summaryCell);
+
+                resultDiv.appendChild(headingRowDiv);
+
+                // Create the detail row
+                const detailRowDiv = document.createElement('div');
+                detailRowDiv.className = 'detail-row';
+
+                const detailTable = document.createElement('table');
+
+                scourFile.columns.forEach((column) => {
+                    const tr = document.createElement('tr');
+
+                    const headingTd = document.createElement('td');
+                    headingTd.className = 'heading';
+                    headingTd.textContent = column.name;
+                    tr.appendChild(headingTd);
+
+                    const valueTd = document.createElement('td');
+                    valueTd.textContent = row[column.key] || '';
+                    tr.appendChild(valueTd);
+
+                    detailTable.appendChild(tr);
                 });
 
-                const td = document.createElement('td');
-                td.className = 'link';
-                td.innerHTML = `<a target="_blank" href="${row.url}">Link</a>`;
-                tr.appendChild(td);
+                detailRowDiv.appendChild(detailTable);
+                resultDiv.appendChild(detailRowDiv);
 
-                resultsBody.appendChild(tr);
+                results.appendChild(resultDiv);
+                results.style.display = 'block';
+                loadingAnimation.style.width = '100px';
             });
 
             if (isParsing) {
@@ -161,6 +264,9 @@
                     if (isAtEnd()) {
                         subtitle.innerText = `You have ${scourFile.rows.length} ${resultNoun}.`;
                         exportButton.style.display = 'inline';
+
+                        loadingAnimation.style.display = 'none';
+                        buttonContainer.style.display = 'block';
                     }
                     else {
                         subtitle.innerText = `You have ${scourFile.rows.length} ${resultNoun} so far.`;
@@ -177,7 +283,10 @@
 
             if (scourFile.rows && scourFile.columns) {
                 renderRows();
-                exportButton.style.display = 'inline';
+
+                if (scourFile.rows.length) {
+                    exportButton.style.display = 'inline';
+                }
             }
             else {
                 exportButton.style.display = 'none';
@@ -200,6 +309,7 @@
             scourFile.currentSearchResultIndex = 0;
             await window.electronAPI.setScourFile(scourFile);
 
+            loadingAnimation.style.width = '200px';
             await startParse();
         });
 
