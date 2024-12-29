@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scourhead</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/theme-light.css" />
+    <style>
+        table#results {
+            width: 600px; 
+            border-collapse: collapse;
+        }
+
+        table#results thead {
+            display: none;
+        }
+
+        table#results tbody {
+            display: block;
+            max-height: 300px;
+            overflow-y: auto;
+            width: 100%;
+        }
+
+        table#results thead {
+            display: table-header-group;
+            width: 100%;
+        }
+
+        table#results tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        table#results tbody td {
+            word-wrap: break-word;
+        }
+
+        #button-container {
+            position: absolute;
+            bottom: 20px;
+        }
+
+        #export {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Scour pages</h1>
+    <p id="subtitle">Reading each page and filling in your spreadsheet...</p>
+
+    <table id="results">
+        <thead id="results-head">
+
+        </thead>
+        <tbody id="results-body">
+
+        </tbody>
+    </table>
+
+    <div id="button-container">
+        <button id="back">Back</button>
+        <button id="scour">Scour</button>
+        <button id="export">Export Spreadsheet</button>
+    </div>
+
+    <script>
+        let scourFile = null;
+        let isParsing = false;
+
+        const subtitle = document.getElementById('subtitle');
+
+        const resultsHead = document.getElementById('results-head');
+        const resultsBody = document.getElementById('results-body');
+
+        const scourButton  = document.getElementById('scour');
+        const exportButton = document.getElementById('export');
+        const backButton   = document.getElementById('back');
+
+        function isAtEnd() {
+            const isAtEnd = scourFile.currentSearchResultIndex === scourFile.searchResults.length;
+            return isAtEnd;
+        }
+
+        async function startParse() {
+            subtitle.innerText = 'Reading each page and filling in your spreadsheet...';
+            resultsHead.style.display = 'none';
+            resultsBody.innerHTML = '';
+
+            scourButton.style.display = 'none';
+            backButton.disabled = true;
+            exportButton.disabled = true;
+
+            isParsing = true;
+            setTimeout(() => {
+                renderRows();
+            }, 1000);
+
+            await window.electronAPI.parsePages();
+            isParsing = false;
+            backButton.disabled = false;
+            exportButton.disabled = false;
+        }
+
+        async function renderRows() {
+            scourFile = await window.electronAPI.getScourFile();
+
+            subtitle.innerText = `Researching page ${scourFile.currentSearchResultIndex + 1} of ${scourFile.searchResults.length}...`;
+
+            const headerRow = document.createElement('tr');
+            scourFile.columns.forEach(column => {
+                const th = document.createElement('th');
+                th.textContent = column.name;
+                headerRow.appendChild(th);
+            });
+
+            const th = document.createElement('th');
+            th.textContent = 'Link';
+            headerRow.appendChild(th);
+
+            resultsHead.innerHTML = '';
+            resultsHead.appendChild(headerRow);
+
+            resultsBody.innerHTML = '';
+            if (scourFile.rows.length) {
+                resultsHead.style.display = 'table-header-group';
+            }
+            else {
+                resultsHead.style.display = 'none';
+            }
+            
+            scourFile.rows.forEach(row => {
+                const tr = document.createElement('tr');
+
+                scourFile.columns.forEach(column => {
+                    const td = document.createElement('td');
+                    td.textContent = row[column.key] || '';
+                    tr.appendChild(td);
+                });
+
+                const td = document.createElement('td');
+                td.className = 'link';
+                td.innerHTML = `<a target="_blank" href="${row.url}">Link</a>`;
+                tr.appendChild(td);
+
+                resultsBody.appendChild(tr);
+            });
+
+            if (isParsing) {
+                setTimeout(() => {
+                    renderRows();
+                }, 1000);
+            }
+            else {
+                if (scourFile.rows.length) {
+                    const resultNoun = (scourFile.rows.length === 1) ? 'result' : 'results';
+                    if (isAtEnd()) {
+                        subtitle.innerText = `You have ${scourFile.rows.length} ${resultNoun}.`;
+                        exportButton.style.display = 'inline';
+                    }
+                    else {
+                        subtitle.innerText = `You have ${scourFile.rows.length} ${resultNoun} so far.`;
+                    }
+                }
+                else {
+                    subtitle.innerText = 'Press the Scour button to check each page.'
+                }
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            scourFile = await window.electronAPI.getScourFile();
+
+            if (scourFile.rows && scourFile.columns) {
+                renderRows();
+            }
+            else {
+                exportButton.style.display = 'none';
+                backButton.disabled = true;
+                exportButton.disabled = true;
+                isParsing = true;
+                await window.electronAPI.parsePages();
+                isParsing = false;
+                backButton.disabled = false;
+                exportButton.disabled = false;
+
+                setTimeout(() => {
+                    renderRows();
+                }, 1000);
+            }
+        });
+
+        scourButton.addEventListener('click', async () => {
+            scourFile.rows = [];
+            scourFile.currentSearchResultIndex = 0;
+            await window.electronAPI.setScourFile(scourFile);
+
+            await startParse();
+        });
+
+        backButton.addEventListener('click', async () => {
+            window.electronAPI.navigateTo('setup-run-search.html');
+        });
+
+        exportButton.addEventListener('click', async () => {
+            const desktopPath = await window.electronAPI.invoke('get-desktop-path');
+            const filePath = await window.electronAPI.invoke('show-export-dialog', {
+                title: 'Save Spreadsheet',
+                defaultPath: `${desktopPath}/project.csv`,
+                filters: [{ name: 'Spreadsheet', extensions: ['csv'] }],
+            });
+
+            if (filePath) {
+                window.electronAPI.exportCsv(filePath);
+            }
+        });
+    </script>
+</body>
+</html>

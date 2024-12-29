@@ -1,0 +1,135 @@
+{
+  "name": "scourhead",
+  "productName": "Scourhead",
+  "homepage": "https://scourhead.com",
+  "version": "1.0.0",
+  "description": "Scour the web for whatever you're looking for",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "tsc && npm run copy-static-files && electron .",
+    "build": "tsc && npm run copy-static-files",
+    "copy-static-files": "copyfiles -u 1 'src/*.html' dist && copyfiles -u 1 'src/css/*.css' dist && copyfiles -u 1 src/img/* dist && copyfiles -u 1 'icons/**/*' dist/icons",
+    "dev": "ts-node ./src/main.ts",
+    "clean": "rm -rf dist",
+    "build-mac": "npm run build && ./download-chromium.sh mac && electron-builder --mac --arm64",
+    "build-win-arm64": "npm run build && ./download-chromium.sh win && electron-builder --win --arm64",
+    "build-win-x86": "npm run build && ./download-chromium.sh win && electron-builder --win --x64",
+    "build-linux-arm64": "npm run build && ./download-chromium.sh linux && electron-builder --linux --arm64",
+    "build-linux-x86": "npm run build && ./download-chromium.sh linux && electron-builder --linux --x64",
+    "create-scour-file": "ts-node ./src/tests/createScourFile.ts",
+    "create-search-queries": "ts-node ./src/tests/createSearchQueries.ts",
+    "run-search": "ts-node ./src/tests/runSearch.ts",
+    "parse-pages": "ts-node ./src/tests/parsePages.ts",
+    "convert-to-csv": "ts-node ./src/tests/convertToCsv.ts"
+  },
+  "keywords": [
+    "web search",
+    "automation",
+    "data extraction",
+    "AI-powered search",
+    "web crawling",
+    "data collection",
+    "browser automation"
+  ],
+  "author": {
+    "name": "Zach Rattner",
+    "email": "zach@zachrattner.com"
+  },
+  "bugs": {
+    "url": "https://github.com/zachrattner/scourhead/issues",
+    "email": "zach@zachrattner.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "./icons/mac/icon.icns"
+      }
+    }
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "json-2-csv": "^5.5.7",
+    "playwright": "^1.49.1"
+  },
+  "build": {
+    "appId": "com.zachrattner.scourhead",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": "dmg",
+      "icon": "icons/mac/icon.icns",
+      "extendInfo": {
+        "CFBundleDocumentTypes": [
+          {
+            "CFBundleTypeName": "Scour File",
+            "CFBundleTypeExtensions": [
+              "scour"
+            ],
+            "CFBundleTypeIconFile": "Scourhead.icns",
+            "CFBundleTypeRole": "Editor"
+          }
+        ]
+      },
+      "hardenedRuntime": true,
+      "gatekeeperAssess": true,
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist"
+    },
+    "extraResources": [
+      {
+        "from": "browsers",
+        "to": "browsers"
+      }
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "icons/linux/icon.png",
+      "maintainer": "Zach Rattner <zach@zachrattner.com>",
+      "category": "Utility"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "icons/win/icon.ico"
+    },
+    "protocols": [
+      {
+        "name": "Scour",
+        "schemes": [
+          "scour"
+        ]
+      }
+    ],
+    "fileAssociations": [
+      {
+        "ext": "scour",
+        "name": "Scour File",
+        "icon": "./icons/png/1024x1024.png",
+        "role": "Editor"
+      }
+    ],
+    "files": [
+      "**/*",
+      "node_modules/playwright/**/*",
+      "browsers/**/*"
+    ],
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    }
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.12",
+    "@types/node": "^22.10.2",
+    "copyfiles": "^2.4.1",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}

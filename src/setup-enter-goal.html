@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scourhead</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/theme-light.css" />
+    <style>
+        #goal-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+        }
+
+        #goal-container textarea {
+            font-size: 1rem;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 400px;
+            max-width: 100%;
+            height: 120px;
+        }
+
+        #show-example {
+            font-size: 14px;
+        }
+
+        #button-container {
+            position: absolute;
+            bottom: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>What is your goal?</h1>
+    <p>Tell me your goal just like you would tell it to a friend or coworker.</p>
+    <p>Give me all the context so I can best help you achieve this goal.</p>
+
+    <div id="goal-container">
+        <textarea class="goal-textarea" id="goal-textarea" placeholder="prospects to sell my email marketing software product"></textarea>
+        <a href="#" id="show-example">Show Example</a>
+    </div>
+
+    <div id="button-container">
+        <button id="back">Back</button>
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        let scourFile = null;
+        const goalContainer = document.getElementById('goal-container');
+        const goalTextarea = document.getElementById('goal-textarea');
+
+        const buttonContainer = document.getElementById('button-container');
+        const backButton = document.getElementById('back');
+        const nextButton = document.getElementById('next');
+
+        const showExampleButton = document.getElementById('show-example');
+
+        goalTextarea.addEventListener('input', () => {
+            if (goalTextarea.value.trim() !== '') {
+                buttonContainer.style.display = 'block';
+            }
+            else {
+                buttonContainer.style.display = 'none';
+            }
+        });
+
+        showExampleButton.addEventListener('click', async () => {
+            const examples = [
+                'Identify coworking spaces in Austin, Texas that cater to tech startups.',
+                'Find luxury boutique hotels in Paris that offer event hosting services.',
+                'Find venture capital firms specializing in clean energy investments in California.',
+                'Discover software companies in Chicago hiring product managers.',
+                'Find coffee shops in San Francisco that partner with local artists for pop-up events.',
+                'Identify art galleries in Miami hosting exhibitions in summer 2025.',
+                'Research digital marketing agencies in London that specialize in startups.',
+                'Research e-commerce conferences happening in New York City in 2024.'
+            ];
+
+            const exampleGoal = examples[Math.floor(Math.random() * examples.length)];
+
+            await window.electronAPI.showInfo('Example goals', exampleGoal);
+        });
+
+        backButton.addEventListener('click', async () => {
+            const goal = goalTextarea.value.trim();
+            if (goal) {
+                scourFile.objective = goal;
+                const result = await window.electronAPI.setScourFile(scourFile);
+                window.electronAPI.navigateTo('setup-start-project.html');
+            }
+        });
+
+        nextButton.addEventListener('click', async () => {
+            const goal = goalTextarea.value.trim();
+            if (goal) {
+                scourFile.objective = goal;
+                const result = await window.electronAPI.setScourFile(scourFile);
+                window.electronAPI.navigateTo('setup-review-queries.html');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            scourFile = await window.electronAPI.getScourFile();
+            if (scourFile.objective && scourFile.objective.length) {
+                goalTextarea.value = scourFile.objective;
+                buttonContainer.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

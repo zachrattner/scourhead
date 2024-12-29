@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scourhead</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/theme-light.css" />
+    <style>
+        .textarea-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .textarea-container textarea {
+            font-size: 1rem;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 500px;
+            max-width: 100%;
+            height: 240px;
+        }
+
+        #button-container {
+            position: absolute;
+            bottom: 20px;
+            display: none;
+        }
+
+        #try-again {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Review your search queries</h1>
+    <p>Here are the phrases I'm planning to search. Feel free to modify as you see fit.</p>
+
+    <div class="textarea-container">
+        <textarea id="search-queries" placeholder="Enter your search phrases here..."></textarea>
+        <a href="#" id="try-again">Try Again</a>
+    </div>
+
+    <div id="button-container">
+        <button id="back">Back</button>
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        let scourFile = null;
+
+        const searchQueries = document.getElementById('search-queries');
+        const tryAgain = document.getElementById('try-again');
+
+        const buttonContainer = document.getElementById('button-container');
+        const backButton = document.getElementById('back');
+        const nextButton = document.getElementById('next');
+
+        function lockUi() {
+            buttonContainer.style.display = 'none';
+            tryAgain.style.display = 'none';
+            searchQueries.disabled = true;
+            searchQueries.value = "";
+            searchQueries.placeholder = "Brainstorming search queries to help you achieve your goal...";
+        }
+
+        function unlockUi() {
+            buttonContainer.style.display = 'block';
+            tryAgain.style.display = 'block';
+            searchQueries.disabled = false;
+            searchQueries.placeholder = "Enter your search phrases here...";
+        }
+        
+        function refreshButtons() {
+            if (searchQueries.value.trim() === '') {
+                buttonContainer.style.display = 'none';
+            } else {
+                buttonContainer.style.display = 'block';
+            }
+        }
+
+        searchQueries.addEventListener('input', refreshButtons);
+
+        tryAgain.addEventListener('click', async () => {
+            lockUi();
+
+            scourFile.searchQueries = [];
+            await window.electronAPI.setScourFile(scourFile);
+
+            await window.electronAPI.createSearchQueries();
+            
+            scourFile = await window.electronAPI.getScourFile();
+            searchQueries.value = scourFile.searchQueries.join("\n");
+            unlockUi();
+            refreshButtons();
+        });
+
+        backButton.addEventListener('click', async () => {
+            const searchQueryList = searchQueries.value.trim();
+            if (searchQueryList) {
+                scourFile.searchQueries = searchQueryList.split("\n");
+                const result = await window.electronAPI.setScourFile(scourFile);
+                window.electronAPI.navigateTo('setup-enter-goal.html');
+            }
+        });
+
+        nextButton.addEventListener('click', async () => {
+            const queries = searchQueries.value.trim();
+            if (queries) {
+                scourFile.searchQueries = queries.split("\n");
+                const result = await window.electronAPI.setScourFile(scourFile);
+                window.electronAPI.navigateTo('setup-build-output.html');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            scourFile = await window.electronAPI.getScourFile();
+            if (scourFile && scourFile.searchQueries && scourFile.searchQueries.length) {
+                searchQueries.value = scourFile.searchQueries.join("\n");
+                buttonContainer.style.display = 'block';
+            }
+            else {
+                lockUi();
+
+                await window.electronAPI.createSearchQueries();
+
+                scourFile = await window.electronAPI.getScourFile();
+                if (scourFile && scourFile.searchQueries && scourFile.searchQueries.length) {
+                    searchQueries.value = scourFile.searchQueries.join("\n");
+                    unlockUi();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

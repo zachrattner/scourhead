@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scourhead</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/theme-light.css" />
+    <style>
+        #button-container {
+            position: absolute;
+            bottom: 20px;
+        }
+
+        .table-container {
+            width: 90%;
+            max-width: 800px;
+            height: 350px;
+            overflow-y: auto;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: auto;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        table .name {
+            width: 28%;
+        }
+
+        table .description {
+            width: 62%;
+        }
+
+        table .required {
+            width: 10%;
+        }
+
+        table th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+
+        table td input {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Design your spreadsheet</h1>
+    <p>Describe the columns you'd like to have in your report</p>
+
+    <div class="table-container">
+        <table id="output">
+            <thead>
+                <tr>
+                    <th class="name">Name</th>
+                    <th class="description">Description</th>
+                    <th class="required">Required</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="button-container">
+        <button id="back">Back</button>
+        <button id="add-row">Add Row</button>
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        let scourFile = null;
+
+        const addRowButton = document.getElementById('add-row');
+        const columnsTableBody = document.querySelector('#output tbody');
+        const nextButton = document.getElementById('next');
+        const backButton = document.getElementById('back');
+
+        function addRow() {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="name"><input type="text" placeholder="Column Name" /></td>
+                <td class="description"><input type="text" placeholder="Description" /></td>
+                <td class="required"><input type="checkbox" checked /></td>
+            `;
+            columnsTableBody.appendChild(row);
+
+            const inputs = row.querySelectorAll('input[type="text"]');
+            inputs.forEach(input => {
+                input.addEventListener('blur', () => {
+                    if (Array.from(inputs).every(input => input.value.trim() === '')) {
+                        row.remove();
+                        refreshButtons();
+                    }
+                });
+            });
+
+            refreshButtons();
+        }
+
+        function refreshButtons() {
+            nextButton.style.display = columnsTableBody.children.length > 0 ? '' : 'none';
+        }
+
+        async function initializeTable() {
+            scourFile = await window.electronAPI.getScourFile();
+            if (scourFile && scourFile.columns) {
+                scourFile.columns.forEach(column => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="name"><input type="text" value="${column.name}" /></td>
+                        <td class="description"><input type="text" value="${column.description}" /></td>
+                        <td class="required"><input type="checkbox" ${column.isRequired ? 'checked' : ''} /></td>
+                    `;
+                    columnsTableBody.appendChild(row);
+
+                    const inputs = row.querySelectorAll('input[type="text"]');
+                    inputs.forEach(input => {
+                        input.addEventListener('blur', () => {
+                            if (Array.from(inputs).every(input => input.value.trim() === '')) {
+                                row.remove();
+                                refreshButtons();
+                            }
+                        });
+                    });
+                });
+            }
+            else {
+                addRow();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            await initializeTable();
+            refreshButtons();
+        });
+
+        addRowButton.addEventListener('click', addRow);
+
+        backButton.addEventListener('click', async () => {
+            window.electronAPI.navigateTo('setup-review-queries.html');
+        });
+
+        function makeCamelCase(name) {
+            return name.replace(/[^a-zA-Z0-9]/g, '').replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+                return index === 0 ? word.toLowerCase() : word.toUpperCase();
+            });
+        }
+
+        nextButton.addEventListener('click', async () => {
+            const columns = Array.from(columnsTableBody.children).map(row => {
+                const textInputs = row.querySelectorAll('input[type=text]');
+                const name = textInputs[0].value.trim();
+                const description = textInputs[1].value.trim();
+
+                const requiredInput = row.querySelector('input[type=checkbox]');
+                const isRequired = requiredInput.checked;
+
+                const key = makeCamelCase(name);
+                return {
+                    name,
+                    key,
+                    description,
+                    isRequired
+                };
+            });
+
+            scourFile.columns = columns;
+            const result = await window.electronAPI.setScourFile(scourFile);
+            window.electronAPI.navigateTo('setup-run-search.html');
+        });
+    </script>
+</body>
+</html>

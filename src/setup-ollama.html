@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scourhead</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/theme-light.css" />
+    <style>
+        div.app {
+            text-align: left;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        div.app .left {
+            margin-right: 8px;
+        }
+
+        div.app .left,
+        div.app, .right {
+            float: left;
+        }
+
+        div.app, .right .buttons {
+            float: right;
+        }
+
+        div.app .right .buttons a {
+            margin-left: 10px;
+        }
+
+        div.app .clear {
+            clear: both;
+        }
+
+        span#ollama-status {
+            position: relative;
+            top: 2px;
+            margin-right: 4px;
+            font-size: 24px;
+        }
+
+        span#ollama-status.needs-action {
+            color: rgb(255, 217, 0);;
+        }
+
+        span#ollama-status.ok {
+            color: rgba(19, 207, 38, 0.874);
+        }
+
+        #ollama-options {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #download-model {
+            display: none;
+        }
+
+        #whiteout {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        #ollama-options label {
+            display: none;
+            display: block;
+            text-align: left;
+            margin-bottom: 5px; 
+        }
+
+        #ollama-options input {
+            display: block;
+            margin-bottom: 10px; 
+            width: 100%; 
+            box-sizing: border-box; 
+        }
+
+        #button-container {
+            position: absolute;
+            bottom: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Set up Scourhead</h1>
+
+    <div id="app-container">
+        <div class="app">
+            <div class="left">
+                <img src="./img/ollama.png" alt="Ollama" width="100" height="100" />
+            </div>
+            <div class="right">
+                <h1><span id="ollama-status" class="needs-action">&bull;</span>Ollama</h1>
+                <p>Scourhead requires Ollama in order to run language models on your machine.</p>
+                <div class="buttons">
+                    <a href="https://ollama.com/download" target="_blank" id="download-ollama">Download Ollama</a>
+                    <a href="#" id="configure-ollama">Configure</a>
+                    <a href="#" id="download-model">Download Model</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div id="whiteout"></div>
+
+    <div id="ollama-options">
+        <label for="ollama-host">Ollama Host</label>
+        <input type="text" name="ollama-host" id="ollama-host" value="http://localhost" />
+
+        <label for="ollama-port">Ollama Port</label>
+        <input type="number" name="ollama-port" id="ollama-port" value="11434" />
+
+        <button id="ollama-reset-defaults">Reset to Defaults</button>
+        <button id="ollama-options-save">Save</button>
+    </div>
+
+    <div id="button-container">
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        const MODEL_NAME          = 'llama3.2:3b';
+        const DEFAULT_OLLAMA_HOST = 'http://localhost';
+        const DEFAULT_OLLAMA_PORT = '11434';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const whiteout = document.getElementById('whiteout');
+            const ollamaOptions = document.getElementById('ollama-options');
+            const configureOllamaButton = document.getElementById('configure-ollama');
+            const downloadOllamaButton = document.getElementById('download-ollama');
+            const downloadModelButton = document.getElementById('download-model');
+            const ollamaHost = document.getElementById('ollama-host');
+            const ollamaPort = document.getElementById('ollama-port');
+            const ollamaResetDefaults = document.getElementById('ollama-reset-defaults');
+            const ollamaSave = document.getElementById('ollama-options-save');
+            const buttonContainer = document.getElementById('button-container');
+            const nextButton = document.getElementById('next');
+
+            async function setupUi() {
+                // If Ollama is already running, show the download button
+                if (await checkOllama()) {
+                    downloadOllamaButton.style.display = 'none';
+                    downloadModelButton.style.display = 'inline';
+                }
+
+                // If model is already present, do not require it to be downloaded
+                if (await checkModelPresence(MODEL_NAME)) {
+                    nextButton.disabled = false;
+                    downloadModelButton.style.display = 'none';
+                    document.getElementById('ollama-status').className = 'ok';
+                }
+
+                buttonContainer.style.display = 'block';
+            }
+
+            async function checkOllama() {
+                const ollamaUrl = `${ollamaHost.value}:${ollamaPort.value}`;
+                try {
+                    const response = await fetch(ollamaUrl);
+
+                    if (!response.ok) {
+                        return false;
+                    }
+
+                    const data = await response.text();
+                    return (data === 'Ollama is running');
+
+                } catch (error) {
+                    console.error('Error checking Ollama server:', error);
+                    return false;
+                }
+            }
+
+            async function checkModelPresence(model) {
+                const ollamaUrl = `${ollamaHost.value}:${ollamaPort.value}/api/tags`;
+                try {
+                    const response = await fetch(ollamaUrl);
+
+                    if (!response.ok) {
+                        return false;
+                    }
+
+                    const data = await response.json();
+                    return data.models.some(installedModel => installedModel.name === model);
+                } catch (error) {
+                    console.error('Error checking Llama model status:', error);
+                    return false;
+                }
+            }
+
+            async function downloadOllamaModel(model) {
+                try {
+                    const ollamaUrl = `${ollamaHost.value}:${ollamaPort.value}`;
+
+                    const response = await fetch(`${ollamaUrl}/api/pull`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            model: model 
+                        })
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        const errorMessage = errorData.error || `Ollama API request failed with status ${response.status}`;
+                        throw new Error(errorMessage);
+                    }
+
+                    await response.text(); 
+
+                    console.log(`Model '${model}' downloaded successfully.`);
+                    return true;
+
+                }
+                catch (error) {
+                    console.error('Error downloading Ollama model:', error);
+                    return false;
+                }
+            }
+
+            nextButton.disabled = true;
+
+            const defaultOllamaHostValue = await window.electronAPI.loadPreference('ollamaHost');
+            const defaultOllamaPortValue = await window.electronAPI.loadPreference('ollamaPort');
+
+            ollamaHost.value = defaultOllamaHostValue || DEFAULT_OLLAMA_HOST;
+            ollamaPort.value = defaultOllamaPortValue || DEFAULT_OLLAMA_PORT;
+
+            configureOllamaButton.addEventListener('click', async () => {
+                whiteout.style.display      = 'block';
+                ollamaOptions.style.display = 'block';
+            });
+
+            ollamaResetDefaults.addEventListener('click', async () => {
+                ollamaHost.value = DEFAULT_OLLAMA_HOST;
+                ollamaPort.value = DEFAULT_OLLAMA_PORT;
+            });
+
+            downloadModelButton.addEventListener('click', async () => {
+                downloadModelButton.disabled = true;
+                downloadModelButton.innerText = 'Downloading...';
+                if (await downloadOllamaModel(MODEL_NAME)) {
+                    nextButton.disabled = false;
+                    downloadModelButton.style.display = 'none';
+                    document.getElementById('ollama-status').className = 'ok';
+                }
+                else {
+                    downloadModelButton.disabled = false;
+                    downloadModelButton.innerText = 'Download Model';
+                    await window.electronAPI.showInfo('Failed to download model', `Scourhead was unable to download the model from Ollama. Please ensure Ollama is running and that the host and port are correct, then try again.`);
+                }
+
+            });
+
+            ollamaSave.addEventListener('click', async () => {
+                whiteout.style.display      = 'none';
+                ollamaOptions.style.display = 'none';
+
+                await window.electronAPI.savePreference('ollamaHost', ollamaHost.value);
+                await window.electronAPI.savePreference('ollamaPort', ollamaPort.value);
+
+                if (await checkOllama()) {
+                    downloadModelButton.style.display = 'inline';
+                }
+                else {
+                    await window.electronAPI.showInfo('Failed to reach Ollama', `Scourhead was unable to reach Ollama at ${ollamaHost.value}:${ollamaPort.value}. Please ensure Ollama is running and that the host and port are correct.`);
+                }
+            });
+
+            nextButton.addEventListener('click', async () => {
+                window.electronAPI.navigateTo('setup-start-project.html');
+            });
+
+            await setupUi();
+        });
+    </script>
+</body>
+</html>

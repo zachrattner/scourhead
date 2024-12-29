@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scourhead</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/theme-light.css" />
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Start your project</h1>
+        <p>How would you like to start?</p>
+        <div class="button-container">
+            <button id="create-project">Create New Project</button>
+            <button id="open-project">Open Project</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('create-project').addEventListener('click', async () => {
+            console.log('Create button clicked');
+            const desktopPath = await window.electronAPI.invoke('get-desktop-path');
+            const filePath = await window.electronAPI.invoke('show-export-dialog', {
+                title: 'Create New Project',
+                defaultPath: `${desktopPath}/project.scour`,
+                filters: [{ name: 'Scour Files', extensions: ['scour'] }],
+            });
+
+            console.log('File Path:', filePath);
+            if (filePath) {
+                window.electronAPI.send('create-project', filePath);
+            }
+        });
+    
+        document.getElementById('open-project').addEventListener('click', async () => {
+            console.log('Open button clicked');
+            const filePath = await window.electronAPI.invoke('show-open-dialog', {
+                title: 'Open Project',
+                filters: [{ name: 'Scour Files', extensions: ['scour'] }],
+                properties: ['openFile'],
+            });
+    
+            console.log('Selected File Path:', filePath);
+            if (filePath) {
+                window.electronAPI.send('open-project', filePath);
+            }
+        });
+    </script>
+</body>
+</html>
