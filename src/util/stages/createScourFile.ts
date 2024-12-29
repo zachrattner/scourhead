@@ -19,7 +19,7 @@ export function createScourFile(outputFile: string): ScourFile | null {
         const scourFile: ScourFile = {
             mode: DEFAULT_MODE,
             llmProvider: DEFAULT_LLM_PROVIDER,
-            model: DEFAULT_MODEL_NAME,
+            model: loadPreference('model') || DEFAULT_MODEL_NAME,
             ollamaUrl: loadPreference('ollamaHost')  || "http://localhost",
             ollamaPort: loadPreference('ollamaPort') || 11434,
             currentSearchQueryIndex: null,

@@ -10,6 +10,7 @@ import { runSearch } from './util/stages/runSearch';
 import { parsePages } from './util/stages/parsePages';
 import { convertToCsv } from './util/stages/convertToCsv';
 import { loadPreference, savePreference } from './util/preferences';
+import { write } from 'fs';
 
 let mainWindow: BrowserWindow | null;
 let scourFile: ScourFile | null;
@@ -41,10 +42,17 @@ const createWindow = () => {
     });
 };
 
-function handleOpenedFile(filePath: string) {
+async function handleOpenedFile(filePath: string) {
     scourFilePath = filePath;
 
     scourFile = readScourFile(filePath);
+
+    const requestedModel = loadPreference('model');
+    if (requestedModel) {
+        scourFile.model = requestedModel;
+        await writeScourFile(scourFilePath, scourFile);
+    }
+
     if (scourFile) {
         logger.info(`Loaded project at ${filePath}`);
         mainWindow?.loadFile(path.join(__dirname, 'setup-enter-goal.html'));
@@ -68,15 +76,15 @@ ipcMain.on('navigate-to', (event, page) => {
     }
 });
 
-app.on('open-file', (event, filePath) => {
+app.on('open-file', async (event, filePath) => {
     event.preventDefault();
 
     if (app.isReady()) {
-        handleOpenedFile(filePath);
+        await handleOpenedFile(filePath);
     }
     else {
-        app.on('ready', () => {
-            handleOpenedFile(filePath)
+        app.on('ready', async () => {
+            await handleOpenedFile(filePath)
         });
     }
 });
@@ -86,10 +94,10 @@ if (!gotLock) {
     app.quit();
 }
 else {
-    app.on('second-instance', (event, argv) => {
+    app.on('second-instance', async (event, argv) => {
         const filePath = argv.find(arg => arg.endsWith('.scour'));
         if (filePath) {
-            handleOpenedFile(filePath);
+            await handleOpenedFile(filePath);
         }
     });
 }
@@ -178,6 +186,13 @@ async function handleOpenProject(fileSelection: any) {
     scourFile = readScourFile(filePath);
     if (scourFile) {
         logger.info(`Loaded project at ${filePath}`);
+
+        const requestedModel = loadPreference('model');
+        if (requestedModel) {
+            scourFile.model = requestedModel;
+            await writeScourFile(filePath, scourFile);
+        }
+
         mainWindow?.loadFile(path.join(__dirname, 'setup-enter-goal.html'));
     }
     else {
