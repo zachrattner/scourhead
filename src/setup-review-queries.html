@@ -37,11 +37,23 @@
         #try-again {
             font-size: 14px;
         }
+
+        #loading-animation {
+            display: none;
+        }
+
+        #loading-animation img {
+            width: 200px;
+        }
     </style>
 </head>
 <body>
-    <h1>Review your search queries</h1>
-    <p>Here are the phrases I'm planning to search. Feel free to modify as you see fit.</p>
+    <h1 id="heading">Review your search queries</h1>
+    <p id="subtitle">Here are the phrases I'm planning to search. Feel free to modify as you see fit.</p>
+
+    <div id="loading-animation">
+        <img src="img/loading.svg" alt="Loading" />
+    </div>
 
     <div class="textarea-container">
         <textarea id="search-queries" placeholder="Enter your search phrases here..."></textarea>
@@ -59,6 +71,10 @@
         const searchQueries = document.getElementById('search-queries');
         const tryAgain = document.getElementById('try-again');
 
+        const heading = document.getElementById('heading');
+        const subtitle = document.getElementById('subtitle');
+        const loadingAnimation = document.getElementById('loading-animation');
+
         const buttonContainer = document.getElementById('button-container');
         const backButton = document.getElementById('back');
         const nextButton = document.getElementById('next');
@@ -66,16 +82,23 @@
         function lockUi() {
             buttonContainer.style.display = 'none';
             tryAgain.style.display = 'none';
-            searchQueries.disabled = true;
-            searchQueries.value = "";
-            searchQueries.placeholder = "Brainstorming search queries to help you achieve your goal...";
+            searchQueries.style.display = 'none';
+            loadingAnimation.style.display = 'block';
+
+            heading.innerText = 'Brainstorming search queries...';
+            subtitle.innerText = 'This might take a minute or two.';
         }
 
         function unlockUi() {
             buttonContainer.style.display = 'block';
             tryAgain.style.display = 'block';
+            searchQueries.style.display = 'block';
+            loadingAnimation.style.display = 'none';
             searchQueries.disabled = false;
             searchQueries.placeholder = "Enter your search phrases here...";
+
+            heading.innerText = 'Review your search queries';
+            subtitle.innerText = 'Here are the phrases I\'m planning to search. Feel free to modify as you see fit.';
         }
         
         function refreshButtons() {
