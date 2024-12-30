@@ -41,9 +41,9 @@ scourhead/
    ```bash
    npm install
    ```
-3. Install Playwright browsers:
+3. Install headless Chromium browser from Playwright:
    ```bash
-   npx playwright install
+   ./download-chromium.sh
    ```
 4. Ensure Ollama is installed and running.
 
