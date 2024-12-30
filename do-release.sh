@@ -79,7 +79,7 @@ EOF
     if ! gh release view "$tag" > /dev/null 2>&1; then
         echo "Creating GitHub release for $tag"
         gh release create "$tag" \
-            --title "Scourhead v${APP_VERSION}" \
+            --title "v${APP_VERSION}" \
             --notes "$release_notes" || error_exit "Failed to create GitHub release"
     else
         echo "GitHub release $tag already exists. Skipping."
