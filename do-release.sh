@@ -69,9 +69,9 @@ create_github_release() {
 Download links for all architectures:
 
 - [macOS arm64](https://scourhead.com/releases/${APP_VERSION}/Scourhead-${APP_VERSION}-arm64.dmg)
-- [Windows x86](https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-x86.exe)
+- [Windows x64](https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-x64.exe)
 - [Windows arm64](https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-arm64.exe)
-- [Linux x86](https://scourhead.com/releases/${APP_VERSION}/scourhead_${APP_VERSION}_amd64.deb)
+- [Linux x64](https://scourhead.com/releases/${APP_VERSION}/scourhead_${APP_VERSION}_amd64.deb)
 - [Linux arm64](https://scourhead.com/releases/${APP_VERSION}/scourhead_${APP_VERSION}_arm64.deb)
 EOF
 )
@@ -124,7 +124,7 @@ update_index_html() {
 
     echo "Updating download links in index.html..."
     sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-[0-9.]*-arm64.dmg#https://scourhead.com/releases/${APP_VERSION}/Scourhead-${APP_VERSION}-arm64.dmg#g" index.html
-    sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-Setup-x86.exe#https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-x86.exe#g" index.html
+    sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-Setup-x64.exe#https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-x64.exe#g" index.html
     sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-Setup-arm64.exe#https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-arm64.exe#g" index.html
     sed -i '' -e "s#https://scourhead.com/releases/.*/scourhead_[0-9.]*_amd64.deb#https://scourhead.com/releases/${APP_VERSION}/scourhead_${APP_VERSION}_amd64.deb#g" index.html
     sed -i '' -e "s#https://scourhead.com/releases/.*/scourhead_[0-9.]*_arm64.deb#https://scourhead.com/releases/${APP_VERSION}/scourhead_${APP_VERSION}_arm64.deb#g" index.html
@@ -151,9 +151,9 @@ build_upload_check "npm run build-mac" \
     "$S3_RELEASE_FOLDER/${APP_VERSION}/Scourhead-${APP_VERSION}-arm64.dmg"
 
 cleanup
-build_upload_check "npm run build-win-x86" \
+build_upload_check "npm run build-win-x64" \
     "release/Scourhead Setup ${APP_VERSION}.exe" \
-    "$S3_RELEASE_FOLDER/${APP_VERSION}/Scourhead-Setup-x86.exe"
+    "$S3_RELEASE_FOLDER/${APP_VERSION}/Scourhead-Setup-x64.exe"
 
 cleanup
 build_upload_check "npm run build-win-arm64" \
@@ -161,7 +161,7 @@ build_upload_check "npm run build-win-arm64" \
     "$S3_RELEASE_FOLDER/${APP_VERSION}/Scourhead-Setup-arm64.exe"
 
 cleanup
-build_upload_check "npm run build-linux-x86" \
+build_upload_check "npm run build-linux-x64" \
     "release/scourhead_${APP_VERSION}_amd64.deb" \
     "$S3_RELEASE_FOLDER/${APP_VERSION}/scourhead_${APP_VERSION}_amd64.deb"
 
