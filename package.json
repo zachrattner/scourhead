@@ -6,7 +6,7 @@
   "description": "Scour the web for whatever you're looking for",
   "main": "dist/main.js",
   "scripts": {
-    "start": "tsc && npm run copy-static-files && electron .",
+    "start": "tsc && npm run copy-static-files && ./download-chromium.sh --no-overwrite && electron .",
     "build": "tsc && npm run copy-static-files",
     "copy-static-files": "copyfiles -u 1 'src/*.html' dist && copyfiles -u 1 'src/css/*.css' dist && copyfiles -u 1 src/img/* dist && copyfiles -u 1 'icons/**/*' dist/icons",
     "dev": "ts-node ./src/main.ts",
