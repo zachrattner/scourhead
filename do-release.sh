@@ -51,7 +51,7 @@ error_exit() {
 # Check if a Git tag exists
 check_and_create_tag() {
     local tag="v${APP_VERSION}"
-    if ! gh release view "$tag" > /dev/null 2>&1; then
+    if ! git rev-parse "$tag" > /dev/null 2>&1; then
         echo "Creating Git tag: $tag"
         git tag -a "$tag" -m "Release ${APP_VERSION}" || error_exit "Failed to create tag $tag"
         git push origin "$tag" || error_exit "Failed to push tag $tag"
