@@ -154,7 +154,7 @@ build_upload_check "npm run build-mac-arm64" \
 
 cleanup
 build_upload_check "npm run build-mac-x64" \
-    "release/Scourhead-${APP_VERSION}-x64.dmg" \
+    "release/Scourhead-${APP_VERSION}.dmg" \
     "$S3_RELEASE_FOLDER/${APP_VERSION}/Scourhead-${APP_VERSION}-x64.dmg"
 
 cleanup
