@@ -26,8 +26,6 @@ const createWindow = () => {
         height: 600,
         icon: iconPath,
         center: true,
-        titleBarStyle: 'hidden',
-        transparent: true,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,
