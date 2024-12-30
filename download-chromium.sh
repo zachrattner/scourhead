@@ -4,14 +4,50 @@
 BROWSERS_DIR="./browsers"
 BASE_URL="https://playwright.azureedge.net/builds/chromium/1148"
 
-# Check for platform argument
-if [ $# -eq 0 ]; then
-  echo "Usage: $0 <platform>"
-  echo "Supported platforms: mac, win, linux"
-  exit 1
+# Function to detect platform automatically
+detect_platform() {
+  case "$(uname -s)" in
+    Darwin)
+      echo "mac"
+      ;;
+    Linux)
+      echo "linux"
+      ;;
+    CYGWIN*|MINGW*|MSYS*|MINGW32*|MINGW64*)
+      echo "win"
+      ;;
+    *)
+      echo "unknown"
+      ;;
+  esac
+}
+
+# Parse arguments
+PLATFORM=""
+NO_OVERWRITE=false
+
+for ARG in "$@"; do
+  case $ARG in
+    --no-overwrite)
+      NO_OVERWRITE=true
+      ;;
+    *)
+      PLATFORM=$ARG
+      ;;
+  esac
+done
+
+# Auto-detect platform if not provided
+if [ -z "$PLATFORM" ]; then
+  PLATFORM=$(detect_platform)
+  if [ "$PLATFORM" = "unknown" ]; then
+    echo "Unable to detect platform. Please specify one of: mac, win, linux"
+    exit 1
+  fi
+  echo "Auto-detected platform: $PLATFORM"
 fi
 
-PLATFORM=$1
+# Validate platform
 case $PLATFORM in
   mac)
     ZIP_FILENAME="chromium-headless-shell-mac-arm64.zip"
@@ -29,14 +65,21 @@ case $PLATFORM in
     ;;
 esac
 
-# Create the browsers directory if it doesn't exist
+# Check if the browsers directory exists
 if [ -d "$BROWSERS_DIR" ]; then
-  echo "Removing existing $BROWSERS_DIR directory..."
-  rm -rf "$BROWSERS_DIR"
+  if [ "$NO_OVERWRITE" = false ]; then
+    echo "Removing existing $BROWSERS_DIR directory..."
+    rm -rf "$BROWSERS_DIR"
+    echo "Creating $BROWSERS_DIR directory..."
+    mkdir "$BROWSERS_DIR"
+  elif [ "$NO_OVERWRITE" = true ]; then
+    echo "$BROWSERS_DIR already exists. Skipping download and extraction due to --no-overwrite option."
+    exit 0
+  fi
+else
+  echo "Creating $BROWSERS_DIR directory..."
+  mkdir "$BROWSERS_DIR"
 fi
-
-echo "Creating $BROWSERS_DIR directory..."
-mkdir "$BROWSERS_DIR"
 
 # Download the Chromium zip file
 echo "Downloading Chromium headless shell for $PLATFORM from $BASE_URL/$ZIP_FILENAME..."
