@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1024 1024">
+  <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
+  <defs>
+    <style>
+      .st0, .st1, .st2, .st3 {
+        fill: none;
+      }
+
+      .st4 {
+        fill: url(#linear-gradient);
+      }
+
+      .st1 {
+        stroke-width: 16px;
+      }
+
+      .st1, .st2, .st3 {
+        stroke: #000;
+        stroke-linecap: round;
+      }
+
+      .st1, .st3 {
+        stroke-miterlimit: 10;
+      }
+
+      .st2 {
+        stroke-miterlimit: 10;
+        stroke-width: 8px;
+      }
+
+      .st3 {
+        stroke-width: 8px;
+      }
+
+      .st5 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="st0" x="77" y="77" width="870" height="870" rx="128" ry="128"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="512" y1="77" x2="512" y2="947" gradientTransform="translate(0 1024) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ecebec"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_2">
+    <g class="st5">
+      <g>
+        <rect class="st4" x="77" y="77" width="870" height="870" rx="128" ry="128"/>
+        <line class="st1" x1="478.7" y1="77" x2="478.7" y2="192.8"/>
+        <line class="st1" x1="522.8" y1="77" x2="522.8" y2="192.8"/>
+        <line class="st1" x1="304.8" y1="359.4" x2="695.1" y2="359.4"/>
+        <path class="st1" d="M657.4,359.4c4.4-89.4-67.3-164.9-154.7-165.8-88.5-.9-162.4,75.2-157.9,165.8"/>
+        <circle class="st3" cx="342.7" cy="412" r="18.7"/>
+        <circle class="st2" cx="342.7" cy="692.7" r="18.7"/>
+        <circle class="st3" cx="342.7" cy="772.7" r="18.7"/>
+        <circle class="st3" cx="394.7" cy="412" r="18.7"/>
+        <circle class="st3" cx="394.7" cy="810.2" r="18.7"/>
+        <circle class="st3" cx="446.6" cy="412" r="18.7"/>
+        <circle class="st3" cx="498.6" cy="412" r="18.7" transform="translate(12.1 838.2) rotate(-80.8)"/>
+        <circle class="st3" cx="498.6" cy="697.1" r="18.7" transform="translate(-269.4 1077.6) rotate(-80.8)"/>
+        <circle class="st3" cx="498.6" cy="810.2" r="18.7" transform="translate(-381 1172.6) rotate(-80.8)"/>
+        <circle class="st3" cx="550.6" cy="412" r="18.7"/>
+        <circle class="st3" cx="602.5" cy="412" r="18.7"/>
+        <circle class="st3" cx="602.5" cy="692.7" r="18.7"/>
+        <circle class="st3" cx="602.5" cy="810.2" r="18.7"/>
+        <circle class="st3" cx="654.5" cy="412" r="18.7"/>
+        <circle class="st3" cx="654.5" cy="692.7" r="18.7"/>
+        <circle class="st3" cx="654.5" cy="775.4" r="18.7"/>
+        <line class="st3" x1="342.7" y1="459.5" x2="342.7" y2="647.7"/>
+        <line class="st3" x1="394.7" y1="459.5" x2="394.7" y2="647.7"/>
+        <line class="st3" x1="446.6" y1="459.5" x2="446.6" y2="647.7"/>
+        <line class="st3" x1="499.9" y1="459.5" x2="499.9" y2="647.7"/>
+        <line class="st3" x1="499.9" y1="754" x2="499.9" y2="768.1"/>
+        <line class="st3" x1="550.6" y1="459.5" x2="550.6" y2="647.7"/>
+        <line class="st3" x1="550.6" y1="788.3" x2="550.6" y2="814"/>
+        <line class="st3" x1="550.6" y1="715.8" x2="550.6" y2="732.2"/>
+        <line class="st3" x1="550.6" y1="672.3" x2="550.6" y2="680.5"/>
+        <line class="st3" x1="602.5" y1="459.5" x2="602.5" y2="647.7"/>
+        <line class="st3" x1="654.5" y1="459.5" x2="654.5" y2="647.7"/>
+        <line class="st3" x1="342.7" y1="839.3" x2="342.7" y2="947"/>
+        <line class="st3" x1="394.7" y1="870.3" x2="394.7" y2="947"/>
+        <line class="st3" x1="394.7" y1="754" x2="394.7" y2="766.9"/>
+        <line class="st3" x1="394.7" y1="686.2" x2="394.7" y2="717.9"/>
+        <line class="st3" x1="446.6" y1="855.7" x2="446.6" y2="947"/>
+        <line class="st3" x1="446.6" y1="788.3" x2="446.6" y2="813.7"/>
+        <line class="st3" x1="446.6" y1="674" x2="446.6" y2="728.6"/>
+        <line class="st3" x1="499.9" y1="870.3" x2="499.9" y2="947"/>
+        <line class="st3" x1="550.6" y1="850" x2="550.6" y2="947"/>
+        <line class="st3" x1="602.5" y1="870.3" x2="602.5" y2="947"/>
+        <line class="st3" x1="602.5" y1="754" x2="602.5" y2="769.4"/>
+        <line class="st3" x1="654.5" y1="839.3" x2="654.5" y2="947"/>
+      </g>
+    </g>
+  </g>
+</svg>

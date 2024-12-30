@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scourhead</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/theme-light.css" />
+    <style>
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+            animation-delay: 0.5s;
+        }
+
+        h1, p {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        h1 {
+            animation-delay: 1s;
+        }
+
+        p:nth-of-type(1) {
+            animation-delay: 2s;
+        }
+
+        p:nth-of-type(2) {
+            animation-delay: 3s;
+        }
+
+        button {
+            position: absolute;
+            bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+            animation-delay: 4s;
+        }        
+    </style>
+</head>
+<body>
+    <div>
+        <img src="img/scourhead.png" alt="Scourhead" />
+        <h1>Hi there 👋 I'm Scourhead.</h1>
+        <p>I am your tireless research assistant.</p>
+        <p>I scour the web so you don't have to.</p>
+    </div>
+    <button id="next">Get Started</button>
+    <script>
+        document.getElementById('next').addEventListener('click', () => {
+            window.electronAPI.navigateTo('setup-ollama.html');
+        });
+    </script>
+</body>
+</html>

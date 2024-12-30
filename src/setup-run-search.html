@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scourhead</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/theme-light.css" />
+    <style>
+        #search-results {
+            width: 600px;
+            max-height: 400px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .search-result {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .search-result .title {
+            font-size: 18px;
+            color: rgb(10, 103, 197);
+        }
+
+        .search-result .description {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .search-result .url {
+            font-size: 14px;
+            color: #666;
+        }
+
+        #button-container {
+            position: absolute;
+            bottom: 20px;
+        }
+
+        #search-again {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Run search</h1>
+    <p id="subtitle">Scouring the web for you...</p>
+    
+    <div id="search-results">
+    </div>
+
+    <div id="button-container">
+        <button id="back">Back</button>
+        <button id="search">Search</button>
+        <button id="next">Next</button>
+    </div>
+
+    <script>
+        let scourFile = null;
+        let isSearching = false;
+
+        const subtitle = document.getElementById('subtitle');
+        const searchResults = document.getElementById('search-results');
+        const nextButton = document.getElementById('next');
+        const searchButton = document.getElementById('search');
+        const backButton = document.getElementById('back');
+
+        async function showSearchResults() {
+            scourFile = await window.electronAPI.getScourFile();
+
+            if (!scourFile || !scourFile.searchResults) {
+                return;
+            }
+
+            const numSearchReults  = scourFile.searchResults.length;
+            const searchResultNoun = (numSearchReults === 1) ? 'result' : 'results';
+
+            subtitle.innerText = `Running query ${scourFile.currentSearchQueryIndex + 1} of ${scourFile.searchQueries.length}. Received ${numSearchReults} ${searchResultNoun} so far...`;
+
+            searchResults.innerHTML = '';
+            scourFile.searchResults.forEach((result, index) => {
+                const searchResult = document.createElement('div');
+                searchResult.className = 'search-result';
+
+                searchResult.innerHTML = `
+                       <div class="title">${result.title}</div>
+                       <div class="description">${result.description}</div>
+                       <div class="url">${result.url}</div>
+                    `;
+
+                searchResults.appendChild(searchResult);
+            });
+
+            if (isSearching) {
+                setTimeout(() => {
+                    showSearchResults(true);
+                }, 1000);
+            }
+            else {
+                if (scourFile.searchResults.length) {
+                    subtitle.innerText = `You have ${scourFile.searchResults.length} search results.`;
+                }
+                else {
+                    subtitle.innerText = 'Press the Search button to start.';
+                }
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            scourFile = await window.electronAPI.getScourFile();
+
+            if (scourFile.searchResults) {
+                subtitle.innerText = `You already have ${scourFile.searchResults.length} search results.`;
+                showSearchResults(false);
+                searchButton.style.display = 'inline';
+            }
+            else {
+                searchButton.style.display = 'none';
+                backButton.disabled = true;
+                nextButton.disabled = true;
+                isSearching = true;
+                setTimeout(() => {
+                    showSearchResults(true);
+                }, 1000);
+                await window.electronAPI.runSearch();
+                isSearching = false;
+                backButton.disabled = false;
+                nextButton.disabled = false;
+            }
+        });
+
+        searchButton.addEventListener('click', async () => {
+            scourFile.searchResults = [];
+            scourFile.currentSearchQueryIndex = 0;
+            await window.electronAPI.setScourFile(scourFile);
+
+            subtitle.innerText = 'Scouring the web for you...';
+            searchResults.innerHTML = '';
+
+            searchButton.style.display = 'none';
+            backButton.disabled = true;
+            nextButton.disabled = true;
+            isSearching = true;
+            setTimeout(() => {
+                showSearchResults(true);
+            }, 1000);
+            await window.electronAPI.runSearch();
+            isSearching = false;
+            backButton.disabled = false;
+            nextButton.disabled = false;
+        });
+
+        backButton.addEventListener('click', async () => {
+            window.electronAPI.navigateTo('setup-build-output.html');
+        });
+
+        nextButton.addEventListener('click', async () => {
+            window.electronAPI.navigateTo('setup-parse-pages.html');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scourhead</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/theme-light.css" />
+    <style>
+        body {
+            justify-content: start;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #results {
+            flex: 1; 
+            overflow-y: auto;
+        }
+
+        #button-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #button-container button {
+            margin: 0 2px;
+        }
+
+        div#results {
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        #export {
+            display: none;
+        }
+
+        .result {
+            background-color: #fafafa;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            width: 600px;
+            gap: 10px;
+        }
+
+        .heading-row {
+            text-align: left;
+        }
+
+        .detail-row {
+            background-color: #f0f0f0;
+            border-radius: 6px;
+            padding: 4px;
+        }
+
+        .cell {
+            margin-right: 5px;
+        }
+
+        .cell.number {
+            font-weight: bold;
+        }
+
+        .cell.favicon img {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            top: 6px;
+        }
+
+        .cell.summary a {
+            display: inline-block;
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: relative;
+            top: 6px;
+        }
+
+        .detail-row table {
+            font-size: 80%;
+        }
+
+        .detail-row table tr td {
+            padding: 4px;
+        }
+
+        .detail-row table tr td.heading {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        #loading-animation {
+            display: none;
+        }
+
+        #loading-animation img {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Scour pages</h1>
+    <p id="subtitle">Reading each page and filling in your spreadsheet...</p>
+
+    <div id="loading-animation">
+        <img src="img/loading.svg" alt="Loading" />
+    </div>
+
+    <div id="results">
+        
+    </div>
+
+    <div id="button-container">
+        <button id="back">Back</button>
+        <button id="scour">Scour</button>
+        <button id="export">Export Spreadsheet</button>
+    </div>
+
+    <script>
+        let scourFile = null;
+        let isParsing = false;
+        let rowStartIndex = 0;
+
+        const loadingAnimation = document.getElementById('loading-animation');
+
+        const subtitle = document.getElementById('subtitle');
+        const results = document.getElementById('results');
+
+        const buttonContainer = document.getElementById('button-container');
+        const scourButton  = document.getElementById('scour');
+        const exportButton = document.getElementById('export');
+        const backButton   = document.getElementById('back');
+
+        function isAtEnd() {
+            const isAtEnd = scourFile.currentSearchResultIndex === scourFile.searchResults.length;
+            return isAtEnd;
+        }
+
+        async function startParse() {
+            subtitle.innerText = 'Reading each page and filling in your spreadsheet...';
+
+            buttonContainer.style.display = 'none';
+            loadingAnimation.style.display = 'block';
+            results.style.display = 'none';
+            
+            scourButton.style.display = 'none';
+            backButton.disabled = true;
+            exportButton.disabled = true;
+
+            isParsing = true;
+            setTimeout(() => {
+                renderRows();
+            }, 1000);
+
+            await window.electronAPI.parsePages();
+            isParsing = false;
+            backButton.disabled = false;
+            exportButton.disabled = false;
+        }
+
+        async function renderRows() {
+            scourFile = await window.electronAPI.getScourFile();
+            subtitle.innerText = `Researching page ${scourFile.currentSearchResultIndex + 1} of ${scourFile.searchResults.length}...`;
+
+            const headerRow = document.createElement('tr');
+            scourFile.columns.forEach(column => {
+                const th = document.createElement('th');
+                th.textContent = column.name;
+                headerRow.appendChild(th);
+            });
+
+            const th = document.createElement('th');
+            th.textContent = 'Link';
+            headerRow.appendChild(th);
+
+            for (let i = rowStartIndex; i < scourFile.rows.length; i++) {         
+                const row = scourFile.rows[i];
+                const index = document.querySelectorAll('.cell.number').length + 1;
+
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'result';
+
+                // Create the heading row
+                const headingRowDiv = document.createElement('div');
+                headingRowDiv.className = 'heading-row';
+
+                const numberCell = document.createElement('span');
+                numberCell.className = 'cell number';
+                numberCell.textContent = `${index}.`;
+                headingRowDiv.appendChild(numberCell);
+
+                const faviconCell = document.createElement('span');
+                faviconCell.className = 'cell favicon';
+                const faviconImg = document.createElement('img');
+                faviconImg.src = new URL('/favicon.ico', row.url).href;
+                faviconImg.alt = 'Favicon';
+
+                faviconImg.onerror = () => {
+                    faviconImg.src = 'img/scourhead.png';
+                };
+
+                faviconCell.appendChild(faviconImg);
+                headingRowDiv.appendChild(faviconCell);
+
+                const summaryCell = document.createElement('span');
+                summaryCell.className = 'cell summary';
+
+                const link = document.createElement('a');
+                link.href = row.url || '#';
+                link.target = '_blank';
+                link.textContent = row.url || '--';
+                summaryCell.appendChild(link);
+                headingRowDiv.appendChild(summaryCell);
+
+                resultDiv.appendChild(headingRowDiv);
+
+                // Create the detail row
+                const detailRowDiv = document.createElement('div');
+                detailRowDiv.className = 'detail-row';
+
+                const detailTable = document.createElement('table');
+
+                scourFile.columns.forEach((column) => {
+                    const tr = document.createElement('tr');
+
+                    const headingTd = document.createElement('td');
+                    headingTd.className = 'heading';
+                    headingTd.textContent = column.name;
+                    tr.appendChild(headingTd);
+
+                    const valueTd = document.createElement('td');
+                    valueTd.textContent = row[column.key] || '';
+                    tr.appendChild(valueTd);
+
+                    detailTable.appendChild(tr);
+                });
+
+                detailRowDiv.appendChild(detailTable);
+                resultDiv.appendChild(detailRowDiv);
+
+                results.appendChild(resultDiv);
+                results.style.display = 'block';
+                loadingAnimation.style.width = '100px';
+            }
+
+            rowStartIndex = scourFile.rows.length;
+
+            if (isParsing) {
+                setTimeout(() => {
+                    renderRows();
+                }, 1000);
+            }
+            else {
+                if (scourFile.rows.length) {
+                    const resultNoun = (scourFile.rows.length === 1) ? 'result' : 'results';
+                    if (isAtEnd()) {
+                        subtitle.innerText = `You have ${scourFile.rows.length} ${resultNoun}.`;
+                        exportButton.style.display = 'inline';
+
+                        loadingAnimation.style.display = 'none';
+                        buttonContainer.style.display = 'block';
+                    }
+                    else {
+                        subtitle.innerText = `You have ${scourFile.rows.length} ${resultNoun} so far.`;
+                    }
+                }
+                else {
+                    subtitle.innerText = 'Press the Scour button to check each page.'
+                }
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            scourFile = await window.electronAPI.getScourFile();
+
+            if (scourFile.rows && scourFile.columns) {
+                renderRows();
+
+                if (scourFile.rows.length) {
+                    exportButton.style.display = 'inline';
+                }
+            }
+            else {
+                exportButton.style.display = 'none';
+                backButton.disabled = true;
+                exportButton.disabled = true;
+                isParsing = true;
+                await window.electronAPI.parsePages();
+                isParsing = false;
+                backButton.disabled = false;
+                exportButton.disabled = false;
+
+                setTimeout(() => {
+                    renderRows();
+                }, 1000);
+            }
+        });
+
+        scourButton.addEventListener('click', async () => {
+            scourFile.rows = [];
+            scourFile.currentSearchResultIndex = 0;
+            await window.electronAPI.setScourFile(scourFile);
+
+            loadingAnimation.style.width = '200px';
+            rowStartIndex = 0;
+            await startParse();
+        });
+
+        backButton.addEventListener('click', async () => {
+            window.electronAPI.navigateTo('setup-run-search.html');
+        });
+
+        exportButton.addEventListener('click', async () => {
+            const desktopPath = await window.electronAPI.invoke('get-desktop-path');
+            const filePath = await window.electronAPI.invoke('show-export-dialog', {
+                title: 'Save Spreadsheet',
+                defaultPath: `${desktopPath}/project.csv`,
+                filters: [{ name: 'Spreadsheet', extensions: ['csv'] }],
+            });
+
+            if (filePath) {
+                window.electronAPI.exportCsv(filePath);
+            }
+        });
+    </script>
+</body>
+</html>
