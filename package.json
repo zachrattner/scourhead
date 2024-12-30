@@ -11,7 +11,8 @@
     "copy-static-files": "copyfiles -u 1 'src/*.html' dist && copyfiles -u 1 'src/css/*.css' dist && copyfiles -u 1 src/img/* dist && copyfiles -u 1 'icons/**/*' dist/icons",
     "dev": "ts-node ./src/main.ts",
     "clean": "rm -rf dist",
-    "build-mac": "npm run build && ./download-chromium.sh mac && electron-builder --mac --arm64",
+    "build-mac-arm64": "npm run build && ./download-chromium.sh mac && electron-builder --mac --arm64",
+    "build-mac-x64": "npm run build && ./download-chromium.sh mac-x64 && electron-builder --mac --x64",
     "build-win-arm64": "npm run build && ./download-chromium.sh win && electron-builder --win --arm64",
     "build-win-x64": "npm run build && ./download-chromium.sh win && electron-builder --win --x64",
     "build-linux-arm64": "npm run build && ./download-chromium.sh linux && electron-builder --linux --arm64",
@@ -70,6 +71,7 @@
           }
         ]
       },
+      "notarize": false,
       "hardenedRuntime": true,
       "gatekeeperAssess": true,
       "entitlements": "entitlements.mac.plist",

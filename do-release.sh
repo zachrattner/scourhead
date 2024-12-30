@@ -69,6 +69,7 @@ create_github_release() {
 Download links for all architectures:
 
 - [macOS arm64](https://scourhead.com/releases/${APP_VERSION}/Scourhead-${APP_VERSION}-arm64.dmg)
+- [macOS x64](https://scourhead.com/releases/${APP_VERSION}/Scourhead-${APP_VERSION}-x64.dmg)
 - [Windows x64](https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-x64.exe)
 - [Windows arm64](https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-arm64.exe)
 - [Linux x64](https://scourhead.com/releases/${APP_VERSION}/scourhead_${APP_VERSION}_amd64.deb)
@@ -124,6 +125,7 @@ update_index_html() {
 
     echo "Updating download links in index.html..."
     sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-[0-9.]*-arm64.dmg#https://scourhead.com/releases/${APP_VERSION}/Scourhead-${APP_VERSION}-arm64.dmg#g" index.html
+    sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-[0-9.]*-x64.dmg#https://scourhead.com/releases/${APP_VERSION}/Scourhead-${APP_VERSION}-x64.dmg#g" index.html
     sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-Setup-x64.exe#https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-x64.exe#g" index.html
     sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-Setup-arm64.exe#https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-arm64.exe#g" index.html
     sed -i '' -e "s#https://scourhead.com/releases/.*/scourhead_[0-9.]*_amd64.deb#https://scourhead.com/releases/${APP_VERSION}/scourhead_${APP_VERSION}_amd64.deb#g" index.html
@@ -146,9 +148,14 @@ update_index_html() {
 }
 
 cleanup
-build_upload_check "npm run build-mac" \
-    "release/Scourhead-${APP_VERSION}-arm64.dmg" \
+build_upload_check "npm run build-mac-arm64" \
+   "release/Scourhead-${APP_VERSION}-arm64.dmg" \
     "$S3_RELEASE_FOLDER/${APP_VERSION}/Scourhead-${APP_VERSION}-arm64.dmg"
+
+cleanup
+build_upload_check "npm run build-mac-x64" \
+    "release/Scourhead-${APP_VERSION}-x64.dmg" \
+    "$S3_RELEASE_FOLDER/${APP_VERSION}/Scourhead-${APP_VERSION}-x64.dmg"
 
 cleanup
 build_upload_check "npm run build-win-x64" \

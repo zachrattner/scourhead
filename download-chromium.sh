@@ -52,6 +52,9 @@ case $PLATFORM in
   mac)
     ZIP_FILENAME="chromium-headless-shell-mac-arm64.zip"
     ;;
+  mac-x64)
+    ZIP_FILENAME="chromium-headless-shell-mac.zip"
+    ;;
   win)
     ZIP_FILENAME="chromium-headless-shell-win64.zip"
     ;;
