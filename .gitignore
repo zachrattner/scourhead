@@ -37,9 +37,6 @@ Thumbs.db
 # Electron-specific files
 *.asar
 
-# Scour files
-*.scour 
-
 # Playwright cache
 browsers
 

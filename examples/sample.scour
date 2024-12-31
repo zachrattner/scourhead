@@ -1,0 +1,1232 @@
+{
+    "mode": "basic",
+    "llmProvider": "ollama",
+    "model": "llama3.2:3b",
+    "ollamaUrl": "http://localhost",
+    "ollamaPort": 11434,
+    "currentSearchQueryIndex": 10,
+    "currentSearchResultIndex": 100,
+    "createdAt": "2024-12-27T16:12:05.498Z",
+    "numQueries": 10,
+    "numResultsPerQuery": 10,
+    "appVersion": "1.0.0",
+    "searchEngine": "Google",
+    "objective": "I am an aspiring visual artist looking to get started in the Miami area. Identify high end, modern art galleries in Miami hosting exhibitions in summer 2025. I will use this list to pitch a collaboration to their management team.",
+    "searchQueries": [
+        "high-end modern art galleries miami summer 2025",
+        "contemporary art galleries miami 2025 events",
+        "Miami art galleries hosting summer 2025 exhibitions",
+        "moderne art galleries in Miami for collaborations",
+        "top modern art galleries in Miami for artist collaborations 2025",
+        "Miami contemporary art galleries exhibiting in summer 2025",
+        "art galleries in Miami beach showcasing emerging artists 2025",
+        "best modern art galleries in Miami for artist partnerships",
+        "Highest-end modern art galleries miami with upcoming exhibitions",
+        "Miami art scene events 2025 and galleries to contact"
+    ],
+    "searchResults": [
+        {
+            "title": "Miami Modern + Contemporary",
+            "description": "Miami Modern + Contemporary is scheduled to take place January 22-26, 2025 at Herald Plaza on Biscayne Bay in the spacious CONTEXT Art Miami Pavilion.",
+            "url": "https://www.miamimcfair.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:08.069Z",
+            "searchEngine": "Google",
+            "searchQuery": "high-end modern art galleries miami summer 2025",
+            "position": 1
+        },
+        {
+            "title": "Miami galleries - Artguide – Artforum International",
+            "description": "Aliona Ortega Fine Art is a contemporary art gallery in Miami and Paris representing emerging and established international artists.",
+            "url": "https://artguide.artforum.com/artguide/place/miami?category=galleries",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:08.069Z",
+            "searchEngine": "Google",
+            "searchQuery": "high-end modern art galleries miami summer 2025",
+            "position": 2
+        },
+        {
+            "title": "Art Miami",
+            "description": "Art Miami features investment quality works, solo shows and engaging installations presented by highly respected international contemporary + modern art ...",
+            "url": "https://www.artmiami.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:08.069Z",
+            "searchEngine": "Google",
+            "searchQuery": "high-end modern art galleries miami summer 2025",
+            "position": 3
+        },
+        {
+            "title": "Amazing Art Galleries in Miami",
+            "description": "Dec 13, 2023 — Amazing Miami Art Galleries · Oolite Arts · Bakehouse Art Complex · Diaspora Vibe Cultural Arts Incubator · Fredric Snitzer Gallery · Eden Gallery.",
+            "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture/galleries/miami-art-galleries",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:08.069Z",
+            "searchEngine": "Google",
+            "searchQuery": "high-end modern art galleries miami summer 2025",
+            "position": 4
+        },
+        {
+            "title": "21 Best Art Galleries in Miami to Browse, Shop and Gather",
+            "description": "Jan 31, 2024 — From Wynwood to Allapattah, the Miami Art Deco district and beyond, we've scoped out the edgiest enclaves and most creative corners to view and purchase works.",
+            "url": "https://www.timeout.com/miami/things-to-do/best-art-galleries-in-miami",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:08.069Z",
+            "searchEngine": "Google",
+            "searchQuery": "high-end modern art galleries miami summer 2025",
+            "position": 5
+        },
+        {
+            "title": "Art Gallery Tour in Wynwood 2025 - Miami",
+            "description": "Visit several art galleries dedicated to fine art during a 1-hour walking tour in the heart of the Wynwood Art District.",
+            "url": "https://www.viator.com/tours/Miami/Art-Gallery-Tour-in-Wynwood/d662-18774P10",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:08.069Z",
+            "searchEngine": "Google",
+            "searchQuery": "high-end modern art galleries miami summer 2025",
+            "position": 6
+        },
+        {
+            "title": "Art Exhibitions in Miami during 2024 / 2025",
+            "description": "See upcoming art exhibitions in Miami during 2024 / 2025 - including dates, artists & artworks.",
+            "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:08.069Z",
+            "searchEngine": "Google",
+            "searchQuery": "high-end modern art galleries miami summer 2025",
+            "position": 7
+        },
+        {
+            "title": "Art Basel Miami Beach",
+            "description": "Oct 16, 2024 — Art Basel Miami Beach, North America's largest and most prestigious international contemporary art fair, is returning to the Miami Beach Convention Center in ...",
+            "url": "https://www.miamiandbeaches.com/event/art-basel-miami-beach/49",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:08.069Z",
+            "searchEngine": "Google",
+            "searchQuery": "high-end modern art galleries miami summer 2025",
+            "position": 8
+        },
+        {
+            "title": "Design Miami · Design Miami",
+            "description": "Featured Galleries ; Magen H Gallery ; Friedman Benda ; Gallery FUMI ; Ippodo Gallery ; Charles Burnand Gallery ...",
+            "url": "https://designmiami.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:08.069Z",
+            "searchEngine": "Google",
+            "searchQuery": "high-end modern art galleries miami summer 2025",
+            "position": 9
+        },
+        {
+            "title": "Wynwood Art District - Wikipedia",
+            "description": "No description",
+            "url": "https://en.wikipedia.org/wiki/Wynwood_Art_District#:~:text=The%20Wynwood%20Art%20District%20is,Northeast%20First%20Avenue%20(east).",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:08.069Z",
+            "searchEngine": "Google",
+            "searchQuery": "high-end modern art galleries miami summer 2025",
+            "position": 10
+        },
+        {
+            "title": "Contemporary Art Events\nICA Miami\nhttps://www.icamiami.org",
+            "description": "No description",
+            "url": "https://icamiami.org/",
+            "isAd": true,
+            "retrievedAt": "2024-12-28T18:56:31.304Z",
+            "searchEngine": "Google",
+            "searchQuery": "contemporary art galleries miami 2025 events",
+            "position": 1
+        },
+        {
+            "title": "Miami Beach Contemporary Art\nThe Bass\nhttps://www.thebass.org › the-bass › museum",
+            "description": "No description",
+            "url": "https://thebass.org/visit/",
+            "isAd": true,
+            "retrievedAt": "2024-12-28T18:56:31.304Z",
+            "searchEngine": "Google",
+            "searchQuery": "contemporary art galleries miami 2025 events",
+            "position": 2
+        },
+        {
+            "title": "Art Exhibitions in Miami during 2024 / 2025",
+            "description": "Contemporary art exhibition, Alba Triana, Dialogue with the Primordial Sea at Locust Projects, Miami, United States. Open Now. 23 November 2024–18 January 2025.",
+            "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:31.308Z",
+            "searchEngine": "Google",
+            "searchQuery": "contemporary art galleries miami 2025 events",
+            "position": 3
+        },
+        {
+            "title": "Miami Modern + Contemporary",
+            "description": "Miami Modern + Contemporary is scheduled to take place January 22-26, 2025 at Herald Plaza on Biscayne Bay in the spacious CONTEXT Art Miami Pavilion.",
+            "url": "https://www.miamimcfair.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:31.308Z",
+            "searchEngine": "Google",
+            "searchQuery": "contemporary art galleries miami 2025 events",
+            "position": 4
+        },
+        {
+            "title": "Miami Modern + Contemporary",
+            "description": "Discover a new addition to Miami's vibrant art scene as Miami Modern + Contemporary makes its debut at One Herald Plaza from January 22-26, 2025.",
+            "url": "https://www.miamiandbeaches.com/event/miami-modern-contemporary/30424",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:31.308Z",
+            "searchEngine": "Google",
+            "searchQuery": "contemporary art galleries miami 2025 events",
+            "position": 5
+        },
+        {
+            "title": "Miami Art Scene™Events from December 27 - January 22, 2025",
+            "description": "The Official Art Deco Walking Tour by The Miami Design Preservation. Art Deco Welcome Center 1001 Ocean Drive, Miami Beach, FL, United States.",
+            "url": "https://www.themiamiartscene.com/events/list/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:31.308Z",
+            "searchEngine": "Google",
+            "searchQuery": "contemporary art galleries miami 2025 events",
+            "position": 6
+        },
+        {
+            "title": "Art Wynwood: An Unmissable Artistic Experience in Miami",
+            "description": "This Miami event, taking place from February 15-18, 2025, is entirely focused on modern and contemporary art, showcasing artistic expressions that include works ...",
+            "url": "https://www.usawelcome.net/explore/miami/events/international-event-art-wynwood.htm",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:31.308Z",
+            "searchEngine": "Google",
+            "searchQuery": "contemporary art galleries miami 2025 events",
+            "position": 7
+        },
+        {
+            "title": "Exhibitions at ICA Miami",
+            "description": "Institute of Contemporary Art Miami ICA Miami ; Lucy Bull: The Garden of Forking Paths. Dec 3, 2024–Mar 30, 2025 3rd Floor Special Exhibition ; Marguerite Humeau: ...",
+            "url": "https://icamiami.org/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:31.308Z",
+            "searchEngine": "Google",
+            "searchQuery": "contemporary art galleries miami 2025 events",
+            "position": 8
+        },
+        {
+            "title": "Miami Art Week",
+            "description": "The official home of Miami Art Week. Each December, Miami Art Week hosts over 20 international art fairs, more than 1200 galleries & thousands of artists ...",
+            "url": "https://www.miamiartweek.org/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:31.308Z",
+            "searchEngine": "Google",
+            "searchQuery": "contemporary art galleries miami 2025 events",
+            "position": 9
+        },
+        {
+            "title": "Art Palm Beach 2025 - Miami Art Scene",
+            "description": "Wednesday, January 22nd through Sunday, January 26th Art Palm Beach returns to the Palm Beach County Convention Center. Featuring some of the most ...",
+            "url": "https://www.themiamiartscene.com/event/art-palm-beach-2025/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:31.308Z",
+            "searchEngine": "Google",
+            "searchQuery": "contemporary art galleries miami 2025 events",
+            "position": 10
+        },
+        {
+            "title": "Art Exhibitions in Miami during 2024 / 2025",
+            "description": "See upcoming art exhibitions in Miami during 2024 / 2025 - including dates, artists & artworks.",
+            "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:52.975Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
+            "position": 1
+        },
+        {
+            "title": "These 11 Shows Will Be the Talk of Miami Art Week",
+            "description": "Dec 2, 2024 — “Portraits from Here to There” by Alec Soth and Jason Schmidt Where · When: Through April 26, 2025 · Why It's Worth a Look: · Know Before You Go: ...",
+            "url": "https://www.culturedmag.com/article/2024/12/02/miami-exhibition-guide-must-see",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:52.975Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
+            "position": 2
+        },
+        {
+            "title": "Spectrum Miami",
+            "description": "Spectrum Miami, a curated art fair taking place amidst Miami Art Week, presents 150+ independent career artists, studios, and younger galleries.",
+            "url": "https://redwoodartgroup.com/spectrum-miami/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:52.975Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
+            "position": 3
+        },
+        {
+            "title": "Art of Black Miami",
+            "description": "Through Apr 06, 2025. From November 6, 2024, to April 6, 2025, the Museum of Contemporary Art, North Miami will host Smita Sen: Embodied. Arts & Culture.",
+            "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture/art-of-black",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:52.975Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
+            "position": 4
+        },
+        {
+            "title": "Untitled Art Fairs",
+            "description": "Untitled Art, Miami hosts 176 exhibitors in its largest presentation to date. Led by an ongoing dedication to increasing diversity and representation across ...",
+            "url": "https://untitledartfairs.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:52.975Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
+            "position": 5
+        },
+        {
+            "title": "Sea Change • Pérez Art Museum Miami",
+            "description": "Sea Change at Pérez Art Museum Miami (PAMM) is an immersive exhibition that reflects on the accelerating changes across climate, culture, and time.",
+            "url": "https://www.pamm.org/en/exhibition/sea-change/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:52.975Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
+            "position": 6
+        },
+        {
+            "title": "Exhibitions",
+            "description": "Exhibitions · ENCODED: ART WITH NO BOUNDARIES · PARI DUKOVIC: EN POINTE: DANCE & FASHION · TAMARY KUDITA: THREADS OF HERITAGE · AMOR DE VERANO · AL FARROW: LOADED.",
+            "url": "https://visugallery.com/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:52.975Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
+            "position": 7
+        },
+        {
+            "title": "16 Miami Art and Culture Events You Can't Miss This ...",
+            "description": "May 16, 2024 — Summer 2024 Miami arts and culture calendar · 1. Everything is a Spiral · 2. Ascension - Allura Cabaret · 3. Haitian Heritage Month · 4. JMSN at The ...",
+            "url": "https://www.timeout.com/miami/things-to-do/the-best-miami-arts-and-culture-events-and-exhibits-to-see-this-summer-2024",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:52.975Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
+            "position": 8
+        },
+        {
+            "title": "Art Basel | Art Basel",
+            "description": "Miami Beach. December 5-7, 2025. In our American show, leading galleries from five continents show significant works by masters of Modern and contemporary ...",
+            "url": "https://www.artbasel.com/?lang=en",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:52.975Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
+            "position": 9
+        },
+        {
+            "title": "Exhibitions at ICA Miami",
+            "description": "Institute of Contemporary Art Miami ICA Miami ; Ding Shilun: Janus. Dec 3, 2024–Mar 30, 2025 Ground Floor Ray Ellen and Allan Yarkin Gallery ; Jill Mulleady: ...",
+            "url": "https://icamiami.org/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:56:58.604Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
+            "position": 10
+        },
+        {
+            "title": "The 30 best Art Galleries in Miami",
+            "description": "Miami's art galleries brim with contemporary Latin American art, and Don Fiftyone Gallery is no exception. Bringing visibility to artists from the Global South ...",
+            "url": "https://www.singulart.com/en/art-galleries/united-states/miami-14265?srsltid=AfmBOoogRzDzfP1_OtQ_rJfxXkLeBHwlHxvdMVWTKaoQXbFq1zHEpoT_",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:13.126Z",
+            "searchEngine": "Google",
+            "searchQuery": "moderne art galleries in Miami for collaborations",
+            "position": 1
+        },
+        {
+            "title": "14 Best Miami Art Galleries",
+            "description": "Miami galleries & institutions featured on Ocula ; Zilberman contemporary art gallery in Miami, United States · Zilberman Current Exhibition: Group Exhibition.",
+            "url": "https://ocula.com/cities/usa/miami-art-galleries/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:21.255Z",
+            "searchEngine": "Google",
+            "searchQuery": "moderne art galleries in Miami for collaborations",
+            "position": 2
+        },
+        {
+            "title": "Art Miami",
+            "description": "Art Miami features investment quality works, solo shows and engaging installations presented by highly respected international contemporary + modern art ...",
+            "url": "https://www.artmiami.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:13.126Z",
+            "searchEngine": "Google",
+            "searchQuery": "moderne art galleries in Miami for collaborations",
+            "position": 3
+        },
+        {
+            "title": "21 Best Art Galleries in Miami to Browse, Shop and Gather",
+            "description": "Jan 31, 2024 — From Wynwood to Allapattah, the Miami Art Deco district and beyond, we've scoped out the edgiest enclaves and most creative corners to view and purchase works.",
+            "url": "https://www.timeout.com/miami/things-to-do/best-art-galleries-in-miami",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:13.126Z",
+            "searchEngine": "Google",
+            "searchQuery": "moderne art galleries in Miami for collaborations",
+            "position": 4
+        },
+        {
+            "title": "Does collaboration with an art gallery increase the chances of selling ...",
+            "description": "No description",
+            "url": "https://artbidy.com/en/about-us/news/does-collaboration-with-an-art-gallery-increase-the-chances-of-selling-artworks#:~:text=The%20Role%20of%20Art%20Galleries%20in%20Building%20an%20Artist's%20Brand&text=Through%20collaboration%20with%20a%20gallery,work%20to%20a%20broader%20audience.",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:13.126Z",
+            "searchEngine": "Google",
+            "searchQuery": "moderne art galleries in Miami for collaborations",
+            "position": 5
+        },
+        {
+            "title": "How to get your art displayed in galleries and/or restaurants - Quora",
+            "description": "No description",
+            "url": "https://www.quora.com/How-can-you-get-your-art-displayed-in-galleries-and-or-restaurants",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:13.126Z",
+            "searchEngine": "Google",
+            "searchQuery": "moderne art galleries in Miami for collaborations",
+            "position": 6
+        },
+        {
+            "title": "Artists: Is Making a Move to Miami Beneficial for Your Career?",
+            "description": "No description",
+            "url": "https://artbusinessnews.com/2024/07/artists-is-making-a-move-to-miami-beneficial-for-your-career/#:~:text=Budding%20artists%20can%20relocate%20to,%2C%20galleries%2C%20and%20creative%20hubs.",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:13.126Z",
+            "searchEngine": "Google",
+            "searchQuery": "moderne art galleries in Miami for collaborations",
+            "position": 7
+        },
+        {
+            "title": "Gallery applications - Art Basel",
+            "description": "No description",
+            "url": "https://www.artbasel.com/about/application/registration#:~:text=All%20applications%20must%20be%20made,the%20same%20information%20every%20time.",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:13.126Z",
+            "searchEngine": "Google",
+            "searchQuery": "moderne art galleries in Miami for collaborations",
+            "position": 8
+        },
+        {
+            "title": "Collaborations",
+            "description": "This fourth installment features the collaboration between Khawam Galleries, the Museum of Contemporary Art of the Americas and Miami-Dade College Kendall ...",
+            "url": "https://www.mocaamericas.org/collaborations",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:13.126Z",
+            "searchEngine": "Google",
+            "searchQuery": "moderne art galleries in Miami for collaborations",
+            "position": 9
+        },
+        {
+            "title": "Miami Modern + Contemporary",
+            "description": "Miami Modern + Contemporary is scheduled to take place January 22-26, 2025 at Herald Plaza on Biscayne Bay in the spacious CONTEXT Art Miami Pavilion.",
+            "url": "https://www.miamimcfair.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:13.126Z",
+            "searchEngine": "Google",
+            "searchQuery": "moderne art galleries in Miami for collaborations",
+            "position": 10
+        },
+        {
+            "title": "Art Miami",
+            "description": "Art Miami features investment quality works, solo shows and engaging installations presented by highly respected international contemporary + modern art ...",
+            "url": "https://www.artmiami.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:34.866Z",
+            "searchEngine": "Google",
+            "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
+            "position": 1
+        },
+        {
+            "title": "Art Exhibitions in Miami during 2024 / 2025",
+            "description": "See upcoming art exhibitions in Miami during 2024 / 2025 - including dates, artists & artworks.",
+            "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:34.866Z",
+            "searchEngine": "Google",
+            "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
+            "position": 2
+        },
+        {
+            "title": "Pinta Miami - Pinta Art",
+            "description": "Pinta Miami is the only fair dedicated exclusively to Ibero-Latin American art during Miami Art Week.",
+            "url": "https://miami.pinta.art/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:34.866Z",
+            "searchEngine": "Google",
+            "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
+            "position": 3
+        },
+        {
+            "title": "ART FAIRS",
+            "description": "MIAMI MODERN + CONTEMPORARY 2025​​ Miami Modern + Contemporary will showcase an exceptionally curated and compelling array of over 70 international galleries ...",
+            "url": "http://olivercolegallery.com/art_fairs",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:34.866Z",
+            "searchEngine": "Google",
+            "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
+            "position": 4
+        },
+        {
+            "title": "Art Basel Miami 2025",
+            "description": "Art Basel Miami is a premier art fair that has earned a global reputation for showcasing the best in modern and contemporary art.",
+            "url": "https://camperandnicholsons.com/magazine/art-basel-miami-2025",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:34.866Z",
+            "searchEngine": "Google",
+            "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
+            "position": 5
+        },
+        {
+            "title": "Press Release 2024-2025",
+            "description": "Nov 13, 2024 — MIAMI--Opening on November 13, 2024, the Margulies Collection will present a rare look at 21 never-before-seen to the Miami-public artworks ...",
+            "url": "https://www.margulieswarehouse.com/press/press-release-2024-2025",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:34.866Z",
+            "searchEngine": "Google",
+            "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
+            "position": 6
+        },
+        {
+            "title": "The 30 best Art Galleries in Miami",
+            "description": "SINGULART artists in Miami · Molina Art Gallery · Art Fusion Galleries · Fredric Snitzer Gallery · Rodez Art Gallery · Dot Fiftyone Gallery · Via Gallery · Seven ...",
+            "url": "https://www.singulart.com/en/art-galleries/united-states/miami-14265?srsltid=AfmBOopfrxWIpjPE9Id9r0Wdc1xLA-i119tRGKun-JzgcHE10Fz4CaQu",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:34.866Z",
+            "searchEngine": "Google",
+            "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
+            "position": 7
+        },
+        {
+            "title": "Exhibitions",
+            "description": "ENCODED: ART WITH NO BOUNDARIES. 4 Dec 2024 - 18 Jan 2025 ENCODED: ART WITH NO BOUNDARIES, a collaboration between VISU Contemporary and bitforms gallery, ...",
+            "url": "https://visugallery.com/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:34.866Z",
+            "searchEngine": "Google",
+            "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
+            "position": 8
+        },
+        {
+            "title": "Best gallery, museum art exhibitions in South Florida, Miami",
+            "description": "Sep 22, 2024 — “Jose Parla: Homecoming,” Nov. 14 - April 25, 2025, at Pérez Art Museum Miami, 1103 Biscayne Blvd., Miami; 305-375-3000; pamm.org.",
+            "url": "https://www.miamiherald.com/entertainment/visual-arts/article291923005.html",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:34.866Z",
+            "searchEngine": "Google",
+            "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
+            "position": 9
+        },
+        {
+            "title": "Design Miami · Design Miami",
+            "description": "Featured Galleries ; Magen H Gallery ; Friedman Benda ; Gallery FUMI ; Ippodo Gallery ; Charles Burnand Gallery ...",
+            "url": "https://designmiami.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:34.866Z",
+            "searchEngine": "Google",
+            "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
+            "position": 10
+        },
+        {
+            "title": "Art Exhibitions in Miami during 2024 / 2025",
+            "description": "Contemporary art exhibition, Alba Triana, Dialogue with the Primordial Sea at Locust Projects, Miami, United States. Open Now. 23 November 2024–18 January 2025.",
+            "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:55.953Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
+            "position": 1
+        },
+        {
+            "title": "Miami Modern + Contemporary",
+            "description": "Miami Modern + Contemporary is scheduled to take place January 22-26, 2025 at Herald Plaza on Biscayne Bay in the spacious CONTEXT Art Miami Pavilion.",
+            "url": "https://www.miamimcfair.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:55.953Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
+            "position": 2
+        },
+        {
+            "title": "CONTEXT Art Miami",
+            "description": "CONTEXT Art Miami returns for its 10th edition of showcasing boundary-pushing artists in the contemporary art scene.",
+            "url": "https://www.miamiandbeaches.com/event/context-art-miami/7063",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:55.953Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
+            "position": 3
+        },
+        {
+            "title": "14 Best Miami Art Galleries",
+            "description": "Search for art galleries in Miami, United States. Read about upcoming art exhibitions & the artists & artwork on show in each gallery. Explore now.",
+            "url": "https://ocula.com/cities/usa/miami-art-galleries/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:55.953Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
+            "position": 4
+        },
+        {
+            "title": "Miami Art Scene™ | #ArtEvents —> 'The Best South Florida ...",
+            "description": "The Studio 18 Artist Takeover exhibition is on view October 25, 2024 – January 11, 2025. ... Photo by Miami Art Scene™ in The Contemporary Art ...",
+            "url": "https://www.instagram.com/miami_art_scene/p/C898rHMO1Ka/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:55.953Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
+            "position": 5
+        },
+        {
+            "title": "Art Basel | Art Basel",
+            "description": "Miami Beach. December 5-7, 2025. In our American show, leading galleries from five continents show significant works by masters of Modern and contemporary ...",
+            "url": "https://www.artbasel.com/?lang=en",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:55.953Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
+            "position": 6
+        },
+        {
+            "title": "Exhibitions at ICA Miami",
+            "description": "Learn more about current, upcoming, and past exhibitions at ICA Miami in the Miami Design District. Free admission every day!",
+            "url": "https://icamiami.org/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:55.953Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
+            "position": 7
+        },
+        {
+            "title": "Pérez Art Museum Miami • PAMM",
+            "description": "Pérez Art Museum Miami is a modern and contemporary art museum dedicated to collecting and exhibiting international art of the 20th and 21st centuries.",
+            "url": "https://www.pamm.org/en/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:55.953Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
+            "position": 8
+        },
+        {
+            "title": "The Complete Guide To 2024 Art Basel And Miami Art Week - Forbes",
+            "description": "No description",
+            "url": "https://www.forbes.com/sites/ericawertheimzohar/2024/11/27/the-complete-guide-to-2024-miami-art-week--the-events-art-and-parties/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:55.953Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
+            "position": 9
+        },
+        {
+            "title": "Art Basel - Wikipedia",
+            "description": "No description",
+            "url": "https://en.wikipedia.org/wiki/Art_Basel#:~:text=Art%20Basel%20is%20a%20for,)%2C%20Hong%20Kong%20and%20Paris.",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:57:55.953Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
+            "position": 10
+        },
+        {
+            "title": "Art, Culture and Exclusive Experiences on Miami Beach",
+            "description": "Nov 20, 2024 — Art enthusiasts can galley hop amongst 15-plus art galleries located on Lincoln Road, including permanent and pop-up locations, showcasing ...",
+            "url": "https://communitynewspapers.com/biscayne-bay/a-showcase-of-art-culture-and-exclusive-experiences-are-accessible-all-year-long-on-miami-beach/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:17.270Z",
+            "searchEngine": "Google",
+            "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
+            "position": 1
+        },
+        {
+            "title": "Miami Modern + Contemporary",
+            "description": "Miami Modern + Contemporary is scheduled to take place January 22-26, 2025 at Herald Plaza on Biscayne Bay in the spacious CONTEXT Art Miami Pavilion.",
+            "url": "https://www.miamimcfair.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:17.270Z",
+            "searchEngine": "Google",
+            "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
+            "position": 2
+        },
+        {
+            "title": "14 Best Miami Art Galleries",
+            "description": "Founded in 2008, Zilberman stages art exhibitions with emerging and established artists including Omar Barquet, Sim Chi Yin, and Jaffa Lam. Goodman Gallery runs ...",
+            "url": "https://ocula.com/cities/usa/miami-art-galleries/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:17.270Z",
+            "searchEngine": "Google",
+            "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
+            "position": 3
+        },
+        {
+            "title": "Art Miami",
+            "description": "Art Miami features investment quality works, solo shows and engaging installations presented by highly respected international contemporary + modern art ...",
+            "url": "https://www.artmiami.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:17.270Z",
+            "searchEngine": "Google",
+            "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
+            "position": 4
+        },
+        {
+            "title": "Art on the Plaza - Call to South Florida Artists 2025",
+            "description": "The Art on the Plaza program invites artists to activate MOCA's Plaza with temporary public installations of site-specific art works.",
+            "url": "https://www.mocanomi.org/posts/art-on-the-plaza---call-to-south-florida-artists-2024-2025",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:17.270Z",
+            "searchEngine": "Google",
+            "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
+            "position": 5
+        },
+        {
+            "title": "Red Dot Miami",
+            "description": "Red Dot Miami is a curated gallery-only contemporary art fair during Miami Art Week that showcases 75 of the top galleries from around the world,",
+            "url": "https://redwoodartgroup.com/red-dot-miami/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:17.270Z",
+            "searchEngine": "Google",
+            "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
+            "position": 6
+        },
+        {
+            "title": "Art Basel Miami Beach",
+            "description": "Oct 16, 2024 — This year, over 285 galleries from 38 countries will showcase works by thousands of emerging, mid-career, established and blue chip artists.",
+            "url": "https://www.miamiandbeaches.com/event/art-basel-miami-beach/49",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:17.270Z",
+            "searchEngine": "Google",
+            "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
+            "position": 7
+        },
+        {
+            "title": "Art Basel's show in Miami Beach",
+            "description": "Art Basel's Miami Beach Art Show showcases artists and galleries from around the world and brings their highest quality work to the United States.",
+            "url": "https://www.artbasel.com/miami-beach/the-show?lang=en",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:17.270Z",
+            "searchEngine": "Google",
+            "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
+            "position": 8
+        },
+        {
+            "title": "Untitled Art Fairs",
+            "description": "Founded in 2012, Untitled Art is a leading contemporary art fair taking place annually on the sands of Miami Beach and Houston.",
+            "url": "https://untitledartfairs.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:17.270Z",
+            "searchEngine": "Google",
+            "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
+            "position": 9
+        },
+        {
+            "title": "Spectrum Miami",
+            "description": "Spectrum Miami, a curated art fair taking place amidst Miami Art Week, presents 150+ independent career artists, studios, and younger galleries.",
+            "url": "https://redwoodartgroup.com/spectrum-miami/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:17.270Z",
+            "searchEngine": "Google",
+            "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
+            "position": 10
+        },
+        {
+            "title": "The 30 best Art Galleries in Miami",
+            "description": "SINGULART artists in Miami · Molina Art Gallery · Art Fusion Galleries · Fredric Snitzer Gallery · Rodez Art Gallery · Dot Fiftyone Gallery · Via Gallery · Seven ...",
+            "url": "https://www.singulart.com/en/art-galleries/united-states/miami-14265?srsltid=AfmBOorOTt-bYsS11GaAgyokkbcMQ73I-oMEMMbLfaTyfgB-XlvmRs99",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:40.009Z",
+            "searchEngine": "Google",
+            "searchQuery": "best modern art galleries in Miami for artist partnerships",
+            "position": 1
+        },
+        {
+            "title": "Amazing Art Galleries in Miami",
+            "description": "Dec 13, 2023 — Amazing Miami Art Galleries · Oolite Arts · Bakehouse Art Complex · Diaspora Vibe Cultural Arts Incubator · Fredric Snitzer Gallery · Eden Gallery.",
+            "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture/galleries/miami-art-galleries",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:40.009Z",
+            "searchEngine": "Google",
+            "searchQuery": "best modern art galleries in Miami for artist partnerships",
+            "position": 2
+        },
+        {
+            "title": "Art Miami",
+            "description": "Art Miami features investment quality works, solo shows and engaging installations presented by highly respected international contemporary + modern art ...",
+            "url": "https://www.artmiami.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:40.009Z",
+            "searchEngine": "Google",
+            "searchQuery": "best modern art galleries in Miami for artist partnerships",
+            "position": 3
+        },
+        {
+            "title": "21 Best Art Galleries in Miami to Browse, Shop and Gather",
+            "description": "Jan 31, 2024 — From Wynwood to Allapattah, the Miami Art Deco district and beyond, we've scoped out the edgiest enclaves and most creative corners to view and purchase works.",
+            "url": "https://www.timeout.com/miami/things-to-do/best-art-galleries-in-miami",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:40.009Z",
+            "searchEngine": "Google",
+            "searchQuery": "best modern art galleries in Miami for artist partnerships",
+            "position": 4
+        },
+        {
+            "title": "ICA Miami | Institute of Contemporary Art, Miami | Free ...",
+            "description": "Institute of Contemporary Art, Miami (ICA Miami) offers year-round free and open access to the most innovative art of our time.",
+            "url": "https://icamiami.org/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:40.009Z",
+            "searchEngine": "Google",
+            "searchQuery": "best modern art galleries in Miami for artist partnerships",
+            "position": 5
+        },
+        {
+            "title": "14 Best Miami Art Galleries",
+            "description": "Search for art galleries in Miami, United States. Read about upcoming art exhibitions & the artists & artwork on show in each gallery. Explore now.",
+            "url": "https://ocula.com/cities/usa/miami-art-galleries/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:40.009Z",
+            "searchEngine": "Google",
+            "searchQuery": "best modern art galleries in Miami for artist partnerships",
+            "position": 6
+        },
+        {
+            "title": "Pérez Art Museum Miami • PAMM",
+            "description": "Pérez Art Museum Miami is a modern and contemporary art museum dedicated to collecting and exhibiting international art of the 20th and 21st centuries.",
+            "url": "https://www.pamm.org/en/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:40.009Z",
+            "searchEngine": "Google",
+            "searchQuery": "best modern art galleries in Miami for artist partnerships",
+            "position": 7
+        },
+        {
+            "title": "The Ten Best Art Galleries in Miami 2021",
+            "description": "Oct 5, 2021 — Whereas LnS Gallery focuses on contemporary artists, the smaller, more boutique LnS Modern will showcase works from artists from previous eras.",
+            "url": "https://www.miaminewtimes.com/arts/ten-best-art-galleries-in-miami-13038113",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:40.009Z",
+            "searchEngine": "Google",
+            "searchQuery": "best modern art galleries in Miami for artist partnerships",
+            "position": 8
+        },
+        {
+            "title": "Miami Beach - Partners",
+            "description": "Discover the partners of Art Basel in Miami Beach, as well as their initiatives and activities. UBS Global Lead Partner",
+            "url": "https://www.artbasel.com/miami-beach/partners?lang=en",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:40.009Z",
+            "searchEngine": "Google",
+            "searchQuery": "best modern art galleries in Miami for artist partnerships",
+            "position": 9
+        },
+        {
+            "title": "Three-Day Miami Itinerary For Art Lovers",
+            "description": "Apr 3, 2023 — With this three-day itinerary, you'll explore best-in-class museums, cutting-edge art installations and eclectic neighborhoods filled with murals.",
+            "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture/three-day-miami-itinerary-art-lovers",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:58:46.094Z",
+            "searchEngine": "Google",
+            "searchQuery": "best modern art galleries in Miami for artist partnerships",
+            "position": 10
+        },
+        {
+            "title": "Art Miami",
+            "description": "Art Miami features investment quality works, solo shows and engaging installations presented by highly respected international contemporary + modern art ...",
+            "url": "https://www.artmiami.com/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:04.758Z",
+            "searchEngine": "Google",
+            "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
+            "position": 1
+        },
+        {
+            "title": "The 30 best Art Galleries in Miami",
+            "description": "Open your mind and try something new at the Fredric Snitzer Gallery. Explore contemporary emerging Latin American art, in a modern minimalist interior space.",
+            "url": "https://www.singulart.com/en/art-galleries/united-states/miami-14265?srsltid=AfmBOopVruF3s1lZub-bS32n66wNDEWK5UaOcCqCZoISaXbA_4v6-b1L",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:04.758Z",
+            "searchEngine": "Google",
+            "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
+            "position": 2
+        },
+        {
+            "title": "Exhibitions at ICA Miami",
+            "description": "Learn more about current, upcoming, and past exhibitions at ICA Miami in the Miami Design District. Free admission every day!",
+            "url": "https://icamiami.org/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:04.758Z",
+            "searchEngine": "Google",
+            "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
+            "position": 3
+        },
+        {
+            "title": "THE 10 BEST Miami Art Galleries (2024)",
+            "description": "1. Miami Design District ... The Institute of Contemporary Design has great exhibits with complimentary entrance and a garage with ticketless ...",
+            "url": "https://www.tripadvisor.com/Attractions-g34438-Activities-c49-t1-Miami_Florida.html",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:04.758Z",
+            "searchEngine": "Google",
+            "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
+            "position": 4
+        },
+        {
+            "title": "Museum of Contemporary Art North Miami: Home",
+            "description": "A free after-school art program that provides students with a foundation in the visual arts. Classes include a wide range of techniques.",
+            "url": "https://www.mocanomi.org/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:04.758Z",
+            "searchEngine": "Google",
+            "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
+            "position": 5
+        },
+        {
+            "title": "Miami galleries - Artguide – Artforum International",
+            "description": "Aliona Ortega Fine Art is a contemporary art gallery in Miami and Paris representing emerging and established international artists.",
+            "url": "https://artguide.artforum.com/artguide/place/miami?category=galleries",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:04.758Z",
+            "searchEngine": "Google",
+            "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
+            "position": 6
+        },
+        {
+            "title": "TOP 10 BEST Emerging Artist Gallery in Miami, FL",
+            "description": "Top 10 Best Emerging Artist Gallery Near Miami, Florida · 1. Abstract Fine Art. 0.0 (0 reviews) · 2. Haus Fashion Lab. 5.0 (1 review) · 3. Cubaocho Museum & ...",
+            "url": "https://www.yelp.com/search?find_desc=Emerging+Artist+Gallery&find_loc=Miami%2C+FL",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:04.758Z",
+            "searchEngine": "Google",
+            "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
+            "position": 7
+        },
+        {
+            "title": "The World's Most Famous Art Galleries and Museums You ...",
+            "description": "No description",
+            "url": "https://www.cultureowl.com/cultural-news/Art/famous-art-pieces-or-permanent-exhibits-around-the-world#:~:text=1.,The%20Louvre%2C%20Paris%2C%20France",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:04.758Z",
+            "searchEngine": "Google",
+            "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
+            "position": 8
+        },
+        {
+            "title": "Art Collecting Basics: Miami Art Week | Carousel Fine Art",
+            "description": "No description",
+            "url": "https://carouselartgroup.com/blog/33-art-collecting-basics-miami-art-week/#:~:text=During%20Art%20Week%2C%20Miami's%20most,most%20prominent%20being%20Art%20Basel.",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:04.758Z",
+            "searchEngine": "Google",
+            "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
+            "position": 9
+        },
+        {
+            "title": "15 of the World's Most Famous Art Galleries + Museums - RMCAD",
+            "description": "No description",
+            "url": "https://www.rmcad.edu/blog/15-of-the-worlds-most-famous-art-galleries-museums/#:~:text=The%20Louvre%20Museum%20(Paris%2C%20France,tourists%20from%20around%20the%20globe.",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:04.758Z",
+            "searchEngine": "Google",
+            "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
+            "position": 10
+        },
+        {
+            "title": "Miami Art Scene™Events from December 27 - January 22, 2025",
+            "description": "The Official Art Deco Walking Tour by The Miami Design Preservation. Art Deco Welcome Center 1001 Ocean Drive, Miami Beach, FL, United States.",
+            "url": "https://www.themiamiartscene.com/events/list/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:29.578Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art scene events 2025 and galleries to contact",
+            "position": 1
+        },
+        {
+            "title": "Contact Us - Miami Art Scene",
+            "description": "To send a letter to the Editor, please email: Editor@themiamiartscene.com. Miami Art Scene™. 111 SW 3rd Street. Miami, Florida 33130. Phone: (786)571-6112.",
+            "url": "https://www.themiamiartscene.com/contact-us/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:29.578Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art scene events 2025 and galleries to contact",
+            "position": 2
+        },
+        {
+            "title": "Miami Art Scene",
+            "description": "Avant Gallery will host an exclusive Vernissage at its new Miami Beach location on Thursday, December 5th. This evening event will offer collectors, art ...",
+            "url": "https://www.facebook.com/MiamiArtSceneTM/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:29.578Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art scene events 2025 and galleries to contact",
+            "position": 3
+        },
+        {
+            "title": "Guide to Miami Arts and Culture",
+            "description": "The week surrounding it – Miami Art Week – is filled with satellite fairs, art shows and other events that showcase local artists.",
+            "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:29.578Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art scene events 2025 and galleries to contact",
+            "position": 4
+        },
+        {
+            "title": "Art Exhibitions in Miami during 2024 / 2025",
+            "description": "See upcoming art exhibitions in Miami during 2024 / 2025 - including dates, artists & artworks.",
+            "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:29.578Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art scene events 2025 and galleries to contact",
+            "position": 5
+        },
+        {
+            "title": "Miami Art Scene™ (@miami_art_scene)",
+            "description": "Miami's No.1 Art Magazine - an influential visual arts portal covering local, national & global art news, info, artists, exhibits, trends & events.",
+            "url": "https://www.instagram.com/miami_art_scene/?hl=en",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:29.578Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art scene events 2025 and galleries to contact",
+            "position": 6
+        },
+        {
+            "title": "Is there an appropriate way to approach art galleries with the aim of getting a show/representation? - Quora",
+            "description": "No description",
+            "url": "https://www.quora.com/Is-there-an-appropriate-way-to-approach-art-galleries-with-the-aim-of-getting-a-show-representation",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:29.578Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art scene events 2025 and galleries to contact",
+            "position": 7
+        },
+        {
+            "title": "TOP 10 BEST Art Buyers in Miami, FL - Updated 2024 - Yelp",
+            "description": "No description",
+            "url": "https://m.yelp.com/search?find_desc=Art+Buyers&find_loc=Miami%2C+FL",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:29.578Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art scene events 2025 and galleries to contact",
+            "position": 8
+        },
+        {
+            "title": "The Complete Guide To 2024 Art Basel And Miami Art Week",
+            "description": "Nov 27, 2024 — Your ultimate guide to the hottest parties, most exclusive exhibitions, and the pulse of the international art scene, taking place all over ...",
+            "url": "https://www.forbes.com/sites/ericawertheimzohar/2024/11/27/the-complete-guide-to-2024-miami-art-week--the-events-art-and-parties/",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:38.777Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art scene events 2025 and galleries to contact",
+            "position": 9
+        },
+        {
+            "title": "Art Basel's show in Miami Beach",
+            "description": "No description",
+            "url": "https://www.artbasel.com/miami-beach/the-show#:~:text=Art%20Basel's%20show%20in%20Miami%20Beach%20is%20divided%20into%20several,solo%20presentations%20by%20emerging%20artists.",
+            "isAd": false,
+            "retrievedAt": "2024-12-28T18:59:29.578Z",
+            "searchEngine": "Google",
+            "searchQuery": "Miami art scene events 2025 and galleries to contact",
+            "position": 10
+        }
+    ],
+    "columns": [
+        {
+            "name": "Event Date",
+            "key": "eventDate",
+            "description": "The date of the event, in YYYY-MM-DD format",
+            "isRequired": true
+        },
+        {
+            "name": "Event Name",
+            "key": "eventName",
+            "description": "The name of the event",
+            "isRequired": true
+        },
+        {
+            "name": "Venue Name",
+            "key": "venueName",
+            "description": "The official venue name",
+            "isRequired": true
+        },
+        {
+            "name": "Description",
+            "key": "description",
+            "description": "A one-line summary of the event",
+            "isRequired": true
+        }
+    ],
+    "rows": [
+        {
+            "description": "one-line summary of the event: Showcasing an exceptionally curated array of international galleries presenting blue chip contemporary, post-war and modern masters as well as emerging and mid-career artists from the contemporary market.",
+            "eventDate": "2025-01-22",
+            "eventName": "Miami Modern + Contemporary",
+            "venueName": "Herald Plaza on Biscayne Bay",
+            "url": "https://www.miamimcfair.com/"
+        },
+        {
+            "description": "Miami’s original and longest running contemporary art fair and second most attended fair globally, consistently recognized as a leading destination for the acquisition of the most important works from the 20th and 21st centuries in collaboration with the world's most respected galleries.",
+            "eventDate": "2025-12-02",
+            "eventName": "Art Miami VIP Preview",
+            "venueName": "One Herald Plaza",
+            "url": "https://www.artmiami.com/"
+        },
+        {
+            "description": "The best art galleries in Miami to get immersed in the city’s creative scene",
+            "eventDate": "2024-01-31",
+            "eventName": "Things to Do",
+            "venueName": "Miami",
+            "url": "https://www.timeout.com/miami/things-to-do/best-art-galleries-in-miami"
+        },
+        {
+            "description": "Design Miami 2025",
+            "eventDate": "2025-12-08T00:00:00Z",
+            "eventName": "Design Miami 2025",
+            "venueName": "Miami Design District",
+            "url": "https://designmiami.com/"
+        },
+        {
+            "description": "Discover a new addition to Miami’s vibrant art scene as Miami Modern + Contemporary makes its debut at One Herald Plaza from January 22-26, 2025.",
+            "eventDate": "2025-01-22",
+            "eventName": "Miami Modern + Contemporary",
+            "venueName": "One Herald Plaza",
+            "url": "https://www.miamiandbeaches.com/event/miami-modern-contemporary/30424"
+        },
+        {
+            "description": "Exhibitions at ICA Miami",
+            "eventDate": "Dec 3, 2024–Mar 30, 2025",
+            "eventName": "Lucy Bull: The Garden of Forking Paths",
+            "venueName": "ICA Miami",
+            "url": "https://icamiami.org/exhibitions/"
+        },
+        {
+            "description": "Map out your art agenda during Miami Art Week and beyond with See Saw Gallery Guide, featuring CULTURED's show recommendations and critics' picks.",
+            "eventDate": "2024-12-02",
+            "eventName": "CULTURED",
+            "venueName": "Pérez Art Museum Miami",
+            "url": "https://www.culturedmag.com/article/2024/12/02/miami-exhibition-guide-must-see"
+        },
+        {
+            "description": "Redwood Art Group's premier contemporary art fairs",
+            "eventDate": "Dec. 1, 2024 – Jan. 2, 2025",
+            "eventName": "Spectrum Miami",
+            "venueName": "Mana Wynwood",
+            "url": "https://redwoodartgroup.com/spectrum-miami/"
+        },
+        {
+            "description": "Art of Black's 10th Year Anniversary In Greater Miami & Miami Beach",
+            "eventDate": "APR 06, 2025",
+            "eventName": "Exhibition \"Ancient Futures\" at MOCA, North Miami featuring Jamea Richmond-Edwards, Dark Night of the Soul",
+            "venueName": "Museum of Contemporary Art, North Miami",
+            "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture/art-of-black"
+        },
+        {
+            "description": "A leading contemporary art fair taking place annually on the sands of Miami Beach and Houston.",
+            "eventDate": "2025-09-19",
+            "eventName": "Untitled Art, Houston",
+            "venueName": "George R. Brown Convention Center",
+            "url": "https://untitledartfairs.com/"
+        },
+        {
+            "description": "The best Miami arts and culture events and exhibits to see this summer 2024",
+            "eventDate": "2024-05-16T00:00:00+00:00",
+            "eventName": "Cocaine Cowboys and Plastic Pink Flamingos Event",
+            "venueName": "Various Venues",
+            "url": "https://www.timeout.com/miami/things-to-do/the-best-miami-arts-and-culture-events-and-exhibits-to-see-this-summer-2024"
+        },
+        {
+            "description": "Does collaboration with an art gallery increase the chances of selling artworks?",
+            "eventDate": "Not specified",
+            "eventName": "Does collaboration with an art gallery increase the chances of selling artworks?",
+            "venueName": "Not specified",
+            "url": "https://artbidy.com/en/about-us/news/does-collaboration-with-an-art-gallery-increase-the-chances-of-selling-artworks#:~:text=The%20Role%20of%20Art%20Galleries%20in%20Building%20an%20Artist's%20Brand&text=Through%20collaboration%20with%20a%20gallery,work%20to%20a%20broader%20audience."
+        },
+        {
+            "description": "Budding artists can relocate to Miami for its thriving art scene.",
+            "eventDate": "2024-07-12",
+            "eventName": "MIAMI ART WEEK",
+            "venueName": "Miami",
+            "url": "https://artbusinessnews.com/2024/07/artists-is-making-a-move-to-miami-beneficial-for-your-career/#:~:text=Budding%20artists%20can%20relocate%20to,%2C%20galleries%2C%20and%20creative%20hubs."
+        },
+        {
+            "description": "",
+            "eventDate": "2025-01-22",
+            "eventName": "Miami Modern + Contemporary 2025",
+            "venueName": "Miami Modern + Contemporary",
+            "url": "http://olivercolegallery.com/art_fairs"
+        },
+        {
+            "description": "Art Basel Miami is a premier art fair that has earned a global reputation for showcasing the best in modern and contemporary art.",
+            "eventDate": "2025-12-05",
+            "eventName": "Art Basel Miami 2025",
+            "venueName": "Miami Beach",
+            "url": "https://camperandnicholsons.com/magazine/art-basel-miami-2025"
+        },
+        {
+            "description": "MIAMI--Opening on November 13, 2024, the Margulies Collection will present a rare look at 21 never-before-seen to the Miami-public artworks from the 20th Century.",
+            "eventDate": "November 13, 2024",
+            "eventName": "Press Release 2024-2025",
+            "venueName": "The Margulies Collection at the Warehouse",
+            "url": "https://www.margulieswarehouse.com/press/press-release-2024-2025"
+        },
+        {
+            "description": "Join us for the opening of our new exhibition featuring works by over 100 artists from around the world.",
+            "eventDate": "2025-01-06",
+            "eventName": "Opening",
+            "venueName": "Pérez Art Museum Miami",
+            "url": "https://www.pamm.org/en/"
+        },
+        {
+            "description": "a group of international annual art fairs focused on contemporary art",
+            "eventDate": "2022-01-01",
+            "eventName": "Art Basel",
+            "venueName": "Paris+ par Art Basel, Hong Kong Convention and Exhibition Centre, Basel Convention Centre",
+            "url": "https://en.wikipedia.org/wiki/Art_Basel#:~:text=Art%20Basel%20is%20a%20for,)%2C%20Hong%20Kong%20and%20Paris."
+        },
+        {
+            "description": "A Showcase of Art, Culture and Exclusive Experiences Are Accessible All Year Long on Miami Beach",
+            "eventDate": "2024-11-20",
+            "eventName": "November Event",
+            "venueName": "Biscayne Bay Tribune",
+            "url": "https://communitynewspapers.com/biscayne-bay/a-showcase-of-art-culture-and-exclusive-experiences-are-accessible-all-year-long-on-miami-beach/"
+        },
+        {
+            "description": "Discover Redwood Art Group's premier contemporary art fairs",
+            "eventDate": "December 1, 2024 – January 2, 2025",
+            "eventName": "Red Dot Miami",
+            "venueName": "Spectrum Miami & Mana Wynwood",
+            "url": "https://redwoodartgroup.com/red-dot-miami/"
+        },
+        {
+            "description": "Greater Miami & Miami Beach is a dynamic destination for art and culture in large part thanks to its thriving and ever-changing contemporary gallery scene.",
+            "eventDate": "2023-12-13",
+            "eventName": "Exploring Art Galleries in Miami",
+            "venueName": "Oolite Arts",
+            "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture/galleries/miami-art-galleries"
+        },
+        {
+            "description": "Spinello, Nina Johnson, Primary, and more of the city's best art galleries. By Carolina del Busto October 5, 2021",
+            "eventDate": "October 5, 2021",
+            "eventName": "The Ten Best Art Galleries in Miami",
+            "venueName": "Spinello Projects",
+            "url": "https://www.miaminewtimes.com/arts/ten-best-art-galleries-in-miami-13038113"
+        },
+        {
+            "description": "",
+            "eventDate": "2025-04-06",
+            "eventName": "Andrea Chung: Between Too Late and Too Early",
+            "venueName": "MOCA North Miami",
+            "url": "https://www.mocanomi.org/"
+        },
+        {
+            "description": "Approaching an art gallery with my art",
+            "eventDate": "Aug 16",
+            "eventName": "How do I approach an art gallery with my art?",
+            "venueName": "Quora",
+            "url": "https://www.quora.com/Is-there-an-appropriate-way-to-approach-art-galleries-with-the-aim-of-getting-a-show-representation"
+        },
+        {
+            "description": "",
+            "eventDate": "2024-12-08",
+            "eventName": "[Miami Art Week 2024]",
+            "venueName": "[Various Venues in Miami]",
+            "url": "https://www.forbes.com/sites/ericawertheimzohar/2024/11/27/the-complete-guide-to-2024-miami-art-week--the-events-art-and-parties/"
+        }
+    ]
+}
