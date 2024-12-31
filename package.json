@@ -57,6 +57,7 @@
     "appId": "com.zachrattner.scourhead",
     "mac": {
       "category": "public.app-category.productivity",
+      "executableName": "scourhead",
       "target": "dmg",
       "icon": "icons/mac/icon.icns",
       "extendInfo": {
