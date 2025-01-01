@@ -3,6 +3,7 @@ import logger from '../logger';
 import { SearchResult } from "../scourFormat";
 import { determineHeadlessShellPath } from '../determineHeadlessShellPath';
 import { stealthifyPlaywright } from '../stealthifyPlaywright';
+import { extractPlainText } from '../extractPlainText';
 
 const SHOW_BROWSER = false;
 
@@ -19,10 +20,8 @@ export async function searchGoogle(query: string, maxPages: number = 1): Promise
         executablePath,
     });
 
-    stealthifyPlaywright(browser);
-
     logger.info("Creating browser context...");
-    const context = await browser.newContext();
+    const context = await stealthifyPlaywright(browser);
 
     logger.info("Opening a new page...");
     const page: Page = await context.newPage();

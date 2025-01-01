@@ -14,9 +14,7 @@ export async function extractPlainText(url: string): Promise<string> {
 
         browser = await chromium.launch({ executablePath });
 
-        stealthifyPlaywright(browser);
-
-        const context = await browser.newContext();
+        const context = await stealthifyPlaywright(browser);
         const page: Page = await context.newPage();
 
         console.log(`Navigating to ${url}...`);

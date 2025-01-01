@@ -1,7 +1,7 @@
-import { Browser, BrowserContext, Page } from 'playwright';
+import { Browser, BrowserContext } from 'playwright';
 
 /**
- * Stealthify a Playwright browser context to simulate a real user.
+ * Stealthify a Playwright browser context to simulate a real user with minimal overrides.
  * @param browser - The Playwright browser instance.
  * @param options - Optional configuration for viewport, userAgent, etc.
  * @returns A new stealth-enabled browser context.
@@ -18,51 +18,73 @@ export async function stealthifyPlaywright(
 ): Promise<BrowserContext> {
     const defaultOptions = {
         viewport: { width: 1280, height: 720 },
-        userAgent:
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
         isMobile: false,
-        deviceScaleFactor: 1,
+        deviceScaleFactor: 2,
         hasTouch: false,
     };
 
     const config = { ...defaultOptions, ...options };
 
+    // Fetch the User-Agent dynamically if not provided
+    const tempContext = await browser.newContext();
+    const defaultUserAgent = await getUserAgent(tempContext);
+    await tempContext.close();
+
     const context = await browser.newContext({
         viewport: config.viewport,
-        userAgent: config.userAgent,
+        userAgent: config.userAgent || defaultUserAgent,
         isMobile: config.isMobile,
         deviceScaleFactor: config.deviceScaleFactor,
         hasTouch: config.hasTouch,
     });
 
-    // Remove navigator.webdriver
+    // Remove navigator.webdriver if it exists
     await context.addInitScript(() => {
-        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+        Object.defineProperty(navigator, 'webdriver', {
+            get: () => undefined,
+        });
     });
 
-    // Fake navigator.plugins
+    // Ensure navigator.plugins is non-empty if needed
     await context.addInitScript(() => {
         Object.defineProperty(navigator, 'plugins', {
-            get: () => [1, 2, 3], // Fake plugin array
+            get: () => Array(3).fill({}),
         });
     });
 
-    // Fake navigator.languages
+    // Set realistic navigator.languages if needed
     await context.addInitScript(() => {
         Object.defineProperty(navigator, 'languages', {
-            get: () => ['en-US', 'en'], // Example: English (US)
+            get: () => navigator.languages || ['en-US', 'en'],
         });
     });
 
-    // Fake WebGL vendor/renderer
+    // Adjust WebGL rendering only if necessary
     await context.addInitScript(() => {
         const getParameter = WebGLRenderingContext.prototype.getParameter;
         WebGLRenderingContext.prototype.getParameter = function (parameter) {
-            if (parameter === 37445) return 'Intel Inc.';
-            if (parameter === 37446) return 'Intel Iris OpenGL Engine';
-            return getParameter(parameter);
+            // Return unmodified values unless overriding is required
+            if ((parameter === 3744) && !getParameter(37445)) {
+                return 'GPU Vendor';
+            }
+            if ((parameter === 37446) && !getParameter(37446)) {
+                return 'GPU Renderer';
+            }
+            return getParameter.call(this, parameter);
         };
     });
 
     return context;
+}
+
+/**
+ * Fetch the browser's default User-Agent from a temporary page.
+ * @param context - The browser context.
+ * @returns The default User-Agent string.
+ */
+async function getUserAgent(context: BrowserContext): Promise<string> {
+    const page = await context.newPage();
+    const userAgent = await page.evaluate(() => navigator.userAgent);
+    await page.close();
+    return userAgent.replace('HeadlessChrome', 'Chrome');
 }
