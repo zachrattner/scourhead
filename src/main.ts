@@ -310,6 +310,15 @@ ipcMain.handle('save-preference', async (event, key: string, value: any) => {
     await savePreference(key, value);
 });
 
+ipcMain.handle('get-formatted-debug-log', async (event) => {
+    const rawDebugLog = logger.getDebugLog();
+    if (!rawDebugLog || !rawDebugLog.length) {
+        return 'No debug log present yet. Start using Scourhead to make some logs.';
+    }
+
+    return rawDebugLog?.join('\n');
+});
+
 app.on('activate', () => {
     if (mainWindow === null) {
         createWindow();

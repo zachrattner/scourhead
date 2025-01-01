@@ -28,4 +28,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
     exportCsv: async(csvPath: string) => ipcRenderer.invoke('export-csv', csvPath),
     loadPreference: async(key: string) => ipcRenderer.invoke('load-preference', key),
     savePreference: async(key: string, value: any) => ipcRenderer.invoke('save-preference', key, value),
+
+    getFormattedDebugLog: async() => ipcRenderer.invoke('get-formatted-debug-log'),
 });

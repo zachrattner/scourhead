@@ -16,6 +16,9 @@ const levelColors: Record<string, string> = {
     error: `${colors.red}${colors.bold}`,
 };
 
+const MAX_DEBUG_LINES = 1000;
+const debugLogBuffer: string[] = [];
+
 function getContext(): string {
     const err = new Error();
     const stack = err.stack?.split("\n") || [];
@@ -44,9 +47,19 @@ function log(level: string, message: string, context?: string) {
     const fileName = context.split(":")[0].padStart(24, " ");
     const lineNumber = context.split(":")[1]?.padStart(5, "0") || "00000";
 
-    console.log(
-        `${colorize}[${timestamp}] [${paddedLevel}] ${fileName}:${lineNumber} ${message}${colors.reset}`
-    );
+    const logMessage = `[${timestamp}] [${paddedLevel}] ${fileName}:${lineNumber} ${message}`;
+
+    console.log(`${colorize}${logMessage}${colors.reset}`);
+    debugLogBuffer.push(logMessage);
+
+    // Eject oldest log entries if the buffer exceeds the max size
+    if (debugLogBuffer.length > MAX_DEBUG_LINES) {
+        debugLogBuffer.shift();
+    }
+}
+
+function getDebugLog(): string[] {
+    return [...debugLogBuffer]; // Return a copy to avoid mutations
 }
 
 const logger = {
@@ -55,6 +68,7 @@ const logger = {
     error: (message: string, context?: string) => log("error", message, context),
     debug: (message: string, context?: string) => log("debug", message, context),
     getContext,
+    getDebugLog,
 };
 
 export default logger;
