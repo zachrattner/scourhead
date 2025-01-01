@@ -1,4 +1,6 @@
 import { app, shell, BrowserWindow, dialog } from 'electron';
+import logger from './logger';
+import { openDebugLogWindow } from './openDebugLogWindow';
 
 export const buildMenuTemplate = (
     mainWindow: BrowserWindow,
@@ -64,6 +66,12 @@ export const buildMenuTemplate = (
                             playwright: Apache-2.0 License
                             `,
                         })
+                    }
+                },
+                {
+                    label: 'Show Debug Log',
+                    click: async () => {
+                        openDebugLogWindow();
                     }
                 },
                 {
