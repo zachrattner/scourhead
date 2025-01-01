@@ -117,7 +117,7 @@
       }
     ],
     "files": [
-      "**/*",
+      "dist/**/*",
       "node_modules/playwright/**/*",
       "browsers/**/*"
     ],
