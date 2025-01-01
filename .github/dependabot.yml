@@ -6,9 +6,7 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "./"
-    registries:
-      - npm-github
+    directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
