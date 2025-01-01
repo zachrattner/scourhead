@@ -1,5 +1,6 @@
 import { chromium, Browser, Page } from 'playwright';
 import { determineHeadlessShellPath } from './determineHeadlessShellPath';
+import { stealthifyPlaywright } from './stealthifyPlaywright';
 
 export async function extractPlainText(url: string): Promise<string> {
     let browser: Browser | null = null;
@@ -12,6 +13,8 @@ export async function extractPlainText(url: string): Promise<string> {
         }
 
         browser = await chromium.launch({ executablePath });
+
+        stealthifyPlaywright(browser);
 
         const context = await browser.newContext();
         const page: Page = await context.newPage();

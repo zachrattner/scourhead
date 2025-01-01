@@ -2,6 +2,7 @@ import { chromium, Browser, Page } from 'playwright';
 import logger from '../logger';
 import { SearchResult } from "../scourFormat";
 import { determineHeadlessShellPath } from '../determineHeadlessShellPath';
+import { stealthifyPlaywright } from '../stealthifyPlaywright';
 
 const SHOW_BROWSER = false;
 
@@ -17,6 +18,8 @@ export async function searchGoogle(query: string, maxPages: number = 1): Promise
         headless: !SHOW_BROWSER,
         executablePath,
     });
+
+    stealthifyPlaywright(browser);
 
     logger.info("Creating browser context...");
     const context = await browser.newContext();
