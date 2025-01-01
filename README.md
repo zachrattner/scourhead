@@ -2,7 +2,8 @@
 
 Scourhead is an open-source agentic AI application designed to streamline online research by automating tedious workflows. It leverages the Llama 3.2 LLM and Playwright for browser automation to deliver structured search results into a spreadsheet, mimicking how a skilled human would perform the research task.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fwtTrSmRK34?si=ZkbyFrr80llCZE95" title="YouTube video player"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+**Watch on YouTube:**
+[![Watch on YouTube](https://img.youtube.com/vi/fwtTrSmRK34/0.jpg)](https://www.youtube.com/watch?v=fwtTrSmRK34)
 
 [![AI Labels - Made by Humans with AI](https://ailabels.org/badges/AI%20Labels%20-%20Human%20and%20AI.svg "Made By Humans with AI")](https://ailabels.org)
 
