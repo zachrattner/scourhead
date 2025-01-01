@@ -66,14 +66,16 @@ create_github_release() {
     local release_notes=$(cat <<EOF
 # Scourhead v${APP_VERSION}
 
-Download links for all architectures:
+Download links for all architectures are below.
 
-- [macOS arm64](https://scourhead.com/releases/${APP_VERSION}/Scourhead-${APP_VERSION}-arm64.dmg)
-- [macOS x64](https://scourhead.com/releases/${APP_VERSION}/Scourhead-${APP_VERSION}-x64.dmg)
-- [Windows x64](https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-x64.exe)
-- [Windows arm64](https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-arm64.exe)
-- [Linux x64](https://scourhead.com/releases/${APP_VERSION}/scourhead_${APP_VERSION}_amd64.deb)
-- [Linux arm64](https://scourhead.com/releases/${APP_VERSION}/scourhead_${APP_VERSION}_arm64.deb)
+Note that the CDN only stores the latest build, and the link names are reused across versions. For the most accurate way to run an earlier build, pull down the git tag for the version you want to run and run a development build.
+
+- [macOS arm64](https://scourhead.com/releases/Scourhead-arm64.dmg)
+- [macOS x64](https://scourhead.com/releases/Scourhead-x64.dmg)
+- [Windows x64](https://scourhead.com/releases/Scourhead-Setup-x64.exe)
+- [Windows arm64](https://scourhead.com/releases/Scourhead-Setup-arm64.exe)
+- [Linux x64](https://scourhead.com/releases/scourhead_amd64.deb)
+- [Linux arm64](https://scourhead.com/releases/scourhead_arm64.deb)
 EOF
 )
 
@@ -108,10 +110,10 @@ build_upload_check() {
 }
 
 invalidate_cloudfront_cache() {
-    echo "Invalidating CloudFront cache for /releases/${APP_VERSION}/*"
+    echo "Invalidating CloudFront cache for /releases/*"
     INVALIDATION_ID=$(aws cloudfront create-invalidation \
         --distribution-id "$CLOUDFRONT_DISTRIBUTION_ID" \
-        --paths "/releases/${APP_VERSION}/*" \
+        --paths "/releases/*" \
         --profile "$AWS_PROFILE" \
         --query 'Invalidation.Id' \
         --output text) || error_exit "Failed to create CloudFront invalidation"
@@ -119,68 +121,39 @@ invalidate_cloudfront_cache() {
     echo "CloudFront invalidation created: $INVALIDATION_ID"
 }
 
-update_index_html() {
-    echo "Downloading index.html from S3..."
-    aws s3 cp "$S3_BUCKET/index.html" index.html --profile "$AWS_PROFILE" || error_exit "Failed to download index.html"
-
-    echo "Updating download links in index.html..."
-    sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-[0-9.]*-arm64.dmg#https://scourhead.com/releases/${APP_VERSION}/Scourhead-${APP_VERSION}-arm64.dmg#g" index.html
-    sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-[0-9.]*-x64.dmg#https://scourhead.com/releases/${APP_VERSION}/Scourhead-${APP_VERSION}-x64.dmg#g" index.html
-    sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-Setup-x64.exe#https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-x64.exe#g" index.html
-    sed -i '' -e "s#https://scourhead.com/releases/.*/Scourhead-Setup-arm64.exe#https://scourhead.com/releases/${APP_VERSION}/Scourhead-Setup-arm64.exe#g" index.html
-    sed -i '' -e "s#https://scourhead.com/releases/.*/scourhead_[0-9.]*_amd64.deb#https://scourhead.com/releases/${APP_VERSION}/scourhead_${APP_VERSION}_amd64.deb#g" index.html
-    sed -i '' -e "s#https://scourhead.com/releases/.*/scourhead_[0-9.]*_arm64.deb#https://scourhead.com/releases/${APP_VERSION}/scourhead_${APP_VERSION}_arm64.deb#g" index.html
-
-    echo "Uploading updated index.html to S3..."
-    aws s3 cp index.html "$S3_BUCKET/index.html" --profile "$AWS_PROFILE" || error_exit "Failed to upload updated index.html"
-
-    echo "Invalidating CloudFront cache for /index.html..."
-    INVALIDATION_ID=$(aws cloudfront create-invalidation \
-        --distribution-id "$CLOUDFRONT_DISTRIBUTION_ID" \
-        --paths "/index.html" \
-        --profile "$AWS_PROFILE" \
-        --query 'Invalidation.Id' \
-        --output text) || error_exit "Failed to create CloudFront invalidation for /index.html"
-
-    echo "CloudFront invalidation created for /index.html: $INVALIDATION_ID"
-
-    rm index.html
-}
-
 cleanup
 build_upload_check "npm run build-mac-arm64" \
    "release/Scourhead-${APP_VERSION}-arm64.dmg" \
-    "$S3_RELEASE_FOLDER/${APP_VERSION}/Scourhead-${APP_VERSION}-arm64.dmg"
+    "$S3_RELEASE_FOLDER/Scourhead-arm64.dmg"
 
 cleanup
 build_upload_check "npm run build-mac-x64" \
     "release/Scourhead-${APP_VERSION}.dmg" \
-    "$S3_RELEASE_FOLDER/${APP_VERSION}/Scourhead-${APP_VERSION}-x64.dmg"
+    "$S3_RELEASE_FOLDER/Scourhead-x64.dmg"
 
 cleanup
 build_upload_check "npm run build-win-x64" \
     "release/Scourhead Setup ${APP_VERSION}.exe" \
-    "$S3_RELEASE_FOLDER/${APP_VERSION}/Scourhead-Setup-x64.exe"
+    "$S3_RELEASE_FOLDER/Scourhead-Setup-x64.exe"
 
 cleanup
 build_upload_check "npm run build-win-arm64" \
     "release/Scourhead Setup ${APP_VERSION}.exe" \
-    "$S3_RELEASE_FOLDER/${APP_VERSION}/Scourhead-Setup-arm64.exe"
+    "$S3_RELEASE_FOLDER/Scourhead-Setup-arm64.exe"
 
 cleanup
 build_upload_check "npm run build-linux-x64" \
     "release/scourhead_${APP_VERSION}_amd64.deb" \
-    "$S3_RELEASE_FOLDER/${APP_VERSION}/scourhead_${APP_VERSION}_amd64.deb"
+    "$S3_RELEASE_FOLDER/scourhead_amd64.deb"
 
 cleanup
 build_upload_check "npm run build-linux-arm64" \
     "release/scourhead_${APP_VERSION}_arm64.deb" \
-    "$S3_RELEASE_FOLDER/${APP_VERSION}/scourhead_${APP_VERSION}_arm64.deb"
+    "$S3_RELEASE_FOLDER/scourhead_arm64.deb"
 
 cleanup
 invalidate_cloudfront_cache
 check_and_create_tag
 create_github_release
-update_index_html
 
 echo "All tasks completed successfully!"
