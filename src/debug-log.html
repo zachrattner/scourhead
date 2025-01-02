@@ -8,23 +8,57 @@
     <link rel="stylesheet" href="./css/theme.css" />
     <link rel="stylesheet" href="./css/theme-light.css" />
     <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #1f1f1f;
+            color: #d2d2d2;
+            font-family: sans-serif;
+        }
+
+        #alert {
+            background-color: #ffcc00;
+            width: 100%;
+            color: #000;
+            font-size: 14px;
+            text-align: left;
+            z-index: 10;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        #alert p {
+            padding: 8px;
+            margin: 0;
+        }
+
         #log-container {
             background-color: #1f1f1f;
             color: #d2d2d2;
             font-family: monospace;
             font-size: 12px;
-            width: 100%;
-            height: 100%;
+            overflow-y: auto;
+            flex-grow: 1;
             text-align: left;
-            overflow-y: scroll;
-            position: absolute;
+            padding: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
     </style>
 </head>
 <body>
+    <div id="alert">
+        <p>
+            👀 Heads up! The debug log can contain your search queries and results. Consider redacting before sharing if you'd like your information to remain private.
+        </p>
+    </div>
+
     <pre id="log-container"></pre>
+    
     <script>
-         document.addEventListener('DOMContentLoaded', async () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             const logData = await window.electronAPI.getFormattedDebugLog();
             document.getElementById('log-container').textContent = logData;
         });

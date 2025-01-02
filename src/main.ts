@@ -313,7 +313,7 @@ ipcMain.handle('save-preference', async (event, key: string, value: any) => {
 ipcMain.handle('get-formatted-debug-log', async (event) => {
     const rawDebugLog = logger.getDebugLog();
     if (!rawDebugLog || !rawDebugLog.length) {
-        return 'No debug log present yet. Start using Scourhead to make some logs.';
+        return 'There are no debug log lines present yet. Start using Scourhead to make some logs!';
     }
 
     return rawDebugLog?.join('\n');
