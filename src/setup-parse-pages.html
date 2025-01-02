@@ -102,11 +102,13 @@
             white-space: nowrap;
         }
 
-        #loading-animation {
+        #loading-animation,
+        #exporting-animation {
             display: none;
         }
 
-        #loading-animation img {
+        #loading-animation img,
+        #exporting-animation img {
             width: 200px;
         }
     </style>
@@ -118,6 +120,8 @@
     <div id="loading-animation">
         <img src="img/loading.svg" alt="Loading" />
     </div>
+
+    <div id="exporting-animation"></div>
 
     <div id="results">
         
@@ -134,7 +138,8 @@
         let isParsing = false;
         let rowStartIndex = 0;
 
-        const loadingAnimation = document.getElementById('loading-animation');
+        const loadingAnimation   = document.getElementById('loading-animation');
+        const exportingAnimation = document.getElementById('exporting-animation');
 
         const subtitle = document.getElementById('subtitle');
         const results = document.getElementById('results');
@@ -154,6 +159,7 @@
 
             buttonContainer.style.display = 'none';
             loadingAnimation.style.display = 'block';
+            exportingAnimation.style.display = 'none';
             results.style.display = 'none';
             
             scourButton.style.display = 'none';
@@ -266,19 +272,17 @@
             else {
                 if (scourFile.rows.length) {
                     const resultNoun = (scourFile.rows.length === 1) ? 'result' : 'results';
-                    if (isAtEnd()) {
-                        subtitle.innerText = `You have ${scourFile.rows.length} ${resultNoun}.`;
-                        exportButton.style.display = 'inline';
+                    subtitle.innerText = `Recorded ${scourFile.rows.length} ${resultNoun}`;
 
+                    if (isAtEnd()) {
+                        exportButton.style.display = 'inline';
                         loadingAnimation.style.display = 'none';
+                        exportingAnimation.style.display = 'none';
                         buttonContainer.style.display = 'block';
-                    }
-                    else {
-                        subtitle.innerText = `You have ${scourFile.rows.length} ${resultNoun} so far.`;
                     }
                 }
                 else {
-                    subtitle.innerText = 'Press the Scour button to check each page.'
+                    subtitle.innerText = 'Press the Scour button to check each page and build your spreadsheet.'
                 }
             }
         }
@@ -322,7 +326,6 @@
         backButton.addEventListener('click', async () => {
             window.electronAPI.navigateTo('setup-run-search.html');
         });
-
         exportButton.addEventListener('click', async () => {
             const desktopPath = await window.electronAPI.invoke('get-desktop-path');
             const filePath = await window.electronAPI.invoke('show-export-dialog', {
@@ -332,6 +335,17 @@
             });
 
             if (filePath) {
+                const exportingSvg = document.createElement('img');
+                exportingSvg.src = `img/exporting.svg?${Date.now()}`; // Append URL parameter to force reload
+                exportingSvg.alt = 'Exporting';
+                exportingAnimation.appendChild(exportingSvg);
+                exportingAnimation.style.display = 'block';        
+
+                setTimeout(() => {
+                    exportingAnimation.style.display = 'none'
+                    exportingAnimation.innerHTML = '';
+                }, 5000);
+
                 window.electronAPI.exportCsv(filePath);
             }
         });
