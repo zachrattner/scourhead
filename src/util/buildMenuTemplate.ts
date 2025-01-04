@@ -4,12 +4,20 @@ import { openDebugLogWindow } from './openDebugLogWindow';
 
 export const buildMenuTemplate = (
     mainWindow: BrowserWindow,
+    newFileDialogFunc: (mainWindow: BrowserWindow) => void,
     openFileDialogFunc: (mainWindow: BrowserWindow) => void
 ): Electron.MenuItemConstructorOptions[] => {
     const menuTemplate: Electron.MenuItemConstructorOptions[] = [
         {
             label: 'File',
             submenu: [
+                {
+                    label: 'New File...',
+                    accelerator: 'CmdOrCtrl+N',
+                    click: () => {
+                        newFileDialogFunc(mainWindow);
+                    },
+                },
                 {
                     label: 'Open...',
                     accelerator: 'CmdOrCtrl+O',
