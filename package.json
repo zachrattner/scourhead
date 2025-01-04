@@ -2,7 +2,7 @@
   "name": "scourhead",
   "productName": "Scourhead",
   "homepage": "https://scourhead.com",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Scour the web for whatever you're looking for",
   "main": "dist/main.js",
   "scripts": {
