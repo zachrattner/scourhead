@@ -302,7 +302,16 @@
                 await window.electronAPI.savePreference('model', ollamaModel.value);
 
                 if (await checkOllama()) {
-                    downloadModelButton.style.display = 'inline';
+                    // If model is already present, do not require it to be downloaded
+                    if (await checkModelPresence(ollamaModel.value)) {
+                        nextButton.disabled = false;
+                        downloadModelButton.style.display = 'none';
+                        document.getElementById('ollama-status').className = 'ok';
+                        buttonContainer.style.display = 'block';
+                    }
+                    else {
+                        downloadModelButton.style.display = 'inline';
+                    }
                 }
                 else {
                     await window.electronAPI.showInfo('Failed to reach Ollama', `Scourhead was unable to reach Ollama at ${ollamaHost.value}:${ollamaPort.value}. Please ensure Ollama is running and that the host and port are correct.`);
