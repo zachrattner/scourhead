@@ -109,7 +109,7 @@ app.on('ready', () => {
     }
 
     if (mainWindow) {
-        const menu = Menu.buildFromTemplate(buildMenuTemplate(mainWindow, onOpenFileRequested));
+        const menu = Menu.buildFromTemplate(buildMenuTemplate(mainWindow, onNewFileRequested, onOpenFileRequested));
         Menu.setApplicationMenu(menu);
     }
 
@@ -118,6 +118,40 @@ app.on('ready', () => {
         handleOpenedFile(filePath);
     }
 });
+
+async function onNewFileRequested(mainWindow: BrowserWindow) {
+    const desktopPath = app.getPath('desktop');
+
+    const result = await dialog.showSaveDialog(mainWindow, {
+        title: 'Create New Project',
+        defaultPath: `${desktopPath}/project.scour`,
+        filters: [{ name: 'Scour Files', extensions: ['scour'] }],
+    });
+
+    const { filePath } = result;
+            
+    try {
+        scourFilePath = filePath;
+        scourFile = createScourFile(filePath);
+        if (scourFile) {
+            logger.info(`Created project at ${filePath}`);
+            mainWindow?.loadFile(path.join(__dirname, 'setup-enter-goal.html'));
+        } else {
+            throw new Error('Failed to create project file');
+        }
+    } catch (error) {
+        logger.error(`Failed to create project: ${filePath}`);
+        if (mainWindow) {
+            await dialog.showMessageBox(mainWindow, {
+                type: 'warning',
+                buttons: ['OK'],
+                defaultId: 0,
+                title: 'Project creation failed',
+                message: 'Unable to create the project file. Please try again or check permissions.',
+            });
+        }
+    }
+}
 
 async function onOpenFileRequested(mainWindow: BrowserWindow) {
     mainWindow?.loadFile(path.join(__dirname, 'setup-enter-goal.html'));
