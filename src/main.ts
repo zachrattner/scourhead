@@ -353,6 +353,10 @@ ipcMain.handle('get-formatted-debug-log', async (event) => {
     return rawDebugLog?.join('\n');
 });
 
+ipcMain.handle('get-app-version', async (event) => {
+    return app.getVersion();
+});
+
 app.on('activate', () => {
     if (mainWindow === null) {
         createWindow();

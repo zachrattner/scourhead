@@ -52,8 +52,16 @@
     </div>
     <button id="next">Get Started</button>
     <script>
-        document.getElementById('next').addEventListener('click', () => {
-            window.electronAPI.navigateTo('setup-ollama.html');
+        async function loadAppVersion() {
+            const appVersion = await window.electronAPI.getAppVersion();
+            document.title = `${document.title} v${appVersion}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadAppVersion();
+            document.getElementById('next').addEventListener('click', () => {
+                window.electronAPI.navigateTo('setup-ollama.html');
+            });
         });
     </script>
 </body>
