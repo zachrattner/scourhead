@@ -1,5 +1,4 @@
 import { app, shell, BrowserWindow, dialog } from 'electron';
-import logger from './logger';
 import { openDebugLogWindow } from './openDebugLogWindow';
 
 export const buildMenuTemplate = (
