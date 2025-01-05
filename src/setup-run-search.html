@@ -46,7 +46,7 @@
     </style>
 </head>
 <body>
-    <h1>Run search</h1>
+    <h1 id="title">Run search</h1>
     <p id="subtitle">Scouring the web for you...</p>
     
     <div id="search-results">
@@ -62,6 +62,7 @@
         let scourFile = null;
         let isSearching = false;
 
+        const title = document.getElementById('title');
         const subtitle = document.getElementById('subtitle');
         const searchResults = document.getElementById('search-results');
         const nextButton = document.getElementById('next');
@@ -71,14 +72,26 @@
         async function showSearchResults() {
             scourFile = await window.electronAPI.getScourFile();
 
-            if (!scourFile || !scourFile.searchResults) {
+            if (!scourFile) {
+                return;
+            }
+
+            if (scourFile.statusMessage) {
+                subtitle.innerText = scourFile.statusMessage;
+            }
+
+            if (!scourFile.searchResults) {
                 return;
             }
 
             const numSearchReults  = scourFile.searchResults.length;
             const searchResultNoun = (numSearchReults === 1) ? 'result' : 'results';
-
-            subtitle.innerText = `Running query ${scourFile.currentSearchQueryIndex + 1} of ${scourFile.searchQueries.length}. Received ${numSearchReults} ${searchResultNoun} so far...`;
+            if (scourFile.statusMessage) {
+                title.innerText = `On query ${scourFile.currentSearchQueryIndex + 1} of ${scourFile.searchQueries.length}. Received ${numSearchReults} ${searchResultNoun} so far.`;
+            }
+            else {
+                subtitle.innerText = `On query ${scourFile.currentSearchQueryIndex + 1} of ${scourFile.searchQueries.length}. Received ${numSearchReults} ${searchResultNoun} so far.`;
+            }
 
             searchResults.innerHTML = '';
             scourFile.searchResults.forEach((result, index) => {
@@ -102,6 +115,9 @@
             else {
                 if (scourFile.searchResults.length) {
                     subtitle.innerText = `You have ${scourFile.searchResults.length} search results.`;
+                }
+                else if (scourFile.statusMessage) {
+                    subtitle.innerText = scourFile.statusMessage;
                 }
                 else {
                     subtitle.innerText = 'Press the Search button to start.';

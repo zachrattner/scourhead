@@ -30,6 +30,7 @@ export interface ScourFile {
     createdAt: string; // ISO 8601 date string
     appVersion: string;
     searchEngine: SearchEngine;
+    statusMessage?: string | null | undefined;
     objective: string | null | undefined;
     numQueries: number;
     numResultsPerQuery: number;

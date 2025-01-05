@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs, { read } from "fs";
 import { searchGoogle } from "../searchProviders/searchGoogle";
 import logger from "../logger";
 import { ScourFile } from "../scourFormat";
@@ -12,7 +12,7 @@ export async function runSearch(outputFile: string) {
     }
 
     logger.info(`Loading Scour file: ${outputFile}`);
-    const scourFile: ScourFile = readScourFile(outputFile);
+    let scourFile: ScourFile = readScourFile(outputFile);
 
     if (scourFile.searchEngine !== DEFAULT_SEARCH_ENGINE) {
         logger.error(`Unsupported search engine: ${scourFile.searchEngine}`);
@@ -26,15 +26,19 @@ export async function runSearch(outputFile: string) {
         const pageEstimate = Math.ceil(numResultsPerQuery / 10) + 2;
         logger.info(`Searching for query: "${query}", page count: ${pageEstimate}`);
         try {
-            const results = await searchGoogle(query, pageEstimate);
+            const results = await searchGoogle(query, pageEstimate, outputFile);
             logger.info(`Found ${results.length} results for query: "${query}"`);
+            scourFile = readScourFile(outputFile);
 
             const filteredResults = results.slice(0, numResultsPerQuery);
             logger.info(`Saving ${filteredResults.length} results for query: "${query}"`);
 
             scourFile.searchResults.push(...filteredResults);
-            writeScourFile(outputFile, scourFile); // Write each loop to save in case of an abort
-            scourFile.currentSearchQueryIndex++;
+            if ((scourFile.currentSearchQueryIndex !== undefined) && (scourFile.currentSearchQueryIndex !== null)) {
+                scourFile.currentSearchQueryIndex++;
+            }
+            
+            writeScourFile(outputFile, scourFile);
         } catch (error) {
             logger.error(`Failed to search query "${query}": ${error}`);
         }

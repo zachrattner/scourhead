@@ -24,6 +24,7 @@ export function createScourFile(outputFile: string): ScourFile | null {
             ollamaPort: loadPreference('ollamaPort') || 11434,
             currentSearchQueryIndex: null,
             currentSearchResultIndex: null,
+            statusMessage: '',
             createdAt: new Date().toISOString(),
             numQueries: DEFAULT_NUM_QUERIES,
             numResultsPerQuery: DEFAULT_NUM_RESULTS_PER_QUERY,
