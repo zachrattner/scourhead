@@ -155,9 +155,15 @@
         }
 
         window.addEventListener('DOMContentLoaded', async () => {
+            await loadAppVersion();
             await initializeTable();
             refreshButtons();
         });
+
+        async function loadAppVersion() {
+            const appVersion = await window.electronAPI.getAppVersion();
+            document.title = `${document.title} v${appVersion}`;
+        }
 
         addRowButton.addEventListener('click', addRow);
 

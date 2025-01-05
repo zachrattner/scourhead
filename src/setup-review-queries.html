@@ -143,7 +143,14 @@
             }
         });
 
+        async function loadAppVersion() {
+            const appVersion = await window.electronAPI.getAppVersion();
+            document.title = `${document.title} v${appVersion}`;
+        }
+
         document.addEventListener('DOMContentLoaded', async () => {
+            await loadAppVersion();
+            
             scourFile = await window.electronAPI.getScourFile();
             if (scourFile && scourFile.searchQueries && scourFile.searchQueries.length) {
                 searchQueries.value = scourFile.searchQueries.join("\n");

@@ -30,4 +30,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
     savePreference: async(key: string, value: any) => ipcRenderer.invoke('save-preference', key, value),
 
     getFormattedDebugLog: async() => ipcRenderer.invoke('get-formatted-debug-log'),
+    getAppVersion: async() => ipcRenderer.invoke('get-app-version'),
 });

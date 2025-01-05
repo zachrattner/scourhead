@@ -149,7 +149,14 @@
         const DEFAULT_OLLAMA_PORT  = '11434';
         const DEFAULT_OLLAMA_MODEL = 'llama3.2:3b';
 
+        async function loadAppVersion() {
+            const appVersion = await window.electronAPI.getAppVersion();
+            document.title = `${document.title} v${appVersion}`;
+        }
+
         document.addEventListener('DOMContentLoaded', async () => {
+            await loadAppVersion();
+            
             const whiteout = document.getElementById('whiteout');
             const ollamaOptions = document.getElementById('ollama-options');
             const configureOllamaButton = document.getElementById('configure-ollama');

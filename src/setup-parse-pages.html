@@ -287,7 +287,13 @@
             }
         }
 
+        async function loadAppVersion() {
+            const appVersion = await window.electronAPI.getAppVersion();
+            document.title = `${document.title} v${appVersion}`;
+        }
+
         window.addEventListener('DOMContentLoaded', async () => {
+            await loadAppVersion();
             scourFile = await window.electronAPI.getScourFile();
 
             if (scourFile.rows && scourFile.columns) {
