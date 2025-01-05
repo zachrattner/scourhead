@@ -86,11 +86,12 @@
 
             const numSearchReults  = scourFile.searchResults.length;
             const searchResultNoun = (numSearchReults === 1) ? 'result' : 'results';
+            const currentSearchNumber = Math.min(scourFile.currentSearchQueryIndex + 1, scourFile.searchQueries.length);
             if (scourFile.statusMessage) {
-                title.innerText = `On query ${scourFile.currentSearchQueryIndex + 1} of ${scourFile.searchQueries.length}. Received ${numSearchReults} ${searchResultNoun} so far.`;
+                title.innerText = `On query ${currentSearchNumber} of ${scourFile.searchQueries.length}. Received ${numSearchReults} ${searchResultNoun} so far.`;
             }
             else {
-                subtitle.innerText = `On query ${scourFile.currentSearchQueryIndex + 1} of ${scourFile.searchQueries.length}. Received ${numSearchReults} ${searchResultNoun} so far.`;
+                subtitle.innerText = `On query ${currentSearchNumber} of ${scourFile.searchQueries.length}. Received ${numSearchReults} ${searchResultNoun} so far.`;
             }
 
             searchResults.innerHTML = '';

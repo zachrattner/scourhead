@@ -145,27 +145,29 @@ export async function searchGoogle(query: string, maxPages: number = 1, outputFi
                 break;
             }
 
+            const nextPage = Math.min(i + 2, maxPages);
+
             const delay = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
-            logger.info(`Waiting ${delay} ms before navigating to page ${i + 2}...`);
-            scourFile.statusMessage = `Waiting ${delay} ms before navigating to page ${i + 2}...`;
+            logger.info(`Waiting ${delay} ms before navigating to page ${nextPage}...`);
+            scourFile.statusMessage = `Waiting ${delay} ms before navigating to page ${nextPage}...`;
             writeScourFile(outputFilePath, scourFile);
             await new Promise(resolve => setTimeout(resolve, delay));
 
             logger.info("Navigating to next page...");
-            scourFile.statusMessage = `Navigating to page ${i + 2}...`;
+            scourFile.statusMessage = `Navigating to page ${nextPage}...`;
             writeScourFile(outputFilePath, scourFile);
             await nextPageButton.click();
             logger.info("Waiting for next page to load...");
-            scourFile.statusMessage = `Waiting for page ${i + 2} to load...`;
+            scourFile.statusMessage = `Waiting for page ${nextPage} to load...`;
             writeScourFile(outputFilePath, scourFile);
             try {
                 await page.waitForSelector('#search', { timeout: 5000 });
                 logger.info("Next page loaded.");
-                scourFile.statusMessage = `Page ${i + 2} loaded.`;
+                scourFile.statusMessage = `Page ${nextPage} loaded.`;
                 writeScourFile(outputFilePath, scourFile);
             } catch (e) {
                 logger.error("Next page did not load within the timeout.");
-                scourFile.statusMessage = `Page ${i + 2} did not load within the timeout period.`;
+                scourFile.statusMessage = `Page ${nextPage} did not load within the timeout period.`;
                 writeScourFile(outputFilePath, scourFile);
                 break;
             }
