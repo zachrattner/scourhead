@@ -132,6 +132,6 @@
     "electron": "^33.3.1",
     "electron-builder": "^25.1.8",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   }
 }
