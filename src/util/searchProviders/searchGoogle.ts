@@ -5,7 +5,7 @@ import { determineHeadlessShellPath } from '../determineHeadlessShellPath';
 import { stealthifyPlaywright } from '../stealthifyPlaywright';
 import { readScourFile, writeScourFile } from '../scourFileUtils';
 
-const SHOW_BROWSER = true;
+const SHOW_BROWSER = false;
 
 export async function searchGoogle(query: string, maxPages: number = 1, outputFilePath: string): Promise<SearchResult[]> {
     logger.info("Launching browser...");
