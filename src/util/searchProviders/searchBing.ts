@@ -7,7 +7,7 @@ import { readScourFile, writeScourFile } from '../scourFileUtils';
 
 const SHOW_BROWSER = true;
 
-export async function searchGoogle(query: string, maxPages: number = 1, outputFilePath: string): Promise<SearchResult[]> {
+export async function searchBing(query: string, maxPages: number = 1, outputFilePath: string): Promise<SearchResult[]> {
     logger.info("Launching browser...");
     let executablePath = null;
 
@@ -46,10 +46,10 @@ export async function searchGoogle(query: string, maxPages: number = 1, outputFi
         writeScourFile(outputFilePath, scourFile);
         const page: Page = await context.newPage();
 
-        logger.info("Navigating to Google...");
-        scourFile.statusMessage = 'Navigating to Google...';
+        logger.info("Navigating to Bing...");
+        scourFile.statusMessage = 'Navigating to Bing...';
         writeScourFile(outputFilePath, scourFile);
-        await page.goto('https://www.google.com?gl=us&hl=en&cr=countryUS', { waitUntil: 'domcontentloaded' });
+        await page.goto(`https://www.bing.com/search?q=${query}`, { waitUntil: 'domcontentloaded' });
 
         logger.info("Checking for cookie consent prompt...");
         scourFile.statusMessage = 'Checking for cookie consent prompt...';
@@ -65,26 +65,8 @@ export async function searchGoogle(query: string, maxPages: number = 1, outputFi
             writeScourFile(outputFilePath, scourFile);
         }
 
-        logger.info(`Performing search for query: "${query}"`);
-        scourFile.statusMessage = `Performing search for query: "${query}"`;
-        writeScourFile(outputFilePath, scourFile);
-
-        await page.fill('textarea.gLFyf', query);
-        logger.info("Search query filled.");
-
-        const delay = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
-        logger.info(`Waiting ${delay} ms before submitting search...`);
-        scourFile.statusMessage = `Waiting ${delay} ms before submitting search...`;
-        writeScourFile(outputFilePath, scourFile);
-        await new Promise(resolve => setTimeout(resolve, delay));
-
-        await page.press('textarea.gLFyf', 'Enter');
-        logger.info("Search submitted, waiting for results...");
-        scourFile.statusMessage = `Search submitted, waiting for results...`;
-        writeScourFile(outputFilePath, scourFile);
-
         try {
-            await page.waitForSelector('#search', { timeout: 5000 });
+            await page.waitForSelector('#b_results', { timeout: 5000 });
             logger.info("Search results loaded.");
             scourFile.statusMessage = `Search results loaded.`;
             writeScourFile(outputFilePath, scourFile);
@@ -99,38 +81,19 @@ export async function searchGoogle(query: string, maxPages: number = 1, outputFi
         const results: SearchResult[] = [];
 
         const extractResults = async (): Promise<void> => {
-            logger.info("Extracting ads...");
-            const ads: SearchResult[] = await page.$$eval('div[data-text-ad], .uEierd', (ads) =>
-                ads.map((ad) => {
-                    const link = ad.querySelector('a') as HTMLAnchorElement | null;
-                    const descriptionElement = ad.querySelector('.MUxGbd') as HTMLElement | null;
-                    return {
-                        title: link?.innerText || 'No title',
-                        description: descriptionElement?.innerText || 'No description',
-                        url: link?.href || '',
-                        isAd: true,
-                        retrievedAt: new Date().toISOString(),
-                        searchEngine: "Google",
-                    };
-                })
-            );
-            scourFile.statusMessage = `Extracted ${ads.length} ads.`;
-            writeScourFile(outputFilePath, scourFile);
-            logger.info(`Extracted ${ads.length} ads.`);
-
             logger.info("Extracting organic results...");
-            const organic: SearchResult[] = await page.$$eval('#search .tF2Cxc', (results) =>
+            const organic: SearchResult[] = await page.$$eval('.b_algo', (results) =>
                 results.map((result) => {
                     const link = result.querySelector('a') as HTMLAnchorElement | null;
-                    const titleElement = result.querySelector('h3') as HTMLElement | null;
-                    const descriptionElement = result.querySelector('.VwiC3b') as HTMLElement | null;
+                    const titleElement = result.querySelector('h2') as HTMLElement | null;
+                    const descriptionElement = result.querySelector('.b_caption') as HTMLElement | null;
                     return {
                         title: titleElement?.innerText || 'No title',
                         description: descriptionElement?.innerText || 'No description',
                         url: link?.href || '',
                         isAd: false,
                         retrievedAt: new Date().toISOString(),
-                        searchEngine: "Google",
+                        searchEngine: "Bing",
                     };
                 })
             );
@@ -139,7 +102,7 @@ export async function searchGoogle(query: string, maxPages: number = 1, outputFi
             scourFile.statusMessage = `Extracted ${organic.length} organic results.`;
             writeScourFile(outputFilePath, scourFile);
 
-            results.push(...ads, ...organic);
+            results.push(...organic);
         };
 
         for (let i = 0; i < maxPages; i++) {

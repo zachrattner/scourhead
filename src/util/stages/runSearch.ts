@@ -1,9 +1,10 @@
-import fs, { read } from "fs";
+import fs from "fs";
+import { searchBing } from "../searchProviders/searchBing";
 import { searchGoogle } from "../searchProviders/searchGoogle";
 import logger from "../logger";
 import { ScourFile } from "../scourFormat";
 import { readScourFile, writeScourFile} from "../scourFileUtils";
-import { DEFAULT_SEARCH_ENGINE } from "../defaults";
+import { SUPPORTED_SEARCH_ENGINES } from "../defaults";
 
 export async function runSearch(outputFile: string) {
     if (!fs.existsSync(outputFile)) {
@@ -14,19 +15,34 @@ export async function runSearch(outputFile: string) {
     logger.info(`Loading Scour file: ${outputFile}`);
     let scourFile: ScourFile = readScourFile(outputFile);
 
-    if (scourFile.searchEngine !== DEFAULT_SEARCH_ENGINE) {
+    if (!SUPPORTED_SEARCH_ENGINES.includes(scourFile.searchEngine)) {
         logger.error(`Unsupported search engine: ${scourFile.searchEngine}`);
         return;
     }
 
-    const { searchQueries, numResultsPerQuery } = scourFile;
+    const { searchQueries, numResultsPerQuery, searchEngine } = scourFile;
+
+    let searchFunction = null;
+    switch (searchEngine) {
+        case 'Bing':
+            searchFunction = searchBing;
+            break;
+
+        case 'Google':
+            searchFunction = searchGoogle;
+            break;
+
+        default:
+            logger.error(`Unsupported search engine: ${scourFile.searchEngine}`);
+            return;
+    }
 
     scourFile.currentSearchQueryIndex = 0;
     for (const query of searchQueries) {
         const pageEstimate = Math.ceil(numResultsPerQuery / 10) + 2;
         logger.info(`Searching for query: "${query}", page count: ${pageEstimate}`);
         try {
-            const results = await searchGoogle(query, pageEstimate, outputFile);
+            const results = await searchFunction(query, pageEstimate, outputFile);
             logger.info(`Found ${results.length} results for query: "${query}"`);
             scourFile = readScourFile(outputFile);
 

@@ -1,7 +1,13 @@
 import { Browser, BrowserContext } from 'playwright';
 
+declare global {
+    interface Window {
+        chrome: { runtime?: { id?: string } };
+    }
+}
+
 /**
- * Stealthify a Playwright browser context to simulate a real user with minimal overrides.
+ * Stealthify a Playwright browser context to bypass bot detection without plugins.
  * @param browser - The Playwright browser instance.
  * @param options - Optional configuration for viewport, userAgent, etc.
  * @returns A new stealth-enabled browser context.
@@ -25,66 +31,75 @@ export async function stealthifyPlaywright(
 
     const config = { ...defaultOptions, ...options };
 
-    // Fetch the User-Agent dynamically if not provided
     const tempContext = await browser.newContext();
     const defaultUserAgent = await getUserAgent(tempContext);
     await tempContext.close();
 
+    const userAgent = config.userAgent || defaultUserAgent.replace("HeadlessChrome", "Chrome");
+
     const context = await browser.newContext({
         viewport: config.viewport,
-        userAgent: config.userAgent || defaultUserAgent,
+        userAgent: userAgent,
         isMobile: config.isMobile,
         deviceScaleFactor: config.deviceScaleFactor,
         hasTouch: config.hasTouch,
     });
 
-    // Remove navigator.webdriver if it exists
     await context.addInitScript(() => {
-        Object.defineProperty(navigator, 'webdriver', {
-            get: () => undefined,
-        });
-    });
+        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
 
-    // Ensure navigator.plugins is non-empty if needed
-    await context.addInitScript(() => {
         Object.defineProperty(navigator, 'plugins', {
-            get: () => Array(3).fill({}),
+            get: () => [1, 2, 3, 4],
         });
-    });
 
-    // Set realistic navigator.languages if needed
-    await context.addInitScript(() => {
         Object.defineProperty(navigator, 'languages', {
-            get: () => navigator.languages || ['en-US', 'en'],
+            get: () => ['en-US', 'en'],
         });
-    });
 
-    // Adjust WebGL rendering only if necessary
-    await context.addInitScript(() => {
         const getParameter = WebGLRenderingContext.prototype.getParameter;
         WebGLRenderingContext.prototype.getParameter = function (parameter) {
-            // Return unmodified values unless overriding is required
-            if ((parameter === 3744) && !getParameter(37445)) {
-                return 'GPU Vendor';
-            }
-            if ((parameter === 37446) && !getParameter(37446)) {
-                return 'GPU Renderer';
-            }
+            if (parameter === 37445) return 'NVIDIA Corporation'; // Vendor
+            if (parameter === 37446) return 'NVIDIA GeForce GTX 1050'; // Renderer
             return getParameter.call(this, parameter);
         };
+
+        window.chrome = { runtime: {} };
+
+        const originalQuery = navigator.permissions.query;
+        navigator.permissions.query = (parameters) => {
+            if (parameters.name === 'notifications') {
+                return Promise.resolve({
+                    state: Notification.permission,
+                    name: 'notifications',
+                    onchange: null,
+                    addEventListener: () => {},
+                    removeEventListener: () => {},
+                    dispatchEvent: () => false,
+                } as PermissionStatus);
+            }
+            return originalQuery(parameters);
+        };
+
+        Object.defineProperty(navigator, 'hardwareConcurrency', {
+            get: () => 8,
+        });
+
+        Object.defineProperty(navigator, 'platform', {
+            get: () => 'Win32',
+        });
     });
 
     return context;
 }
 
 /**
- * Fetch the browser's default User-Agent from a temporary page.
+ * Fetch a realistic User-Agent from the browser.
  * @param context - The browser context.
- * @returns The default User-Agent string.
+ * @returns A user-agent string with 'HeadlessChrome' removed.
  */
 async function getUserAgent(context: BrowserContext): Promise<string> {
     const page = await context.newPage();
     const userAgent = await page.evaluate(() => navigator.userAgent);
     await page.close();
-    return userAgent.replace('HeadlessChrome', 'Chrome');
+    return userAgent.replace("HeadlessChrome", "Chrome");
 }
