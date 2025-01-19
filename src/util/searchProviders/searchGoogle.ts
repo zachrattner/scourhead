@@ -143,8 +143,8 @@ export async function searchGoogle(query: string, maxPages: number = 1, outputFi
         };
 
         for (let i = 0; i < maxPages; i++) {
-            logger.info(`Scraping page ${i + 1}...`);
-            scourFile.statusMessage = `Scraping page ${i + 1}...`;
+            logger.info(`Reading page ${i + 1}...`);
+            scourFile.statusMessage = `Reading page ${i + 1}...`;
             writeScourFile(outputFilePath, scourFile);
             await extractResults();
 

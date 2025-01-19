@@ -10,7 +10,7 @@
     "numQueries": 10,
     "numResultsPerQuery": 10,
     "appVersion": "1.0.0",
-    "searchEngine": "Bing",
+    "searchEngine": "DuckDuckGo",
     "objective": "I am an aspiring visual artist looking to get started in the Miami area. Identify high end, modern art galleries in Miami hosting exhibitions in summer 2025. I will use this list to pitch a collaboration to their management team.",
     "searchQueries": [
         "high-end modern art galleries miami summer 2025",
@@ -31,7 +31,7 @@
             "url": "https://www.miamimcfair.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:08.069Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "high-end modern art galleries miami summer 2025",
             "position": 1
         },
@@ -41,7 +41,7 @@
             "url": "https://artguide.artforum.com/artguide/place/miami?category=galleries",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:08.069Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "high-end modern art galleries miami summer 2025",
             "position": 2
         },
@@ -51,7 +51,7 @@
             "url": "https://www.artmiami.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:08.069Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "high-end modern art galleries miami summer 2025",
             "position": 3
         },
@@ -61,7 +61,7 @@
             "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture/galleries/miami-art-galleries",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:08.069Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "high-end modern art galleries miami summer 2025",
             "position": 4
         },
@@ -71,7 +71,7 @@
             "url": "https://www.timeout.com/miami/things-to-do/best-art-galleries-in-miami",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:08.069Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "high-end modern art galleries miami summer 2025",
             "position": 5
         },
@@ -81,7 +81,7 @@
             "url": "https://www.viator.com/tours/Miami/Art-Gallery-Tour-in-Wynwood/d662-18774P10",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:08.069Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "high-end modern art galleries miami summer 2025",
             "position": 6
         },
@@ -91,7 +91,7 @@
             "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:08.069Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "high-end modern art galleries miami summer 2025",
             "position": 7
         },
@@ -101,7 +101,7 @@
             "url": "https://www.miamiandbeaches.com/event/art-basel-miami-beach/49",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:08.069Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "high-end modern art galleries miami summer 2025",
             "position": 8
         },
@@ -111,7 +111,7 @@
             "url": "https://designmiami.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:08.069Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "high-end modern art galleries miami summer 2025",
             "position": 9
         },
@@ -121,7 +121,7 @@
             "url": "https://en.wikipedia.org/wiki/Wynwood_Art_District#:~:text=The%20Wynwood%20Art%20District%20is,Northeast%20First%20Avenue%20(east).",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:08.069Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "high-end modern art galleries miami summer 2025",
             "position": 10
         },
@@ -131,7 +131,7 @@
             "url": "https://icamiami.org/",
             "isAd": true,
             "retrievedAt": "2024-12-28T18:56:31.304Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "contemporary art galleries miami 2025 events",
             "position": 1
         },
@@ -141,7 +141,7 @@
             "url": "https://thebass.org/visit/",
             "isAd": true,
             "retrievedAt": "2024-12-28T18:56:31.304Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "contemporary art galleries miami 2025 events",
             "position": 2
         },
@@ -151,7 +151,7 @@
             "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:31.308Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "contemporary art galleries miami 2025 events",
             "position": 3
         },
@@ -161,7 +161,7 @@
             "url": "https://www.miamimcfair.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:31.308Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "contemporary art galleries miami 2025 events",
             "position": 4
         },
@@ -171,7 +171,7 @@
             "url": "https://www.miamiandbeaches.com/event/miami-modern-contemporary/30424",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:31.308Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "contemporary art galleries miami 2025 events",
             "position": 5
         },
@@ -181,7 +181,7 @@
             "url": "https://www.themiamiartscene.com/events/list/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:31.308Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "contemporary art galleries miami 2025 events",
             "position": 6
         },
@@ -191,7 +191,7 @@
             "url": "https://www.usawelcome.net/explore/miami/events/international-event-art-wynwood.htm",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:31.308Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "contemporary art galleries miami 2025 events",
             "position": 7
         },
@@ -201,7 +201,7 @@
             "url": "https://icamiami.org/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:31.308Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "contemporary art galleries miami 2025 events",
             "position": 8
         },
@@ -211,7 +211,7 @@
             "url": "https://www.miamiartweek.org/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:31.308Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "contemporary art galleries miami 2025 events",
             "position": 9
         },
@@ -221,7 +221,7 @@
             "url": "https://www.themiamiartscene.com/event/art-palm-beach-2025/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:31.308Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "contemporary art galleries miami 2025 events",
             "position": 10
         },
@@ -231,7 +231,7 @@
             "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:52.975Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
             "position": 1
         },
@@ -241,7 +241,7 @@
             "url": "https://www.culturedmag.com/article/2024/12/02/miami-exhibition-guide-must-see",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:52.975Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
             "position": 2
         },
@@ -251,7 +251,7 @@
             "url": "https://redwoodartgroup.com/spectrum-miami/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:52.975Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
             "position": 3
         },
@@ -261,7 +261,7 @@
             "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture/art-of-black",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:52.975Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
             "position": 4
         },
@@ -271,7 +271,7 @@
             "url": "https://untitledartfairs.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:52.975Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
             "position": 5
         },
@@ -281,7 +281,7 @@
             "url": "https://www.pamm.org/en/exhibition/sea-change/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:52.975Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
             "position": 6
         },
@@ -291,7 +291,7 @@
             "url": "https://visugallery.com/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:52.975Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
             "position": 7
         },
@@ -301,7 +301,7 @@
             "url": "https://www.timeout.com/miami/things-to-do/the-best-miami-arts-and-culture-events-and-exhibits-to-see-this-summer-2024",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:52.975Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
             "position": 8
         },
@@ -311,7 +311,7 @@
             "url": "https://www.artbasel.com/?lang=en",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:52.975Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
             "position": 9
         },
@@ -321,7 +321,7 @@
             "url": "https://icamiami.org/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:56:58.604Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art galleries hosting summer 2025 exhibitions",
             "position": 10
         },
@@ -331,7 +331,7 @@
             "url": "https://www.singulart.com/en/art-galleries/united-states/miami-14265?srsltid=AfmBOoogRzDzfP1_OtQ_rJfxXkLeBHwlHxvdMVWTKaoQXbFq1zHEpoT_",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:13.126Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "moderne art galleries in Miami for collaborations",
             "position": 1
         },
@@ -341,7 +341,7 @@
             "url": "https://ocula.com/cities/usa/miami-art-galleries/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:21.255Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "moderne art galleries in Miami for collaborations",
             "position": 2
         },
@@ -351,7 +351,7 @@
             "url": "https://www.artmiami.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:13.126Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "moderne art galleries in Miami for collaborations",
             "position": 3
         },
@@ -361,7 +361,7 @@
             "url": "https://www.timeout.com/miami/things-to-do/best-art-galleries-in-miami",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:13.126Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "moderne art galleries in Miami for collaborations",
             "position": 4
         },
@@ -371,7 +371,7 @@
             "url": "https://artbidy.com/en/about-us/news/does-collaboration-with-an-art-gallery-increase-the-chances-of-selling-artworks#:~:text=The%20Role%20of%20Art%20Galleries%20in%20Building%20an%20Artist's%20Brand&text=Through%20collaboration%20with%20a%20gallery,work%20to%20a%20broader%20audience.",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:13.126Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "moderne art galleries in Miami for collaborations",
             "position": 5
         },
@@ -381,7 +381,7 @@
             "url": "https://www.quora.com/How-can-you-get-your-art-displayed-in-galleries-and-or-restaurants",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:13.126Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "moderne art galleries in Miami for collaborations",
             "position": 6
         },
@@ -391,7 +391,7 @@
             "url": "https://artbusinessnews.com/2024/07/artists-is-making-a-move-to-miami-beneficial-for-your-career/#:~:text=Budding%20artists%20can%20relocate%20to,%2C%20galleries%2C%20and%20creative%20hubs.",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:13.126Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "moderne art galleries in Miami for collaborations",
             "position": 7
         },
@@ -401,7 +401,7 @@
             "url": "https://www.artbasel.com/about/application/registration#:~:text=All%20applications%20must%20be%20made,the%20same%20information%20every%20time.",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:13.126Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "moderne art galleries in Miami for collaborations",
             "position": 8
         },
@@ -411,7 +411,7 @@
             "url": "https://www.mocaamericas.org/collaborations",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:13.126Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "moderne art galleries in Miami for collaborations",
             "position": 9
         },
@@ -421,7 +421,7 @@
             "url": "https://www.miamimcfair.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:13.126Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "moderne art galleries in Miami for collaborations",
             "position": 10
         },
@@ -431,7 +431,7 @@
             "url": "https://www.artmiami.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:34.866Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
             "position": 1
         },
@@ -441,7 +441,7 @@
             "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:34.866Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
             "position": 2
         },
@@ -451,7 +451,7 @@
             "url": "https://miami.pinta.art/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:34.866Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
             "position": 3
         },
@@ -461,7 +461,7 @@
             "url": "http://olivercolegallery.com/art_fairs",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:34.866Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
             "position": 4
         },
@@ -471,7 +471,7 @@
             "url": "https://camperandnicholsons.com/magazine/art-basel-miami-2025",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:34.866Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
             "position": 5
         },
@@ -481,7 +481,7 @@
             "url": "https://www.margulieswarehouse.com/press/press-release-2024-2025",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:34.866Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
             "position": 6
         },
@@ -491,7 +491,7 @@
             "url": "https://www.singulart.com/en/art-galleries/united-states/miami-14265?srsltid=AfmBOopfrxWIpjPE9Id9r0Wdc1xLA-i119tRGKun-JzgcHE10Fz4CaQu",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:34.866Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
             "position": 7
         },
@@ -501,7 +501,7 @@
             "url": "https://visugallery.com/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:34.866Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
             "position": 8
         },
@@ -511,7 +511,7 @@
             "url": "https://www.miamiherald.com/entertainment/visual-arts/article291923005.html",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:34.866Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
             "position": 9
         },
@@ -521,7 +521,7 @@
             "url": "https://designmiami.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:34.866Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "top modern art galleries in Miami for artist collaborations 2025",
             "position": 10
         },
@@ -531,7 +531,7 @@
             "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:55.953Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
             "position": 1
         },
@@ -541,7 +541,7 @@
             "url": "https://www.miamimcfair.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:55.953Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
             "position": 2
         },
@@ -551,7 +551,7 @@
             "url": "https://www.miamiandbeaches.com/event/context-art-miami/7063",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:55.953Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
             "position": 3
         },
@@ -561,7 +561,7 @@
             "url": "https://ocula.com/cities/usa/miami-art-galleries/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:55.953Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
             "position": 4
         },
@@ -571,7 +571,7 @@
             "url": "https://www.instagram.com/miami_art_scene/p/C898rHMO1Ka/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:55.953Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
             "position": 5
         },
@@ -581,7 +581,7 @@
             "url": "https://www.artbasel.com/?lang=en",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:55.953Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
             "position": 6
         },
@@ -591,7 +591,7 @@
             "url": "https://icamiami.org/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:55.953Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
             "position": 7
         },
@@ -601,7 +601,7 @@
             "url": "https://www.pamm.org/en/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:55.953Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
             "position": 8
         },
@@ -611,7 +611,7 @@
             "url": "https://www.forbes.com/sites/ericawertheimzohar/2024/11/27/the-complete-guide-to-2024-miami-art-week--the-events-art-and-parties/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:55.953Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
             "position": 9
         },
@@ -621,7 +621,7 @@
             "url": "https://en.wikipedia.org/wiki/Art_Basel#:~:text=Art%20Basel%20is%20a%20for,)%2C%20Hong%20Kong%20and%20Paris.",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:57:55.953Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami contemporary art galleries exhibiting in summer 2025",
             "position": 10
         },
@@ -631,7 +631,7 @@
             "url": "https://communitynewspapers.com/biscayne-bay/a-showcase-of-art-culture-and-exclusive-experiences-are-accessible-all-year-long-on-miami-beach/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:17.270Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
             "position": 1
         },
@@ -641,7 +641,7 @@
             "url": "https://www.miamimcfair.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:17.270Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
             "position": 2
         },
@@ -651,7 +651,7 @@
             "url": "https://ocula.com/cities/usa/miami-art-galleries/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:17.270Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
             "position": 3
         },
@@ -661,7 +661,7 @@
             "url": "https://www.artmiami.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:17.270Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
             "position": 4
         },
@@ -671,7 +671,7 @@
             "url": "https://www.mocanomi.org/posts/art-on-the-plaza---call-to-south-florida-artists-2024-2025",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:17.270Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
             "position": 5
         },
@@ -681,7 +681,7 @@
             "url": "https://redwoodartgroup.com/red-dot-miami/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:17.270Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
             "position": 6
         },
@@ -691,7 +691,7 @@
             "url": "https://www.miamiandbeaches.com/event/art-basel-miami-beach/49",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:17.270Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
             "position": 7
         },
@@ -701,7 +701,7 @@
             "url": "https://www.artbasel.com/miami-beach/the-show?lang=en",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:17.270Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
             "position": 8
         },
@@ -711,7 +711,7 @@
             "url": "https://untitledartfairs.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:17.270Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
             "position": 9
         },
@@ -721,7 +721,7 @@
             "url": "https://redwoodartgroup.com/spectrum-miami/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:17.270Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "art galleries in Miami beach showcasing emerging artists 2025",
             "position": 10
         },
@@ -731,7 +731,7 @@
             "url": "https://www.singulart.com/en/art-galleries/united-states/miami-14265?srsltid=AfmBOorOTt-bYsS11GaAgyokkbcMQ73I-oMEMMbLfaTyfgB-XlvmRs99",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:40.009Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "best modern art galleries in Miami for artist partnerships",
             "position": 1
         },
@@ -741,7 +741,7 @@
             "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture/galleries/miami-art-galleries",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:40.009Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "best modern art galleries in Miami for artist partnerships",
             "position": 2
         },
@@ -751,7 +751,7 @@
             "url": "https://www.artmiami.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:40.009Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "best modern art galleries in Miami for artist partnerships",
             "position": 3
         },
@@ -761,7 +761,7 @@
             "url": "https://www.timeout.com/miami/things-to-do/best-art-galleries-in-miami",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:40.009Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "best modern art galleries in Miami for artist partnerships",
             "position": 4
         },
@@ -771,7 +771,7 @@
             "url": "https://icamiami.org/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:40.009Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "best modern art galleries in Miami for artist partnerships",
             "position": 5
         },
@@ -781,7 +781,7 @@
             "url": "https://ocula.com/cities/usa/miami-art-galleries/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:40.009Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "best modern art galleries in Miami for artist partnerships",
             "position": 6
         },
@@ -791,7 +791,7 @@
             "url": "https://www.pamm.org/en/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:40.009Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "best modern art galleries in Miami for artist partnerships",
             "position": 7
         },
@@ -801,7 +801,7 @@
             "url": "https://www.miaminewtimes.com/arts/ten-best-art-galleries-in-miami-13038113",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:40.009Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "best modern art galleries in Miami for artist partnerships",
             "position": 8
         },
@@ -811,7 +811,7 @@
             "url": "https://www.artbasel.com/miami-beach/partners?lang=en",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:40.009Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "best modern art galleries in Miami for artist partnerships",
             "position": 9
         },
@@ -821,7 +821,7 @@
             "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture/three-day-miami-itinerary-art-lovers",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:58:46.094Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "best modern art galleries in Miami for artist partnerships",
             "position": 10
         },
@@ -831,7 +831,7 @@
             "url": "https://www.artmiami.com/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:04.758Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
             "position": 1
         },
@@ -841,7 +841,7 @@
             "url": "https://www.singulart.com/en/art-galleries/united-states/miami-14265?srsltid=AfmBOopVruF3s1lZub-bS32n66wNDEWK5UaOcCqCZoISaXbA_4v6-b1L",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:04.758Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
             "position": 2
         },
@@ -851,7 +851,7 @@
             "url": "https://icamiami.org/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:04.758Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
             "position": 3
         },
@@ -861,7 +861,7 @@
             "url": "https://www.tripadvisor.com/Attractions-g34438-Activities-c49-t1-Miami_Florida.html",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:04.758Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
             "position": 4
         },
@@ -871,7 +871,7 @@
             "url": "https://www.mocanomi.org/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:04.758Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
             "position": 5
         },
@@ -881,7 +881,7 @@
             "url": "https://artguide.artforum.com/artguide/place/miami?category=galleries",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:04.758Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
             "position": 6
         },
@@ -891,7 +891,7 @@
             "url": "https://www.yelp.com/search?find_desc=Emerging+Artist+Gallery&find_loc=Miami%2C+FL",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:04.758Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
             "position": 7
         },
@@ -901,7 +901,7 @@
             "url": "https://www.cultureowl.com/cultural-news/Art/famous-art-pieces-or-permanent-exhibits-around-the-world#:~:text=1.,The%20Louvre%2C%20Paris%2C%20France",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:04.758Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
             "position": 8
         },
@@ -911,7 +911,7 @@
             "url": "https://carouselartgroup.com/blog/33-art-collecting-basics-miami-art-week/#:~:text=During%20Art%20Week%2C%20Miami's%20most,most%20prominent%20being%20Art%20Basel.",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:04.758Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
             "position": 9
         },
@@ -921,7 +921,7 @@
             "url": "https://www.rmcad.edu/blog/15-of-the-worlds-most-famous-art-galleries-museums/#:~:text=The%20Louvre%20Museum%20(Paris%2C%20France,tourists%20from%20around%20the%20globe.",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:04.758Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Highest-end modern art galleries miami with upcoming exhibitions",
             "position": 10
         },
@@ -931,7 +931,7 @@
             "url": "https://www.themiamiartscene.com/events/list/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:29.578Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art scene events 2025 and galleries to contact",
             "position": 1
         },
@@ -941,7 +941,7 @@
             "url": "https://www.themiamiartscene.com/contact-us/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:29.578Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art scene events 2025 and galleries to contact",
             "position": 2
         },
@@ -951,7 +951,7 @@
             "url": "https://www.facebook.com/MiamiArtSceneTM/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:29.578Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art scene events 2025 and galleries to contact",
             "position": 3
         },
@@ -961,7 +961,7 @@
             "url": "https://www.miamiandbeaches.com/things-to-do/art-and-culture",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:29.578Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art scene events 2025 and galleries to contact",
             "position": 4
         },
@@ -971,7 +971,7 @@
             "url": "https://ocula.com/cities/usa/miami-art-galleries/exhibitions/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:29.578Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art scene events 2025 and galleries to contact",
             "position": 5
         },
@@ -981,7 +981,7 @@
             "url": "https://www.instagram.com/miami_art_scene/?hl=en",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:29.578Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art scene events 2025 and galleries to contact",
             "position": 6
         },
@@ -991,7 +991,7 @@
             "url": "https://www.quora.com/Is-there-an-appropriate-way-to-approach-art-galleries-with-the-aim-of-getting-a-show-representation",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:29.578Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art scene events 2025 and galleries to contact",
             "position": 7
         },
@@ -1001,7 +1001,7 @@
             "url": "https://m.yelp.com/search?find_desc=Art+Buyers&find_loc=Miami%2C+FL",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:29.578Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art scene events 2025 and galleries to contact",
             "position": 8
         },
@@ -1011,7 +1011,7 @@
             "url": "https://www.forbes.com/sites/ericawertheimzohar/2024/11/27/the-complete-guide-to-2024-miami-art-week--the-events-art-and-parties/",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:38.777Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art scene events 2025 and galleries to contact",
             "position": 9
         },
@@ -1021,7 +1021,7 @@
             "url": "https://www.artbasel.com/miami-beach/the-show#:~:text=Art%20Basel's%20show%20in%20Miami%20Beach%20is%20divided%20into%20several,solo%20presentations%20by%20emerging%20artists.",
             "isAd": false,
             "retrievedAt": "2024-12-28T18:59:29.578Z",
-            "searchEngine": "Bing",
+            "searchEngine": "DuckDuckGo",
             "searchQuery": "Miami art scene events 2025 and galleries to contact",
             "position": 10
         }

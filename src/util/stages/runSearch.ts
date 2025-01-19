@@ -1,5 +1,6 @@
 import fs from "fs";
 import { searchBing } from "../searchProviders/searchBing";
+import { searchDuckDuckGo } from "../searchProviders/searchDuckDuckGo";
 import { searchGoogle } from "../searchProviders/searchGoogle";
 import logger from "../logger";
 import { ScourFile } from "../scourFormat";
@@ -22,27 +23,32 @@ export async function runSearch(outputFile: string) {
 
     const { searchQueries, numResultsPerQuery, searchEngine } = scourFile;
 
-    let searchFunction = null;
-    switch (searchEngine) {
-        case 'Bing':
-            searchFunction = searchBing;
-            break;
-
-        case 'Google':
-            searchFunction = searchGoogle;
-            break;
-
-        default:
-            logger.error(`Unsupported search engine: ${scourFile.searchEngine}`);
-            return;
-    }
-
     scourFile.currentSearchQueryIndex = 0;
-    for (const query of searchQueries) {
+    for (let i = 0; i < searchQueries.length; i++) {
+        const query = searchQueries[i];
         const pageEstimate = Math.ceil(numResultsPerQuery / 10) + 2;
         logger.info(`Searching for query: "${query}", page count: ${pageEstimate}`);
         try {
-            const results = await searchFunction(query, pageEstimate, outputFile);
+            let results = [];
+
+            switch (searchEngine) {
+                case 'Bing':
+                    results = await searchBing(query, pageEstimate, outputFile);
+                    break;
+
+                case 'DuckDuckGo':
+                    results = await searchDuckDuckGo(query, numResultsPerQuery, outputFile);
+                    break;                    
+        
+                case 'Google':
+                    results = await searchGoogle(query, pageEstimate, outputFile);
+                    break;
+        
+                default:
+                    logger.error(`Unsupported search engine: ${scourFile.searchEngine}`);
+                    return;
+            }
+
             logger.info(`Found ${results.length} results for query: "${query}"`);
             scourFile = readScourFile(outputFile);
 

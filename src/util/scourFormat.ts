@@ -1,6 +1,6 @@
 export type Mode = "basic" | "advanced";
 
-export type SearchEngine = "Google" | "Bing" | "Duck Duck Go" | "random";
+export type SearchEngine = "Bing" | "DuckDuckGo" | "Google";
 
 export interface SearchResult {
     title: string;
