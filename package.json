@@ -51,7 +51,7 @@
   "dependencies": {
     "axios": "^1.7.9",
     "json-2-csv": "^5.5.8",
-    "playwright": "^1.49.1"
+    "playwright": "^1.50.0"
   },
   "build": {
     "appId": "com.zachrattner.scourhead",
