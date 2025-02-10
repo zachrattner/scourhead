@@ -1,8 +1,5 @@
 import axios from "axios";
 
-// Define the base URL of the Ollama API
-const OLLAMA_API_BASE_URL = "http://localhost:11434";
-
 type Role = "user" | "system" | "assistant";
 
 interface Message {
@@ -46,7 +43,9 @@ export function createMessages(systemPrompt?: string, prompt?: string | null): M
 export async function runLlm(
     model: string,
     messages: Message[],
-    format?: Format
+    format?: Format,
+    ollamaUrl?: string,
+    ollamaPort?: string
 ): Promise<string> {
     try {
         const parameters = {
@@ -59,8 +58,10 @@ export async function runLlm(
             ...(format && { format }),
         };
 
+        const baseUrl = ollamaUrl && ollamaPort ? `${ollamaUrl}:${ollamaPort}` : "http://localhost:11434";
+
         const response = await axios.post(
-            `${OLLAMA_API_BASE_URL}/api/chat`,
+            `${baseUrl}/api/chat`,
             parameters,
             {
                 headers: {

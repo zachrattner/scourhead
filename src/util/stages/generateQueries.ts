@@ -29,7 +29,10 @@ export async function generateQueries(outputFile: string) {
             );
 
             const messages = createMessages(systemPrompt, scourFile.objective);
-            const response = await runLlm(scourFile.model, messages, format);
+            const response = await runLlm(
+                scourFile.model, messages, format,
+                scourFile.ollamaUrl || undefined,
+                scourFile.ollamaPort?.toString() || undefined);
 
             if (!response) {
                 logger.error("No response from the LLM.");
