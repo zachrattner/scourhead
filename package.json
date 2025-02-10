@@ -127,7 +127,7 @@
   },
   "devDependencies": {
     "@types/electron": "^1.6.12",
-    "@types/node": "^22.13.0",
+    "@types/node": "^22.13.1",
     "copyfiles": "^2.4.1",
     "electron": "^34.0.2",
     "electron-builder": "^25.1.8",
