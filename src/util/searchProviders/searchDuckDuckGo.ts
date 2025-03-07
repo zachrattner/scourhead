@@ -43,7 +43,7 @@ export async function searchDuckDuckGo(query: string, numResultsPerQuery: number
     }
 
     try {
-        const options : LaunchOptions = {
+        const options: LaunchOptions = {
             headless: !SHOW_BROWSER,
         };
 
@@ -69,10 +69,27 @@ export async function searchDuckDuckGo(query: string, numResultsPerQuery: number
         writeScourFile(outputFilePath, scourFile);
         const page: Page = await context.newPage();
 
+        // ALGORITHM:
+        // 1. Navigate to https://html.duckduckgo.com/html/
+        // 2. Locate the search input and type the query
+        // 3. Locate the search button and click it
         logger.info("Navigating to DuckDuckGo...");
         scourFile.statusMessage = 'Navigating to DuckDuckGo...';
         writeScourFile(outputFilePath, scourFile);
-        await page.goto(`https://duckduckgo.com/html?q=${query}`, { waitUntil: 'domcontentloaded' });
+        await page.goto(`https://html.duckduckgo.com/html/`, { waitUntil: 'domcontentloaded' });
+
+        // Locate the search input field and type the query
+        const searchInputSelector = 'input[name="q"]#search_form_input_homepage.search__input';
+        await page.waitForSelector(searchInputSelector, { timeout: 5000 });
+        await page.fill(searchInputSelector, query);
+
+        // Locate the search button and click it
+        const searchButtonSelector = 'input[name="b"]#search_button_homepage.search__button.search__button--html';
+        await page.waitForSelector(searchButtonSelector, { timeout: 5000 });
+        await Promise.all([
+            page.click(searchButtonSelector),
+            page.waitForNavigation({ waitUntil: 'domcontentloaded' })
+        ]);
 
         try {
             await page.waitForSelector('.results', { timeout: 5000 });
