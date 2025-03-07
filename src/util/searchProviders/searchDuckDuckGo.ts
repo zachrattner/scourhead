@@ -5,7 +5,7 @@ import { determineHeadlessShellPath } from '../determineHeadlessShellPath';
 import { stealthifyPlaywright } from '../stealthifyPlaywright';
 import { readScourFile, writeScourFile } from '../scourFileUtils';
 
-const SHOW_BROWSER = false;
+const SHOW_BROWSER = true;
 
 function extractBareUrl(duckDuckGoUrl: string): string {
     if (duckDuckGoUrl.substring(0, 2) === '//') {
