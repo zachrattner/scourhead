@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "axios": "^1.7.9",
-    "json-2-csv": "^5.5.8",
+    "json-2-csv": "^5.5.9",
     "playwright": "^1.50.1"
   },
   "build": {
