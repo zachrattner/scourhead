@@ -31,8 +31,8 @@ export async function searchDuckDuckGo(query: string, numResultsPerQuery: number
     const scourFile = readScourFile(outputFilePath);
 
     if (!executablePath) {
-        logger.error('Failed to find Chromium path.');
-        scourFile.statusMessage = 'Failed to find path to Chromium. Please make sure Chromium is installed correctly via Playwright.';
+        logger.error('Failed to find Chrome path.');
+        scourFile.statusMessage = 'Failed to find path to Chrome. Please make sure Chrome is installed correctly via Playwright.';
         writeScourFile(outputFilePath, scourFile);
         return [];
     }
@@ -47,8 +47,8 @@ export async function searchDuckDuckGo(query: string, numResultsPerQuery: number
         }
 
         const delay = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
-        logger.info(`Waiting ${delay} ms before launching Chromium...`);
-        scourFile.statusMessage = `Waiting ${delay} ms before launching Chromium...`;
+        logger.info(`Waiting ${delay} ms before launching Chrome...`);
+        scourFile.statusMessage = `Waiting ${delay} ms before launching Chrome...`;
         writeScourFile(outputFilePath, scourFile);
         await new Promise(resolve => setTimeout(resolve, delay));        
 
@@ -198,7 +198,7 @@ export async function searchDuckDuckGo(query: string, numResultsPerQuery: number
         return results;
     }
     catch (e) {
-        scourFile.statusMessage = `Failed to launch Chromium. Please make sure Chromium is installed correctly via Playwright.`;
+        scourFile.statusMessage = `Failed to launch Chrome. Please make sure Chrome is installed correctly via Playwright.`;
         writeScourFile(outputFilePath, scourFile);
         return [];
     }

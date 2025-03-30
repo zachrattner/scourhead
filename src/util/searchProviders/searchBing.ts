@@ -14,8 +14,8 @@ export async function searchBing(query: string, maxPages: number = 1, outputFile
     const scourFile = readScourFile(outputFilePath);
 
     if (!executablePath) {
-        logger.error('Failed to find Chromium path.');
-        scourFile.statusMessage = 'Failed to find path to Chromium. Please make sure Chromium is installed correctly via Playwright.';
+        logger.error('Failed to find Chrome path.');
+        scourFile.statusMessage = 'Failed to find path to Chrome. Please make sure Chrome is installed correctly via Playwright.';
         writeScourFile(outputFilePath, scourFile);
         return [];
     }
@@ -168,7 +168,7 @@ export async function searchBing(query: string, maxPages: number = 1, outputFile
         return uniqueResults;
     }
     catch (e) {
-        scourFile.statusMessage = `Failed to launch Chromium. Please make sure Chromium is installed correctly via Playwright.`;
+        scourFile.statusMessage = `Failed to launch Chrome. Please make sure Chrome is installed correctly via Playwright.`;
         writeScourFile(outputFilePath, scourFile);
         return [];
     }
