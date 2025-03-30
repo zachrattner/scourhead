@@ -51,11 +51,7 @@ scourhead/
    ```bash
    npm install
    ```
-3. Install Chromium browser from Playwright:
-   ```bash
-   ./download-chromium.sh
-   ```
-4. Ensure Ollama is installed and running.
+3. Ensure Ollama is installed and running, and that Chrome is installed.
 
 ## Usage
 1. Define your objective. Tell Scourhead the context and goals just like you would a human assistant.
