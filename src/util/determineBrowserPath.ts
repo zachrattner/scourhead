@@ -3,7 +3,7 @@ import path from 'path';
 import { app } from 'electron';
 import logger from './logger';
 
-export function getBrowsersPath(): string {
+function getRootBrowsersPath(): string {
     const isDev = !app.isPackaged;
 
     // In development, resolve the path to `./browsers` in the project root
@@ -21,7 +21,7 @@ export function getBrowsersPath(): string {
 }
 
 export function determineBrowserPath(): string | null {
-    const browsersDir = getBrowsersPath();
+    const browsersDir = getRootBrowsersPath();
   
     // Determine platform-specific executable name
     let executableName: string;
