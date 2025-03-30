@@ -1,79 +1,49 @@
 import fs from 'fs';
 import path from 'path';
-import { app } from 'electron';
-import logger from './logger';
-
-function getRootBrowsersPath(): string {
-    const isDev = !app.isPackaged;
-
-    // In development, resolve the path to `./browsers` in the project root
-    if (isDev) {
-        const basePath = app.getAppPath();
-        const resolvedPath = path.resolve(basePath, 'browsers');
-        logger.info(`Development mode: Browsers directory resolved to: ${resolvedPath}`);
-        return resolvedPath;
-    }
-
-    // In production, resolve the path to `browsers` in the app's resources folder
-    const resolvedPath = path.join(process.resourcesPath, 'browsers'); // Use path.join for consistency
-    logger.info(`Production mode: Browsers directory resolved to: ${resolvedPath}`);
-    return resolvedPath;
-}
 
 export function determineBrowserPath(): string | null {
-    const browsersDir = getRootBrowsersPath();
-  
-    // Determine platform-specific executable name
-    let executableName: string;
-    if (process.platform === 'win32') {
-      executableName = 'chromium.exe';
-    } else if (process.platform === 'darwin') {
-      executableName = 'Chromium';
-    } else {
-      // Linux and others
-      executableName = 'chromium';
+  const platform = process.platform;
+  const candidatePaths: string[] = [];
+
+  if (platform === 'darwin') {
+    // On macOS, Chrome is typically installed in /Applications.
+    candidatePaths.push('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome');
+    // Also check for user-level installations:
+    if (process.env.HOME) {
+      candidatePaths.push(
+        path.join(process.env.HOME, 'Applications', 'Google Chrome.app', 'Contents', 'MacOS', 'Google Chrome')
+      );
     }
-  
-    const stack: string[] = [browsersDir];
-  
-    while (stack.length > 0) {
-      const currentDir = stack.pop()!;
-  
-      try {
-        const entries = fs.readdirSync(currentDir, { withFileTypes: true });
-  
-        for (const entry of entries) {
-          const entryPath = path.join(currentDir, entry.name);
-          const normalizedEntryPath = path.normalize(entryPath);
-  
-          if (entry.isDirectory()) {
-            // On macOS, check for .app bundles
-            if (process.platform === 'darwin' && entry.name.endsWith('.app')) {
-              // Construct the path to the binary inside the .app bundle.
-              const appBinaryPath = path.join(normalizedEntryPath, 'Contents', 'MacOS', executableName);
-              if (fs.existsSync(appBinaryPath)) {
-                logger.info(`Found browser at: ${appBinaryPath}`);
-                return appBinaryPath;
-              }
-            }
-  
-            // Add the directory to the stack to search deeper.
-            stack.push(normalizedEntryPath);
-          } else if (entry.isFile() && entry.name.includes(executableName)) {
-            logger.info(`Found browser at: ${normalizedEntryPath}`);
-            return normalizedEntryPath;
-          }
-        }
-      } catch (err) {
-        if (err instanceof Error) {
-          logger.error(`Error while accessing directory '${currentDir}': ${err.message}`);
-        } else {
-          logger.error(`Unknown error while accessing directory '${currentDir}'`);
-        }
-      }
+  } else if (platform === 'win32') {
+    // On Windows, check both "Program Files" and "Program Files (x86)"
+    if (process.env.PROGRAMFILES) {
+      candidatePaths.push(path.join(process.env.PROGRAMFILES, 'Google', 'Chrome', 'Application', 'chrome.exe'));
     }
-  
-    logger.error(`No '${executableName}' found in ${browsersDir}`);
-    return null;
+    if (process.env['PROGRAMFILES(X86)']) {
+      candidatePaths.push(
+        path.join(process.env['PROGRAMFILES(X86)'], 'Google', 'Chrome', 'Application', 'chrome.exe')
+      );
+    }
+    // In some cases (especially on ARM Windows), Chrome may be installed in a different location.
+    if (process.env.LOCALAPPDATA) {
+      candidatePaths.push(
+        path.join(process.env.LOCALAPPDATA, 'Google', 'Chrome', 'Application', 'chrome.exe')
+      );
+    }
+  } else if (platform === 'linux') {
+    // On Linux, check several common locations.
+    candidatePaths.push('/usr/bin/google-chrome');
+    candidatePaths.push('/usr/bin/google-chrome-stable');
+    candidatePaths.push('/opt/google/chrome/chrome');
   }
-  
+
+  for (const candidate of candidatePaths) {
+    if (fs.existsSync(candidate)) {
+      console.info(`Found Chrome at: ${candidate}`);
+      return candidate;
+    }
+  }
+
+  console.error('No installed Chrome found in candidate paths.');
+  return null;
+}

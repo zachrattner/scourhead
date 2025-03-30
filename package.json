@@ -6,17 +6,17 @@
   "description": "Scour the web for whatever you're looking for",
   "main": "dist/main.js",
   "scripts": {
-    "start": "tsc && npm run copy-static-files && ./download-chromium.sh --no-overwrite && electron .",
+    "start": "tsc && npm run copy-static-files && electron .",
     "build": "tsc && npm run copy-static-files",
     "copy-static-files": "copyfiles -u 1 'src/*.html' dist && copyfiles -u 1 'src/css/*.css' dist && copyfiles -u 1 src/img/* dist && copyfiles -u 1 'icons/**/*' dist/icons",
     "dev": "ts-node ./src/main.ts",
     "clean": "rm -rf dist",
-    "build-mac-arm64": "npm run build && ./download-chromium.sh mac && electron-builder --mac --arm64",
-    "build-mac-x64": "npm run build && ./download-chromium.sh mac-x64 && electron-builder --mac --x64",
-    "build-win-arm64": "npm run build && ./download-chromium.sh win && electron-builder --win --arm64",
-    "build-win-x64": "npm run build && ./download-chromium.sh win && electron-builder --win --x64",
-    "build-linux-arm64": "npm run build && ./download-chromium.sh linux && electron-builder --linux --arm64",
-    "build-linux-x64": "npm run build && ./download-chromium.sh linux && electron-builder --linux --x64",
+    "build-mac-arm64": "npm run build && electron-builder --mac --arm64",
+    "build-mac-x64": "npm run build && electron-builder --mac --x64",
+    "build-win-arm64": "npm run build && electron-builder --win --arm64",
+    "build-win-x64": "npm run build && electron-builder --win --x64",
+    "build-linux-arm64": "npm run build && electron-builder --linux --arm64",
+    "build-linux-x64": "npm run build && electron-builder --linux --x64",
     "create-scour-file": "ts-node ./src/tests/createScourFile.ts",
     "create-search-queries": "ts-node ./src/tests/createSearchQueries.ts",
     "run-search": "ts-node ./src/tests/runSearch.ts",
@@ -77,12 +77,6 @@
       "entitlements": "entitlements.mac.plist",
       "entitlementsInherit": "entitlements.mac.plist"
     },
-    "extraResources": [
-      {
-        "from": "browsers",
-        "to": "browsers"
-      }
-    ],
     "linux": {
       "target": [
         "AppImage",
@@ -117,8 +111,7 @@
     ],
     "files": [
       "dist/**/*",
-      "node_modules/playwright/**/*",
-      "browsers/**/*"
+      "node_modules/playwright/**/*"
     ],
     "directories": {
       "output": "release",
