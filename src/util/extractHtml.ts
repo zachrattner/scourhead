@@ -1,12 +1,12 @@
 import { chromium, Browser, Page } from 'playwright';
-import { determineHeadlessShellPath } from './determineHeadlessShellPath';
+import { determineBrowserPath } from './determineBrowserPath';
 import { stealthifyPlaywright } from './stealthifyPlaywright';
 
 export async function extractHtml(url: string): Promise<string> {
     let browser: Browser | null = null;
 
     try {
-        const executablePath = determineHeadlessShellPath();
+        const executablePath = determineBrowserPath();
         
         if (!executablePath) {
             return '';

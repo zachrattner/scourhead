@@ -50,16 +50,16 @@ fi
 # Validate platform
 case $PLATFORM in
   mac)
-    ZIP_FILENAME="chromium-headless-shell-mac-arm64.zip"
+    ZIP_FILENAME="chromium-mac-arm64.zip"
     ;;
   mac-x64)
-    ZIP_FILENAME="chromium-headless-shell-mac.zip"
+    ZIP_FILENAME="chromium-mac.zip"
     ;;
   win)
-    ZIP_FILENAME="chromium-headless-shell-win64.zip"
+    ZIP_FILENAME="chromium-win64.zip"
     ;;
   linux)
-    ZIP_FILENAME="chromium-headless-shell-linux.zip"
+    ZIP_FILENAME="chromium-linux.zip"
     ;;
   *)
     echo "Invalid platform: $PLATFORM"
@@ -85,7 +85,7 @@ else
 fi
 
 # Download the Chromium zip file
-echo "Downloading Chromium headless shell for $PLATFORM from $BASE_URL/$ZIP_FILENAME..."
+echo "Downloading Chromium for $PLATFORM from $BASE_URL/$ZIP_FILENAME..."
 curl -o "$BROWSERS_DIR/$ZIP_FILENAME" -L "$BASE_URL/$ZIP_FILENAME"
 
 # Extract the zip file into the browsers directory
@@ -96,4 +96,4 @@ unzip -o "$BROWSERS_DIR/$ZIP_FILENAME" -d "$BROWSERS_DIR"
 echo "Cleaning up..."
 rm "$BROWSERS_DIR/$ZIP_FILENAME"
 
-echo "Chromium headless shell for $PLATFORM installed in $BROWSERS_DIR."
+echo "Chromium for $PLATFORM installed in $BROWSERS_DIR."

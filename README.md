@@ -51,7 +51,7 @@ scourhead/
    ```bash
    npm install
    ```
-3. Install headless Chromium browser from Playwright:
+3. Install Chromium browser from Playwright:
    ```bash
    ./download-chromium.sh
    ```
