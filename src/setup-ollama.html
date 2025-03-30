@@ -14,6 +14,11 @@
             border: 1px solid #ccc;
             border-radius: 8px;
             padding: 16px;
+            margin-bottom: 8px;
+        }
+
+        div.app .right {
+            max-width: 400px;
         }
 
         div.app .left {
@@ -21,11 +26,11 @@
         }
 
         div.app .left,
-        div.app, .right {
+        div.app .right {
             float: left;
         }
 
-        div.app, .right .buttons {
+        .right .buttons {
             float: right;
         }
 
@@ -115,6 +120,20 @@
                     <a href="https://ollama.com/download" target="_blank" id="download-ollama">Download Ollama</a>
                     <a href="#" id="configure-ollama">Configure</a>
                     <a href="#" id="download-model">Download Model</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="app">
+            <div class="left">
+                <img src="./img/chrome.png" alt="Chrome" width="100" height="100" />
+            </div>
+            <div class="right">
+                <h1>Chrome</h1>
+                <p>Scourhead requires Chrome to browse the web. Skip if already installed.</p>
+                <div class="buttons">
+                    <a href="https://google.com/chrome" target="_blank" id="download-chrome">Download Chrome</a>
                 </div>
             </div>
             <div class="clear"></div>
