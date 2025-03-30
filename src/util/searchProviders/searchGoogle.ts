@@ -1,36 +1,31 @@
 import { chromium, Browser, Page, LaunchOptions } from 'playwright';
 import logger from '../logger';
 import { SearchResult } from "../scourFormat";
-import { determineHeadlessShellPath } from '../determineHeadlessShellPath';
+import { determineBrowserPath } from '../determineBrowserPath';
 import { stealthifyPlaywright } from '../stealthifyPlaywright';
 import { readScourFile, writeScourFile } from '../scourFileUtils';
-
-const SHOW_BROWSER = false;
 
 export async function searchGoogle(query: string, maxPages: number = 1, outputFilePath: string): Promise<SearchResult[]> {
     logger.info("Launching browser...");
     let executablePath = null;
 
-    // If the browser is to be shown, the headless shell path cannot be used.
-    if (!SHOW_BROWSER) {
-        executablePath = determineHeadlessShellPath();
-    }
+    executablePath = determineBrowserPath();
 
     const scourFile = readScourFile(outputFilePath);
 
-    if (!SHOW_BROWSER && !executablePath) {
-        logger.error('Failed to find headless shell path.');
-        scourFile.statusMessage = 'Failed to find path to Chromium. Please make sure Chromium is installed correctly via Playwright.';
+    if (!executablePath) {
+        logger.error('Failed to find Chrome path.');
+        scourFile.statusMessage = 'Failed to find path to Chrome. Please make sure Chrome is installed correctly via Playwright.';
         writeScourFile(outputFilePath, scourFile);
         return [];
     }
 
     try {
         const options : LaunchOptions = {
-            headless: !SHOW_BROWSER,
+            headless: false,
         };
 
-        if (!SHOW_BROWSER && executablePath) {
+        if (executablePath) {
             options.executablePath = executablePath;
         }
 
@@ -210,7 +205,7 @@ export async function searchGoogle(query: string, maxPages: number = 1, outputFi
         return uniqueResults;
     }
     catch (e) {
-        scourFile.statusMessage = `Failed to launch Chromium. Please make sure Chromium is installed correctly via Playwright.`;
+        scourFile.statusMessage = `Failed to launch Chrome. Please make sure Chrome is installed correctly via Playwright.`;
         writeScourFile(outputFilePath, scourFile);
         return [];
     }

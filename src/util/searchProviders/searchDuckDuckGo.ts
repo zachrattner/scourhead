@@ -1,11 +1,9 @@
 import { chromium, Browser, Page, LaunchOptions } from 'playwright';
 import logger from '../logger';
 import { SearchResult } from "../scourFormat";
-import { determineHeadlessShellPath } from '../determineHeadlessShellPath';
+import { determineBrowserPath } from '../determineBrowserPath';
 import { stealthifyPlaywright } from '../stealthifyPlaywright';
 import { readScourFile, writeScourFile } from '../scourFileUtils';
-
-const SHOW_BROWSER = false;
 
 function extractBareUrl(duckDuckGoUrl: string): string {
     if (duckDuckGoUrl.substring(0, 2) === '//') {
@@ -28,32 +26,29 @@ export async function searchDuckDuckGo(query: string, numResultsPerQuery: number
     logger.info("Launching browser...");
     let executablePath = null;
 
-    // If the browser is to be shown, the headless shell path cannot be used.
-    if (!SHOW_BROWSER) {
-        executablePath = determineHeadlessShellPath();
-    }
+    executablePath = determineBrowserPath();
 
     const scourFile = readScourFile(outputFilePath);
 
-    if (!SHOW_BROWSER && !executablePath) {
-        logger.error('Failed to find headless shell path.');
-        scourFile.statusMessage = 'Failed to find path to Chromium. Please make sure Chromium is installed correctly via Playwright.';
+    if (!executablePath) {
+        logger.error('Failed to find Chrome path.');
+        scourFile.statusMessage = 'Failed to find path to Chrome. Please make sure Chrome is installed correctly via Playwright.';
         writeScourFile(outputFilePath, scourFile);
         return [];
     }
 
     try {
-        const options : LaunchOptions = {
-            headless: !SHOW_BROWSER,
+        const options: LaunchOptions = {
+            headless: false,
         };
 
-        if (!SHOW_BROWSER && executablePath) {
+        if (executablePath) {
             options.executablePath = executablePath;
         }
 
         const delay = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
-        logger.info(`Waiting ${delay} ms before launching Chromium...`);
-        scourFile.statusMessage = `Waiting ${delay} ms before launching Chromium...`;
+        logger.info(`Waiting ${delay} ms before launching Chrome...`);
+        scourFile.statusMessage = `Waiting ${delay} ms before launching Chrome...`;
         writeScourFile(outputFilePath, scourFile);
         await new Promise(resolve => setTimeout(resolve, delay));        
 
@@ -69,10 +64,27 @@ export async function searchDuckDuckGo(query: string, numResultsPerQuery: number
         writeScourFile(outputFilePath, scourFile);
         const page: Page = await context.newPage();
 
+        // ALGORITHM:
+        // 1. Navigate to https://html.duckduckgo.com/html/
+        // 2. Locate the search input and type the query
+        // 3. Locate the search button and click it
         logger.info("Navigating to DuckDuckGo...");
         scourFile.statusMessage = 'Navigating to DuckDuckGo...';
         writeScourFile(outputFilePath, scourFile);
-        await page.goto(`https://duckduckgo.com/html?q=${query}`, { waitUntil: 'domcontentloaded' });
+        await page.goto(`https://html.duckduckgo.com/html/`, { waitUntil: 'domcontentloaded' });
+
+        // Locate the search input field and type the query
+        const searchInputSelector = 'input[name="q"]#search_form_input_homepage.search__input';
+        await page.waitForSelector(searchInputSelector, { timeout: 5000 });
+        await page.fill(searchInputSelector, query);
+
+        // Locate the search button and click it
+        const searchButtonSelector = 'input[name="b"]#search_button_homepage.search__button.search__button--html';
+        await page.waitForSelector(searchButtonSelector, { timeout: 5000 });
+        await Promise.all([
+            page.click(searchButtonSelector),
+            page.waitForNavigation({ waitUntil: 'domcontentloaded' })
+        ]);
 
         try {
             await page.waitForSelector('.results', { timeout: 5000 });
@@ -186,7 +198,7 @@ export async function searchDuckDuckGo(query: string, numResultsPerQuery: number
         return results;
     }
     catch (e) {
-        scourFile.statusMessage = `Failed to launch Chromium. Please make sure Chromium is installed correctly via Playwright.`;
+        scourFile.statusMessage = `Failed to launch Chrome. Please make sure Chrome is installed correctly via Playwright.`;
         writeScourFile(outputFilePath, scourFile);
         return [];
     }
