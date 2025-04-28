@@ -121,7 +121,7 @@
   "devDependencies": {
     "@types/node": "^22.14.0",
     "copyfiles": "^2.4.1",
-    "electron": "^35.1.4",
+    "electron": "^35.2.1",
     "electron-builder": "^26.0.12",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
