@@ -124,6 +124,6 @@
     "electron": "^38.1.0",
     "electron-builder": "^26.0.12",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   }
 }
