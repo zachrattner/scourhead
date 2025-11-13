@@ -6,13 +6,13 @@ Scourhead is an open-source agentic AI application designed to streamline online
 
 [![AI Labels - Made by Humans with AI](https://ailabels.org/badges/AI%20Labels%20-%20Human%20and%20AI.svg "Made By Humans with AI")](https://ailabels.org)
 
-## Downloads
-- [macOS arm64](https://scourhead.com/releases/Scourhead-arm64.dmg)
-- [macOS x64](https://scourhead.com/releases/Scourhead-x64.dmg)
-- [Windows x64](https://scourhead.com/releases/Scourhead-Setup-x64.exe)
-- [Windows arm64](https://scourhead.com/releases/Scourhead-Setup-arm64.exe)
-- [Linux x64](https://scourhead.com/releases/scourhead_amd64.deb)
-- [Linux arm64](https://scourhead.com/releases/scourhead_arm64.deb)
+## Repository Archived
+
+This project has been **archived** due to limited interest and ongoing maintenance not being a priority.
+
+The code will remain available in a read-only state for anyone who finds it useful, but no further updates or issue responses are planned.
+
+Thanks to everyone who checked out the project!
 
 ## Features
 
